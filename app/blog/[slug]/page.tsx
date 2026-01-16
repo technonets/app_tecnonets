@@ -1,0 +1,193 @@
+import { ArrowLeft, Calendar, User, Share2 } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/Button";
+import { Section } from "@/components/ui/Section";
+import { Badge } from "@/components/ui/Badge";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { AdBanner } from "@/components/ui/AdBanner";
+import { notFound } from "next/navigation";
+import { getPosts } from "@/lib/blog";
+import Image from "next/image";
+
+// ... imports existing ...
+import { Metadata } from "next";
+
+// Generar Metadatos Dinámicos para SEO
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const posts = await getPosts();
+  const post = posts.find((p) => p.slug === slug);
+
+  if (!post) {
+      return {
+          title: "Artículo No Encontrado | Tecnonets",
+          description: "El artículo que buscas no existe."
+      }
+  }
+
+  return {
+    title: `${post.title} | Blog Tecnonets`,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      publishedTime: post.date, // Idealmente convertir a ISO standard
+      authors: [post.author],
+      images: post.image ? [{ url: post.image }] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: post.image ? [post.image] : [],
+    }
+  }
+}
+
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const decodedSlug = decodeURIComponent(slug);
+  const posts = await getPosts();
+  
+  // Debug (Temporary) - REMOVED
+  
+  const post = posts.find((p) => p.slug === decodedSlug);
+
+  if (!post) {
+    notFound();
+  }
+
+  // Soporte básico para saltos de línea si viene como texto plano, o HTML si viene formateado
+  const isHtml = post.content.includes('<') && post.content.includes('>');
+
+  // JSON-LD para Google (Rich Results)
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    image: post.image ? [post.image] : [],
+    datePublished: new Date().toISOString(), // Fallback a hoy si no es parseable, ideal mejorar formato fecha
+    dateModified: new Date().toISOString(),
+    author: [{
+        '@type': 'Person',
+        name: post.author,
+        url: 'https://tecnonets.com'
+    }]
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Navbar />
+      <main className="flex-grow pt-24 pb-20">
+      {/* Rest of the component ... */}
+        <Section>
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            {/* Main Article Content */}
+            <article className="lg:col-span-8 space-y-8">
+               <Link href="/blog">
+                  <Button variant="ghost" size="sm" className="gap-2 text-gray-400 hover:text-white -ml-2">
+                     <ArrowLeft className="w-4 h-4" /> Volver al Blog
+                  </Button>
+               </Link>
+
+               <div className="space-y-4">
+                  <Badge variant="primary">{post.category}</Badge>
+                  <h1 className="text-4xl md:text-6xl font-bold font-heading text-white leading-tight">
+                     {post.title}
+                  </h1>
+                  <div className="flex items-center gap-6 text-gray-500 text-sm">
+                     <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> {post.date}</span>
+                     <span className="flex items-center gap-2"><User className="w-4 h-4" /> {post.author}</span>
+                  </div>
+               </div>
+
+               <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-gray-900 relative">
+                    {post.image ? (
+                         <Image 
+                            src={post.image} 
+                            alt={post.title} 
+                            fill
+                            className="object-cover" 
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 60vw"
+                            priority
+                        />
+                    ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900" />
+                    )}
+               </div>
+
+               {/* Ad Content Top */}
+               <AdBanner slot="blog_post_top" />
+
+               <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-6">
+                  {isHtml ? (
+                      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                  ) : (
+                      post.content.split('\n').map((paragraph, idx) => (
+                          <p key={idx}>{paragraph}</p>
+                      ))
+                  )}
+                  
+                  {/* Ad Middle Content */}
+                  <AdBanner slot="blog_post_middle" format="rectangle" className="max-w-md mx-auto my-8" />
+               </div>
+
+               {/* Post Footer Ad */}
+               <AdBanner slot="blog_post_bottom" />
+
+               <div className="pt-8 border-t border-white/10 flex justify-between items-center">
+                  <div className="flex gap-4">
+                     <Button variant="outline" size="sm" className="gap-2">
+                        <Share2 className="w-4 h-4" /> Compartir
+                     </Button>
+                  </div>
+               </div>
+            </article>
+
+            {/* Sidebar with vertical Ads */}
+            <aside className="lg:col-span-4 space-y-8">
+               <div className="lg:sticky lg:top-28 space-y-6">
+                  {/* Vertical Ad Sidebar */}
+                  <div className="p-5 bg-card border border-white/10 rounded-2xl">
+                     <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Publicidad</h3>
+                     <AdBanner slot="blog_post_sidebar_1" format="rectangle" style={{ minHeight: '400px' }} />
+                  </div>
+
+                  {/* Related Resources CTA */}
+                  <div className="p-6 rounded-2xl bg-gradient-to-br from-violet-900/40 to-transparent border border-primary/30">
+                     <h3 className="font-bold text-white mb-3">¿Te gusta este contenido?</h3>
+                     <p className="text-sm text-gray-400 mb-6">En nuestra tienda tenemos recursos premium listos para instalar.</p>
+                     <Link href="/tienda">
+                        <Button className="w-full gap-2">Explorar Tienda</Button>
+                     </Link>
+                  </div>
+
+                  {/* Second Vertical Ad */}
+                  <div className="p-5 bg-card border border-white/10 rounded-2xl hidden lg:block">
+                     <AdBanner slot="blog_post_sidebar_2" format="rectangle" style={{ minHeight: '600px' }} />
+                  </div>
+               </div>
+            </aside>
+
+          </div>
+        </Section>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+// Generar rutas estáticas para mejorar rendimiento (opcional pero recomendado)
+export async function generateStaticParams() {
+    const posts = await getPosts();
+    return posts.map((post) => ({
+        slug: post.slug,
+    }));
+}

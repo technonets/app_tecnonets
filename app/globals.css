@@ -1,26 +1,192 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Premium Dark Mode Palette */
+  --background: #030014; /* Deep space blue/black */
+  --foreground: #fafafa; /* Off-white text */
+  --primary: #8b5cf6; /* Violet-500 */
+  --primary-foreground: #ffffff;
+  --secondary: #10b981; /* Emerald-500 */
+  --secondary-foreground: #ffffff;
+  --accent: #f43f5e; /* Rose-500 for alerts/highlights */
+
+  /* Surfaces */
+  --card: #0f0c2990; /* Glassmorphism base */
+  --card-foreground: #fafafa;
+  --popover: #0f0c29;
+  --popover-foreground: #fafafa;
+
+  /* Borders */
+  --border: #2e2e3a;
+  --input: #2e2e3a;
+  --ring: #8b5cf6;
+
+  /* Font Variables will be injected by Next.js */
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-outfit);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Extended Spacing for premium feel */
+  --spacing-128: 32rem;
+  --spacing-144: 36rem;
+
+  /* Glass Effects */
+  --backdrop-blur-xs: 2px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Selection Styling */
+::selection {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: #2e2e3a;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Guide Content Styles */
+.guide-content h2 { 
+  color: #fff; 
+  font-weight: 700; 
+  margin-top: 5rem; 
+  margin-bottom: 2rem; 
+  font-size: 2.25rem; 
+  letter-spacing: -0.025em;
+  border-left: 4px solid var(--primary);
+  padding-left: 1.5rem;
+}
+.guide-content h3 { 
+  color: #fff; 
+  font-weight: 600; 
+  margin-top: 3.5rem; 
+  margin-bottom: 1.5rem; 
+  font-size: 1.75rem; 
+}
+.guide-content p { 
+  margin-bottom: 1.75rem; 
+  color: #d1d5db;
+}
+.guide-content ul, .guide-content ol { 
+  margin-bottom: 2rem; 
+  padding-left: 1.5rem; 
+}
+.guide-content li { 
+  margin-bottom: 1rem; 
+}
+.guide-content pre { 
+  background: #000 !important; 
+  padding: 2rem; 
+  border-radius: 1.25rem; 
+  border: 1px solid rgba(255,255,255,0.08); 
+  margin: 2.5rem 0; 
+  overflow-x: auto;
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+}
+.guide-content code { 
+  background: rgba(139, 92, 246, 0.1); 
+  color: var(--primary);
+  padding: 0.25rem 0.5rem; 
+  border-radius: 0.5rem; 
+  font-size: 0.85em; 
+  font-family: ui-monospace, monospace;
+}
+.guide-content pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.9em;
+}
+.guide-content blockquote { 
+  border-left: 4px solid var(--secondary); 
+  padding: 1.5rem 2rem; 
+  background: rgba(16, 185, 129, 0.05);
+  border-radius: 0 1rem 1rem 0;
+  font-style: italic; 
+  color: #9ca3af; 
+  margin: 3rem 0; 
+}
+.guide-content hr { 
+  border: 0; 
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+  margin: 6rem 0; 
+}
+
+/* Professional Guide Buttons */
+.guide-btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.guide-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  border-radius: 1rem;
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
+  letter-spacing: 0.025em;
+}
+
+.guide-btn-primary {
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  color: white !important;
+  box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
+}
+
+.guide-btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 30px -10px rgba(139, 92, 246, 0.6);
+  filter: brightness(1.1);
+}
+
+.guide-btn-secondary {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white !important;
+  backdrop-filter: blur(10px);
+}
+
+.guide-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
 }

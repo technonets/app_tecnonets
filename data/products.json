@@ -1,0 +1,62 @@
+[
+  {
+    "id": "crm-sheets",
+    "title": "CRM Completo en Google Sheets",
+    "price": 29,
+    "category": "Google Sheets",
+    "tags": ["ventas", "clientes", "crm", "gestión"],
+    "image": "/images/products/crm-placeholder.jpg",
+    "description": "Sistema de gestión de clientes con dashboard automático y envío de correos.",
+    "checkoutUrl": "https://tecnonets.lemonsqueezy.com/checkout/buy/cbe21f86-a451-4209-8b24-c2d523fbf554"
+  },
+  {
+    "id": "landing-gym",
+    "title": "Template Landing Page Gimnasio",
+    "price": 49,
+    "category": "Next.js",
+    "tags": ["deporte", "salud", "gym", "fitness"],
+    "image": "/images/products/gym-placeholder.jpg",
+    "description": "Plantilla moderna dark mode para centros deportivos o entrenadores.",
+    "checkoutUrl": "https://tecnonets.lemonsqueezy.com/checkout/buy/cbe21f86-a451-4209-8b24-c2d523fbf554"
+  },
+  {
+    "id": "landing-barberia",
+    "title": "Plantilla Barbería Vintage",
+    "price": 45,
+    "category": "Next.js",
+    "tags": ["barbería", "estilismo", "citas", "belleza"],
+    "image": "/images/products/barber-placeholder.jpg",
+    "description": "Diseño clásico con sistema de reservas integrado y galería de cortes.",
+    "checkoutUrl": "https://tecnonets.lemonsqueezy.com/checkout/buy/cbe21f86-a451-4209-8b24-c2d523fbf554"
+  },
+  {
+    "id": "menu-restaurante",
+    "title": "Menú Digital Q-Restaurant",
+    "price": 39,
+    "category": "Next.js",
+    "tags": ["restaurante", "comida", "menú", "qr"],
+    "image": "/images/products/menu-placeholder.jpg",
+    "description": "Carta digital interactiva con categorías y fotos de platos.",
+    "checkoutUrl": "https://tecnonets.lemonsqueezy.com/checkout/buy/cbe21f86-a451-4209-8b24-c2d523fbf554"
+  },
+  {
+    "id": "bot-whatsapp",
+    "title": "Bot de Reservas WhatsApp",
+    "price": 35,
+    "category": "Automation",
+    "tags": ["mensajería", "bot", "whatsapp", "reservas"],
+    "image": "/images/products/bot-placeholder.jpg",
+    "description": "Script para agendar citas automáticamente leyendo mensajes.",
+    "checkoutUrl": "https://tecnonets.lemonsqueezy.com/checkout/buy/cbe21f86-a451-4209-8b24-c2d523fbf554"
+  },
+  {
+    "id": "dashboard-finanzas",
+    "title": "Dashboard Financiero Personal",
+    "price": 19,
+    "category": "Google Sheets",
+    "tags": ["finanzas", "dinero", "ahorro", "presupuesto"],
+    "image": "/images/products/finance-placeholder.jpg",
+    "description": "Controla tus gastos e ingresos con gráficos mensuales interactivos.",
+    "checkoutUrl": "https://tecnonets.lemonsqueezy.com/checkout/buy/cbe21f86-a451-4209-8b24-c2d523fbf554"
+  }
+]
