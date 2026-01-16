@@ -34,8 +34,8 @@ export async function POST(req: Request) {
     // Limpiar el cache del blog
     try {
         revalidatePath('/blog');
-        revalidatePath('/blog/[slug]', 'page');
-        revalidateTag('blog');
+        // revalidatePath('/blog/[slug]', 'page');
+        // revalidateTag('blog');
     } catch (e) {
         console.error("Revalidation error:", e);
     }
