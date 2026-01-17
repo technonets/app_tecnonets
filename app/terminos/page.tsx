@@ -209,6 +209,31 @@ export default function TermsPage() {
                 </ul>
               </div>
 
+              {/* Publicidad y Google AdSense */}
+              <div className="bg-card border border-white/10 rounded-2xl p-8">
+                <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                  <span className="text-primary text-2xl">📢</span>
+                  Publicidad y Google AdSense
+                </h2>
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  Este sitio web muestra anuncios servidos por Google AdSense. Al utilizar este sitio, aceptas cumplir con las siguientes directrices para mantener la integridad del ecosistema publicitario:
+                </p>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">•</span>
+                    <span><strong className="text-white">Prohibición de clics inválidos:</strong> Está estrictamente prohibido realizar clics artificiales o manuales en los anuncios propios o incentivar a terceros para que lo hagan.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">•</span>
+                    <span><strong className="text-white">Navegación engañosa:</strong> No se utilizarán métodos engañosos para colocar anuncios que se confundan con contenido del sitio, menús o navegación.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary mt-1">•</span>
+                    <span><strong className="text-white">Contenido:</strong> Nos comprometemos a no mostrar anuncios en páginas con contenido restringido o ilegal según las políticas de Google.</span>
+                  </li>
+                </ul>
+              </div>
+
               {/* Modificaciones */}
               <div className="bg-card border border-white/10 rounded-2xl p-8">
                 <h2 className="text-2xl font-bold text-white mb-4">Modificaciones a los Términos</h2>
