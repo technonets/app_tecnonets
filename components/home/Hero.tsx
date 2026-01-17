@@ -24,7 +24,7 @@ export function Hero() {
           y Sitios Profesionales
         </h1>
         
-        <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
           Optimizamos flujos de trabajo mediante automatización avanzada con Google Workspace y desarrollamos infraestructura web de alto rendimiento.
         </p>
         

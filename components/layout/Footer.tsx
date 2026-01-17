@@ -23,7 +23,7 @@ export function Footer() {
                 Tecnonets
               </span>
             </Link>
-            <p className="text-gray-400 max-w-sm">
+            <p className="text-gray-300 max-w-sm">
               Especialistas en <strong>diseño de páginas web</strong> y <strong>crear página web profesional</strong>. Automatización avanzada con Google Apps Script.
             </p>
             <div className="flex gap-4 mt-6">
@@ -31,7 +31,7 @@ export function Footer() {
                 href="https://youtube.com/@technonets" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-gray-400 hover:text-red-500 transition-colors"
+                className="text-gray-300 hover:text-red-500 transition-colors"
                 aria-label="Visitar nuestro canal de YouTube"
               >
                 <Youtube className="w-6 h-6" />
@@ -40,7 +40,7 @@ export function Footer() {
                 href="https://www.tiktok.com/@technonets" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-300 hover:text-white transition-colors"
                 aria-label="Seguirnos en TikTok"
               >
                 <SiTiktok className="w-6 h-6" />
@@ -54,7 +54,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="/servicios/automatizacion" 
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  className="text-gray-300 hover:text-primary transition-colors"
                   onClick={(e) => {
                     if (window.location.pathname === '/servicios/automatizacion') {
                       e.preventDefault();
@@ -68,7 +68,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="/servicios/desarrollo-web" 
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  className="text-gray-300 hover:text-primary transition-colors"
                   onClick={(e) => {
                     if (window.location.pathname === '/servicios/desarrollo-web') {
                       e.preventDefault();
@@ -88,7 +88,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="/tienda" 
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  className="text-gray-300 hover:text-primary transition-colors"
                   onClick={(e) => {
                     if (window.location.pathname === '/tienda') {
                       e.preventDefault();
@@ -102,7 +102,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="/blog" 
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  className="text-gray-300 hover:text-primary transition-colors"
                   onClick={(e) => {
                     if (window.location.pathname === '/blog') {
                       e.preventDefault();
@@ -116,7 +116,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="/contacto" 
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  className="text-gray-300 hover:text-primary transition-colors"
                   onClick={(e) => {
                     if (window.location.pathname === '/contacto') {
                       e.preventDefault();
