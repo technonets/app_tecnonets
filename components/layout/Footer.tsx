@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Youtube, Mail, Github, Twitter } from 'lucide-react';
 
 export function Footer() {
@@ -8,8 +9,18 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <Link href="/" className="text-2xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-4 inline-block">
-              Tecnonets
+            <Link href="/" className="flex items-center gap-3 mb-4">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                <Image 
+                  src="/logo.png" 
+                  alt="Tecnonets Logo" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <span className="text-2xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                Tecnonets
+              </span>
             </Link>
             <p className="text-gray-400 max-w-sm">
               Especialistas en <strong>diseño de páginas web</strong> y <strong>crear página web profesional</strong>. Automatización avanzada con Google Apps Script.

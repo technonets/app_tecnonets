@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ShoppingBag, Code, Grid, Monitor, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
@@ -19,9 +20,19 @@ export function Navbar() {
     <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-background/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
-              Tecnonets
+          <div className="flex-shrink-0 flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-2">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden">
+                <Image 
+                  src="/logo.png" 
+                  alt="Tecnonets Logo" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <span className="text-2xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                Tecnonets
+              </span>
             </Link>
           </div>
           
