@@ -27,10 +27,22 @@ export function Footer() {
               Especialistas en <strong>diseño de páginas web</strong> y <strong>crear página web profesional</strong>. Automatización avanzada con Google Apps Script.
             </p>
             <div className="flex gap-4 mt-6">
-              <a href="https://youtube.com/@technonets" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-500 transition-colors">
+              <a 
+                href="https://youtube.com/@technonets" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-red-500 transition-colors"
+                aria-label="Visitar nuestro canal de YouTube"
+              >
                 <Youtube className="w-6 h-6" />
               </a>
-              <a href="https://www.tiktok.com/@technonets" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+              <a 
+                href="https://www.tiktok.com/@technonets" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-white transition-colors"
+                aria-label="Seguirnos en TikTok"
+              >
                 <SiTiktok className="w-6 h-6" />
               </a>
             </div>
