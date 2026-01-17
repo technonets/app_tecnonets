@@ -45,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.className} ${outfit.variable}`} suppressHydrationWarning>
-      <head>
+      <body className="antialiased min-h-screen flex flex-col" suppressHydrationWarning>
         {/* Google AdSense - Global Integration */}
         <Script
           async
@@ -53,9 +53,6 @@ export default function RootLayout({
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-        {/* Enable Auto Ads explicitly via meta if needed, though script src is usually enough */}
-      </head>
-      <body className="antialiased min-h-screen flex flex-col" suppressHydrationWarning>
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
         <FacebookPixel pixelId={process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID} />
         <WhatsAppButton />
