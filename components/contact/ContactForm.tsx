@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from "@/components/ui/Button";
 
@@ -277,9 +277,18 @@ export function ContactForm() {
     }
   };
 
+  // Scroll to success message when shown
+  const successRef = React.useRef<HTMLDivElement>(null);
+  
+  React.useEffect(() => {
+    if (isSent && successRef.current) {
+      successRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [isSent]);
+
   if (isSent) {
     return (
-      <div className="text-center py-12 animate-in fade-in zoom-in duration-500">
+      <div ref={successRef} className="text-center py-12 animate-in fade-in zoom-in duration-500">
         <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
           <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
