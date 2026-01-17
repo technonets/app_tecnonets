@@ -22,6 +22,9 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     type: 'website',
   },
+  other: {
+    'google-adsense-account': 'ca-pub-1534881385505133',
+  },
 };
 
 export const viewport: Viewport = {
