@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/Button";
 import { Upload, Plus, Save, Lock } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { RefreshCw } from "lucide-react";
+import { revalidateProducts } from "./actions";
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -279,6 +281,24 @@ export default function AdminPage() {
                 >
                     Blog Posts
                 </button>
+            </div>
+
+            {/* Refresh Cache Button */}
+            <div className="flex justify-end mb-6">
+                <Button 
+                    onClick={async () => {
+                        setLoading(true);
+                        const res = await revalidateProducts();
+                        setMessage(res.success ? "✅ " + res.message : "❌ " + res.message);
+                        setLoading(false);
+                    }}
+                    variant="outline"
+                    className="gap-2 border-primary/50 text-primary hover:bg-primary/10"
+                    disabled={loading}
+                >
+                    <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+                    Sincronizar con Google Sheets
+                </Button>
             </div>
 
             {activeTab === 'products' ? (
