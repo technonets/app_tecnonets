@@ -1,13 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Outfit } from "next/font/google";
 import Script from "next/script";
-import dynamic from "next/dynamic";
 import "./globals.css";
-
-const WhatsAppButton = dynamic(
-  () => import("@/components/ui/WhatsAppButton").then((mod) => mod.WhatsAppButton),
-  { ssr: false }
-);
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 
 const inter = Inter({ subsets: ["latin"] });
 const outfit = Outfit({
@@ -41,10 +36,7 @@ export const viewport: Viewport = {
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import FacebookPixel from '@/components/analytics/FacebookPixel';
 
-const CookieConsent = dynamic(
-  () => import("@/components/ui/CookieConsent").then((mod) => mod.CookieConsent),
-  { ssr: false }
-);
+import { CookieConsent } from "@/components/ui/CookieConsent";
 
 export default function RootLayout({
   children,
