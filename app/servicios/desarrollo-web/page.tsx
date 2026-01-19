@@ -142,14 +142,17 @@ export default function WebDevPage() {
                 "Estructura optimizada para anuncios",
                 "Landing page one-page (Responsive)",
                 "Formulario integrado + WhatsApp",
-                "Configuración inicial Pixel (Meta/Google)",
-                "Certificado SSL y seguridad básica",
+                "Configuración inicial Pixel (Google)",
+                "Configuración de Google Analytics",
+                "Configuración de Google Search Console",
+                "Certificado SSL y seguridad",
                 "Implementación técnica completa"
               ]}
               monthlyFeatures={[
                 "Hosting administrado alta velocidad",
                 "Soporte técnico prioritario",
-                "Monitoreo de funcionamiento",
+                "Soporte ante caídas o errores",
+                "Monitoreo de uptime (Estabilidad)",
                 "1 cambio menor mensual (texto o imagen, no rediseños)",
                 "Mantenimiento técnico general"
               ]}
@@ -173,12 +176,13 @@ export default function WebDevPage() {
               ctaLink="/contacto?servicio=Plan%20Corporativo"
               setupFeatures={[
                 "Estructura corporativa de hasta 5 secciones",
-                "Diseño corporativo premium",
+                "Diseño corporativo premium (Responsive)",
                 "Blog / Noticias (Estructura de blog)",
                 "Arquitectura web pensada para crecimiento SEO",
                 "Configuración de Google Analytics",
                 "Configuración de Google Search Console",
-                "Optimización SEO On-Page inicial"
+                "Optimización SEO",
+                "Certificado SSL y seguridad"
               ]}
               monthlyFeatures={[
                 "Hosting empresarial administrado",

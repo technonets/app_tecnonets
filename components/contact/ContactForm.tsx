@@ -251,7 +251,7 @@ export function ContactForm() {
       formDataToSubmit.append(FORM_IDS.email, formData.email);
       formDataToSubmit.append(FORM_IDS.country, formData.country);
       formDataToSubmit.append(FORM_IDS.countryCode, formData.countryCode);
-      formDataToSubmit.append(FORM_IDS.phone, formData.phone);
+      formDataToSubmit.append(FORM_IDS.phone, formData.phone.replace(/\s/g, ''));
       formDataToSubmit.append(FORM_IDS.service, formData.service);
       // Only append otherService if it has a value, or always append if the form accepts empty
       formDataToSubmit.append(FORM_IDS.otherService, formData.otherService || '');
