@@ -6,6 +6,7 @@ import { getProducts } from "@/lib/products";
 import { Hero } from "@/components/home/Hero";
 import { ServicesGrid } from "@/components/home/ServicesGrid";
 import { LatestProducts } from "@/components/home/LatestProducts";
+import { Partners } from "@/components/home/Partners";
 
 export const metadata: Metadata = {
   title: "Diseño de Páginas Web y Crear Página Web Profesional | Tecnonets",
@@ -80,6 +81,8 @@ export default async function Home() {
         </div>
 
         <LatestProducts products={latestProducts} />
+
+        <Partners />
 
         {/* AdSense: Home Footer Banner */}
         <div className="max-w-7xl mx-auto px-4 mb-20">

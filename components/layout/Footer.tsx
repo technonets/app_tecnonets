@@ -129,6 +129,21 @@ export function Footer() {
               </li>
             </ul>
           </div>
+          <div>
+            <h3 className="font-heading font-semibold text-lg mb-4 text-white">Aliados</h3>
+            <ul className="space-y-3">
+              <li>
+                <a 
+                  href="https://sistemascucuta.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-gray-300 hover:text-primary transition-colors"
+                >
+                  Sistemas Cúcuta
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
         
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
