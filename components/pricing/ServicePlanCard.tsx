@@ -1,13 +1,24 @@
+'use client';
 import { Check, HelpCircle, MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { useCurrency } from "@/context/CurrencyContext";
+
+interface Price {
+  COP: string;
+  USD: string;
+}
 
 interface ServicePlanCardProps {
   title?: string;
   description: string;
-  setupFee: string;
-  monthlyFee: string;
-  features?: string[]; // Mantener para compatibilidad
+  setupFee?: string; // Legacy
+  monthlyFee?: string; // Legacy
+  prices: {
+    setup: Price;
+    monthly: Price;
+  };
+  features?: string[];
   setupFeatures?: string[];
   monthlyFeatures?: string[];
   notIncluded?: string[];
@@ -19,8 +30,7 @@ interface ServicePlanCardProps {
 export function ServicePlanCard({
   title,
   description,
-  setupFee,
-  monthlyFee,
+  prices,
   features,
   setupFeatures,
   monthlyFeatures,
@@ -29,6 +39,11 @@ export function ServicePlanCard({
   isPopular = false,
   ctaLink
 }: ServicePlanCardProps) {
+  const { currency } = useCurrency();
+  
+  const currentSetup = prices.setup[currency];
+  const currentMonthly = prices.monthly[currency];
+  const currencyLabel = currency === 'USD' ? 'USD' : 'COP';
   return (
     <div className={`
       relative flex flex-col p-8 rounded-3xl border transition-all duration-300 h-full
@@ -52,7 +67,10 @@ export function ServicePlanCard({
         {/* Setup Fee */}
         <div className="bg-white/5 rounded-xl p-4 border border-white/5">
           <p className="text-gray-400 text-[10px] font-bold uppercase tracking-wider mb-1">Setup (Pago Único)</p>
-          <div className="text-xl font-bold text-white">{setupFee}</div>
+          <div className="flex items-baseline gap-1">
+            <span className="text-xl font-bold text-white">{currentSetup}</span>
+            <span className="text-gray-500 text-[10px]">{currencyLabel}</span>
+          </div>
           <p className="text-[10px] text-gray-500 mt-1">Diseño & Configuración</p>
         </div>
 
@@ -60,8 +78,8 @@ export function ServicePlanCard({
         <div className={`rounded-xl p-4 border ${isPopular ? 'bg-primary/10 border-primary/20' : 'bg-white/5 border-white/5'}`}>
           <p className={`${isPopular ? 'text-primary' : 'text-gray-400'} text-[10px] font-bold uppercase tracking-wider mb-1`}>Mensualidad</p>
           <div className="flex items-baseline gap-1">
-             <span className="text-xl font-bold text-white">{monthlyFee}</span>
-             <span className="text-gray-500 text-[10px]">/mes</span>
+             <span className="text-xl font-bold text-white">{currentMonthly}</span>
+             <span className="text-gray-500 text-[10px]">{currencyLabel}/mes</span>
           </div>
           <p className="text-[10px] text-gray-500 mt-1">Mantenimiento & Soporte</p>
         </div>

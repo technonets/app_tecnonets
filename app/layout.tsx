@@ -38,6 +38,7 @@ import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import FacebookPixel from '@/components/analytics/FacebookPixel';
 
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import { CurrencyProvider } from "@/context/CurrencyContext";
 
 export default function RootLayout({
   children,
@@ -47,18 +48,20 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.className} ${outfit.variable}`} suppressHydrationWarning>
       <body className="antialiased min-h-screen flex flex-col" suppressHydrationWarning>
-        {/* Google AdSense - Global Integration */}
-        <Script
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}
-          crossOrigin="anonymous"
-          strategy="lazyOnload"
-        />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
-        <FacebookPixel pixelId={process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID} />
-        <WhatsAppButton />
-        {children}
-        <CookieConsent />
+        <CurrencyProvider>
+          {/* Google AdSense - Global Integration */}
+          <Script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}
+            crossOrigin="anonymous"
+            strategy="lazyOnload"
+          />
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
+          <FacebookPixel pixelId={process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID} />
+          <WhatsAppButton />
+          {children}
+          <CookieConsent />
+        </CurrencyProvider>
       </body>
     </html>
   );

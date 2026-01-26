@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   }
 };
 
+import { CurrencySwitcher } from "@/components/ui/CurrencySwitcher";
+
 // JSON-LD Service Schema
 const jsonLd = {
   "@context": "https://schema.org",
@@ -39,26 +41,38 @@ const jsonLd = {
     {
       "@type": "Offer",
       "name": "Landing Page Pro",
-      "price": "50000",
+      "price": "390000",
       "priceCurrency": "COP",
       "priceSpecification": {
         "@type": "UnitPriceSpecification",
-        "price": "50000",
+        "price": "390000",
         "priceCurrency": "COP",
         "billingDuration": "P1M"
       }
     },
     {
+       "@type": "Offer",
+       "name": "Landing Page Pro (International)",
+       "price": "149",
+       "priceCurrency": "USD"
+    },
+    {
       "@type": "Offer",
-      "name": "Sitio Corporativo",
-      "price": "80000",
+      "name": "Sitio Corporativo Plus",
+      "price": "790000",
       "priceCurrency": "COP",
       "priceSpecification": {
         "@type": "UnitPriceSpecification",
-        "price": "80000",
+        "price": "790000",
         "priceCurrency": "COP",
         "billingDuration": "P1M"
       }
+    },
+    {
+       "@type": "Offer",
+       "name": "Sitio Corporativo Plus (International)",
+       "price": "249",
+       "priceCurrency": "USD"
     }
   ]
 };
@@ -74,7 +88,7 @@ export default function WebDevPage() {
       <main className="flex-grow pt-20">
         {/* Main Header */}
         <Section className="bg-gradient-to-b from-violet-900/10 to-background">
-          <div className="text-center max-w-4xl mx-auto space-y-6">
+          <div className="text-center max-w-4xl mx-auto space-y-6 text-balance">
             <Badge variant="primary">Website as a Service (WaaS)</Badge>
             <h1 className="text-4xl md:text-6xl font-bold font-heading text-white leading-tight">
               Diseño de Páginas Web <br/>
@@ -87,7 +101,7 @@ export default function WebDevPage() {
         </Section>
 
         {/* AdSense: Header Bottom */}
-        <div className="max-w-7xl mx-auto px-4 -mt-10 mb-10">
+        <div className="max-w-7xl mx-auto px-4 -mt-10 mb-10 text-center">
            <AdBanner slot="services_web_header_bottom" />
         </div>
 
@@ -122,9 +136,14 @@ export default function WebDevPage() {
 
         {/* Pricing / Packages */}
         <Section className="bg-white/2">
-          <div className="text-center mb-16">
+          <div className="flex flex-col items-center justify-center mb-16 text-center">
             <h2 className="text-3xl font-bold font-heading text-white mb-4">Planes Todo Incluido</h2>
-            <p className="text-gray-400">Elige el plan que mejor se adapte a tu etapa de crecimiento.</p>
+            <p className="text-gray-400 mb-8">Elige el plan que mejor se adapte a tu etapa de crecimiento.</p>
+            
+            {/* Currency Switcher */}
+            <div className="relative">
+              <CurrencySwitcher />
+            </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -133,8 +152,10 @@ export default function WebDevPage() {
             <ServicePlanCard 
               title="Landing Page One-Page"
               description="Ideal para campañas publicitarias, lanzamientos de productos o captación de leads específica."
-              setupFee="$500.000 COP"
-              monthlyFee="$150.000 COP"
+              prices={{
+                setup: { COP: "$390.000", USD: "$149" },
+                monthly: { COP: "$99.000", USD: "$39" }
+              }}
               ctaLink="/contacto?servicio=Plan%20Landing%20Page"
               setupFeatures={[
                 "Diseño personalizado (High-Conversion)",
@@ -142,7 +163,6 @@ export default function WebDevPage() {
                 "Estructura optimizada para anuncios",
                 "Landing page one-page (Responsive)",
                 "Formulario integrado + WhatsApp",
-                "Configuración inicial Pixel (Google)",
                 "Configuración de Google Analytics",
                 "Configuración de Google Search Console",
                 "Certificado SSL y seguridad",
@@ -171,8 +191,10 @@ export default function WebDevPage() {
               isPopular={true}
               title="Sitio Corporativo Plus"
               description="Presencia digital profesional para empresas que buscan autoridad, confianza y base SEO sólida."
-              setupFee="$900.000 COP"
-              monthlyFee="$250.000 COP"
+              prices={{
+                setup: { COP: "$790.000", USD: "$249" },
+                monthly: { COP: "$169.000", USD: "$59" }
+              }}
               ctaLink="/contacto?servicio=Plan%20Corporativo"
               setupFeatures={[
                 "Estructura corporativa de hasta 5 secciones",
