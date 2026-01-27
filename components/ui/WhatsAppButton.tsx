@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function WhatsAppButton() {
   // TODO: CHANGE THIS NUMBER
-  const phoneNumber = "573000000000"; // Replace with actual number
+  const phoneNumber = "573244916040";
   const message = "Hola, me interesa saber más sobre sus servicios.";
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
