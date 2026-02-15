@@ -36,8 +36,8 @@ export function StoreGrid({ initialProducts }: { initialProducts: Product[] }) {
     <>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
         <div>
-          <h2 className="text-4xl font-bold font-heading text-white">Catálogo de Recursos</h2>
-          <p className="text-gray-400 mt-2">Encuentra herramientas listas para tu negocio.</p>
+          <h2 className="text-4xl font-bold font-heading text-foreground">Catálogo de Recursos</h2>
+          <p className="text-muted-foreground mt-2 font-medium">Encuentra herramientas listas para tu negocio.</p>
         </div>
         
         {/* Search Bar */}
@@ -47,9 +47,9 @@ export function StoreGrid({ initialProducts }: { initialProducts: Product[] }) {
             placeholder="Buscar: CRM, Landing, Sheet..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-3 text-white focus:outline-none focus:border-primary transition-all focus:ring-2 focus:ring-primary/20"
+            className="w-full bg-card border border-card-border rounded-xl pl-10 pr-4 py-3 text-foreground focus:outline-none focus:border-primary transition-all focus:ring-2 focus:ring-primary/20 font-medium"
           />
-          <Search className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
+          <Search className="absolute left-3 top-3.5 w-5 h-5 text-muted-foreground" />
         </div>
       </div>
 
@@ -59,10 +59,10 @@ export function StoreGrid({ initialProducts }: { initialProducts: Product[] }) {
           <button
             key={category}
             onClick={() => setActiveCategory(category)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+            className={`px-4 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
               activeCategory === category 
-                ? "bg-primary text-white shadow-[0_0_20px_rgba(139,92,246,0.3)]" 
-                : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+                ? "bg-primary text-white shadow-lg" 
+                : "bg-card border border-card-border text-muted-foreground hover:bg-foreground/5 hover:text-foreground"
             }`}
           >
             {category}
@@ -104,11 +104,11 @@ export function StoreGrid({ initialProducts }: { initialProducts: Product[] }) {
                   {product.description}
                 </CardDescription>
 
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
-                  <span className="text-2xl font-bold text-white">
+                <div className="flex items-center justify-between mt-auto pt-4 border-t border-card-border">
+                  <span className="text-2xl font-bold text-foreground">
                     {product.price === 0 ? "GRATIS" : `$${product.price}`}
                   </span>
-                  <Button size="sm" className="gap-2">
+                  <Button size="sm" className="gap-2 font-bold uppercase tracking-tight">
                     Ver Detalles
                   </Button>
                 </div>
@@ -116,14 +116,14 @@ export function StoreGrid({ initialProducts }: { initialProducts: Product[] }) {
             </Link>
           ))
         ) : (
-          <div className="col-span-full flex flex-col items-center justify-center text-center py-20 bg-white/5 rounded-2xl border border-dashed border-white/10">
-            <Search className="w-12 h-12 text-gray-600 mb-4" />
-            <h3 className="text-xl font-bold text-white">No se encontraron productos</h3>
-            <p className="text-gray-400">Intenta con otra categoría o término de búsqueda.</p>
+          <div className="col-span-full flex flex-col items-center justify-center text-center py-20 bg-card/50 border border-dashed border-card-border rounded-2xl">
+            <Search className="w-12 h-12 text-muted-foreground/30 mb-4" />
+            <h3 className="text-xl font-bold text-foreground">No se encontraron productos</h3>
+            <p className="text-muted-foreground font-medium">Intenta con otra categoría o término de búsqueda.</p>
             <Button 
                variant="ghost" 
                onClick={() => {setActiveCategory("Todos"); setSearchQuery("")}}
-               className="mt-4"
+               className="mt-4 font-bold"
             >
               Limpiar filtros
             </Button>

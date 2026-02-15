@@ -6,25 +6,23 @@ import { Badge } from "@/components/ui/Badge";
 
 export function Hero() {
   return (
-    <Section className="min-h-[85vh] flex items-center justify-center">
-      {/* Ambient Background Effects */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none z-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-[100px]" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/20 rounded-full blur-[100px]" />
-      </div>
+    <Section className="min-h-[85vh] flex items-center justify-center border-b border-border/50">
+      {/* Industrial Background Grid */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-0" 
+           style={{ backgroundImage: 'radial-gradient(currentColor 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-      <div className="text-center relative z-10 max-w-4xl mx-auto space-y-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm animate-fade-in-up">
+      <div className="text-center relative z-10 max-w-4xl mx-auto space-y-8 px-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-foreground/5 border border-border/50 animate-fade-in-up">
           <Badge variant="secondary">Soluciones Digitales</Badge>
-          <span className="text-sm text-gray-300">Presencia Web y Automatización</span>
+          <span className="text-sm text-foreground/60 font-medium tracking-wide uppercase">Presencia Web y Automatización</span>
         </div>
         
-        <h1 className="text-4xl md:text-7xl font-bold font-heading tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-br from-white via-gray-200 to-gray-500">
-          Diseño de Páginas Web <br className="hidden sm:block" />
-          y Sitios Profesionales
+        <h1 className="text-4xl md:text-7xl font-bold font-heading tracking-tight leading-[1.1] text-foreground">
+          Diseño de Páginas Web <span className="text-primary italic">Profesionales</span> <br className="hidden sm:block" />
+          & Automatización de Procesos
         </h1>
         
-        <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed font-medium">
           Optimizamos flujos de trabajo mediante automatización avanzada con Google Workspace y desarrollamos infraestructura web de alto rendimiento.
         </p>
         

@@ -6,6 +6,14 @@ import html from 'remark-html';
 
 const guidesDirectory = path.join(process.cwd(), 'data/guides');
 
+function formatDateToDDMMYYYY(dateStr: string) {
+  // Maneja formatos YYYY-MM-DD
+  const parts = dateStr.split('T')[0].split('-');
+  if (parts.length !== 3) return dateStr;
+  const [year, month, day] = parts;
+  return `${day}/${month}/${year}`;
+}
+
 export interface GuideData {
   slug: string;
   title: string;
@@ -15,6 +23,7 @@ export interface GuideData {
   category: string;
   image: string;
   contentHtml: string;
+  displayDate: string;
 }
 
 export async function getAllGuides() {
@@ -24,6 +33,10 @@ export async function getAllGuides() {
     const fullPath = path.join(guidesDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterResult = matter(fileContents);
+    
+    // Obtener la fecha de creación real del archivo si no está en el frontmatter
+    const stats = fs.statSync(fullPath);
+    const fileDate = stats.birthtime.toISOString().split('T')[0];
 
     return {
       slug,
@@ -35,10 +48,19 @@ export async function getAllGuides() {
         category: string; 
         image: string 
       }),
+      date: (matterResult.data.date && matterResult.data.date !== "YYYY-MM-DD") ? matterResult.data.date : fileDate,
     };
   });
 
-  return allGuidesData.sort((a, b) => (a.date < b.date ? 1 : -1));
+  // Ordenar primero por fecha ISO antes de formatear
+  const sortedGuides = allGuidesData.sort((a, b) => (a.date < b.date ? 1 : -1));
+
+  // Formatear la fecha para la UI manteniendo la original para SEO/Sitemaps
+  return sortedGuides.map(guide => ({
+    ...guide,
+    displayDate: formatDateToDDMMYYYY(guide.date),
+    date: guide.date // ISO format YYYY-MM-DD
+  }));
 }
 
 export async function getGuideData(slug: string): Promise<GuideData> {
@@ -68,6 +90,10 @@ export async function getGuideData(slug: string): Promise<GuideData> {
   // Limpieza opcional: Si hay múltiples contenedores seguidos, los agrupamos (aunque individualmente funcionan bien)
   contentHtml = contentHtml.replace(/<\/div><div class="guide-btn-container">/g, '');
 
+  const stats = fs.statSync(fullPath);
+  const fileDate = stats.birthtime.toISOString().split('T')[0];
+  const finalDate = (matterResult.data.date && matterResult.data.date !== "YYYY-MM-DD") ? matterResult.data.date : fileDate;
+
   return {
     slug,
     contentHtml,
@@ -79,5 +105,7 @@ export async function getGuideData(slug: string): Promise<GuideData> {
       category: string; 
       image: string 
     }),
+    date: finalDate,
+    displayDate: formatDateToDDMMYYYY(finalDate),
   };
 }

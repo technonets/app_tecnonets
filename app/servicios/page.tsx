@@ -77,11 +77,13 @@ export default function ServicesPage() {
       <Navbar />
       <main className="flex-grow pt-24">
         <Section className="bg-background">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6">Nuestros Servicios</h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Soluciones tecnológicas diseñadas para escalar tu negocio y optimizar tu tiempo.
-            </p>
+          <div className="text-center">
+            <div>
+              <h1 className="text-4xl font-bold font-heading text-foreground mb-6">Hablemos de tu Proyecto</h1>
+              <p className="text-foreground/60 text-lg mb-8 font-medium">
+                ¿Tienes una idea en mente? Cuéntanos sobre tus necesidades de automatización o desarrollo web.
+              </p>
+            </div>
           </div>
           <div className="max-w-7xl mx-auto mb-12">
              <AdBanner slot="services_main_top" />
@@ -96,20 +98,20 @@ export default function ServicesPage() {
                   </div>
                   
                   <CardTitle className="text-2xl mb-4">{service.title}</CardTitle>
-                  <CardDescription className="mb-8 text-base">
+                  <CardDescription className="mb-8 text-base text-foreground/60">
                     {service.description}
                   </CardDescription>
 
                   <ul className="space-y-3 mb-8">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3 text-gray-300">
+                      <li key={feature} className="flex items-center gap-3 text-foreground/70 font-medium">
                         <CheckCircle className={`w-5 h-5 ${service.color}`} />
                         {feature}
                       </li>
                     ))}
                   </ul>
 
-                  <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors">
+                  <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all font-bold">
                     Ver Detalles <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Card>

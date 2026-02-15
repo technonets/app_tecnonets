@@ -114,27 +114,27 @@ export default async function GuidePostPage({ params }: { params: Promise<{ slug
               {/* Header */}
               <div className="space-y-8">
                 <Link href="/guias">
-                  <Button variant="ghost" size="sm" className="gap-2 text-gray-400 hover:text-white -ml-2">
+                  <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground hover:text-primary -ml-2 font-bold uppercase tracking-widest text-[10px]">
                     <ArrowLeft className="w-4 h-4" /> Volver a Guías
                   </Button>
                 </Link>
                 
                 <div className="space-y-4">
                   <Badge variant="primary">{guide.category}</Badge>
-                  <h1 className="text-4xl md:text-6xl font-bold font-heading text-white leading-tight">
+                  <h1 className="text-4xl md:text-6xl font-bold font-heading text-foreground leading-tight">
                     {guide.title}
                   </h1>
-                  <div className="flex flex-wrap items-center gap-6 text-gray-500 text-sm">
-                    <span className="flex items-center gap-2 text-primary font-medium">
+                  <div className="flex flex-wrap items-center gap-6 text-muted-foreground text-sm font-bold uppercase tracking-tight">
+                    <span className="flex items-center gap-2 text-primary">
                       <BookOpen className="w-4 h-4" /> {guide.author}
                     </span>
                     <span className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4" /> {guide.date}
+                      <Calendar className="w-4 h-4" /> {guide.displayDate}
                     </span>
                   </div>
                 </div>
 
-                <div className="w-full aspect-video rounded-3xl overflow-hidden border border-white/10 bg-gray-900 relative">
+                <div className="w-full aspect-video rounded-3xl overflow-hidden border border-card-border bg-foreground/5 relative shadow-2xl">
                   <Image 
                     src={guide.image} 
                     alt={guide.title} 
@@ -149,7 +149,7 @@ export default async function GuidePostPage({ params }: { params: Promise<{ slug
               <AdBanner slot="guide_top" />
 
               {/* Content Rendering */}
-              <div className="prose prose-invert prose-violet max-w-none text-gray-300 text-lg leading-relaxed">
+              <div className="prose prose-slate dark:prose-invert max-w-none text-foreground/80 text-lg leading-relaxed font-medium">
                 <div 
                   className="guide-content"
                   dangerouslySetInnerHTML={{ __html: guide.contentHtml }} 
@@ -160,14 +160,14 @@ export default async function GuidePostPage({ params }: { params: Promise<{ slug
               <AdBanner slot="guide_bottom" />
 
               {/* Footer / CTA */}
-              <div className="pt-12 border-t border-white/10">
-                <div className="p-8 rounded-3xl bg-gradient-to-br from-violet-900/20 to-transparent border border-primary/20 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+              <div className="pt-12 border-t border-card-border">
+                <div className="p-8 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left shadow-xl">
                   <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-white">¿Te ha servido esta guía?</h3>
-                    <p className="text-gray-400">Si necesitas ayuda implementando estas tecnologías en tu negocio, ¡contáctanos!</p>
+                    <h3 className="text-xl font-bold text-foreground">¿Te ha servido esta guía?</h3>
+                    <p className="text-muted-foreground font-medium">Si necesitas ayuda implementando estas tecnologías en tu negocio, ¡contáctanos!</p>
                   </div>
                   <Link href="/contacto">
-                    <Button className="px-8">Contactar Soporte</Button>
+                    <Button className="px-8 font-bold">Contactar Soporte</Button>
                   </Link>
                 </div>
               </div>
@@ -176,16 +176,16 @@ export default async function GuidePostPage({ params }: { params: Promise<{ slug
             {/* Sidebar for Desktop Ads & Info */}
             <aside className="lg:col-span-4 space-y-8">
               <div className="lg:sticky lg:top-32 space-y-8">
-                <div className="p-6 bg-card border border-white/10 rounded-2xl">
-                  <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Publicidad</h3>
+                <div className="p-6 bg-card border border-card-border rounded-2xl shadow-sm">
+                  <h3 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-4">Publicidad</h3>
                   <AdBanner slot="guide_sidebar" format="rectangle" style={{ minHeight: '400px' }} />
                 </div>
 
-                <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20">
-                  <h4 className="font-bold text-white mb-2">Más Guías Técnicas</h4>
-                  <p className="text-sm text-gray-400 mb-6">Explora otros tutoriales para potenciar tu presencia digital.</p>
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 shadow-xl">
+                  <h4 className="font-bold text-foreground mb-2">Más Guías Técnicas</h4>
+                  <p className="text-sm text-muted-foreground mb-6 font-medium">Explora otros tutoriales para potenciar tu presencia digital.</p>
                   <Link href="/guias">
-                    <Button variant="outline" className="w-full">Ver Catálogo</Button>
+                    <Button variant="outline" className="w-full font-bold">Ver Catálogo</Button>
                   </Link>
                 </div>
               </div>

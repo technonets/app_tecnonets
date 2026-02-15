@@ -23,11 +23,11 @@ export function Button({
   ...props 
 }: ButtonProps) {
   
-  const baseStyles = "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
+  const baseStyles = "inline-flex items-center justify-center rounded-md font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98]";
   
   const variants = {
-    primary: "bg-primary text-white hover:bg-violet-600 shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_30px_rgba(139,92,246,0.5)]",
-    secondary: "bg-secondary text-white hover:bg-emerald-600 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)]",
+    primary: "bg-primary text-primary-foreground hover:brightness-110 shadow-sm",
+    secondary: "bg-secondary text-secondary-foreground hover:brightness-110 shadow-sm",
     outline: "border border-border bg-transparent text-foreground hover:bg-white/5",
     ghost: "bg-transparent text-foreground hover:bg-white/5",
   };

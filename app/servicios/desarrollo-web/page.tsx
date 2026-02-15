@@ -87,14 +87,14 @@ export default function WebDevPage() {
       <Navbar />
       <main className="flex-grow pt-20">
         {/* Main Header */}
-        <Section className="bg-gradient-to-b from-violet-900/10 to-background">
+        <Section className="bg-gradient-to-b from-primary/5 to-background">
           <div className="text-center max-w-4xl mx-auto space-y-6 text-balance">
             <Badge variant="primary">Website as a Service (WaaS)</Badge>
-            <h1 className="text-4xl md:text-6xl font-bold font-heading text-white leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold font-heading text-foreground leading-tight">
               Diseño de Páginas Web <br/>
               <span className="text-primary">& Crear Sitios Profesionales</span>
             </h1>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg text-foreground/70 max-w-2xl mx-auto font-medium">
               Obtén una presencia web premium con todo incluido: diseño, hosting, dominio y soporte, por una cómoda mensualidad.
             </p>
           </div>
@@ -108,37 +108,37 @@ export default function WebDevPage() {
         {/* Features Grid */}
         <Section>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+            <div className="p-6 rounded-2xl bg-foreground/5 border border-border/50 hover:bg-foreground/10 transition-colors">
               <Smartphone className="w-10 h-10 text-primary mb-4" />
-              <h3 className="font-bold text-xl text-white mb-2">Mobile First</h3>
-              <p className="text-gray-400 text-sm">Diseñado pensando primero en la experiencia móvil, asegurando que se vea perfecto en cualquier dispositivo.</p>
+              <h3 className="font-bold text-xl text-foreground mb-2">Mobile First</h3>
+              <p className="text-foreground/60 text-sm font-medium">Diseñado pensando primero en la experiencia móvil, asegurando que se vea perfecto en cualquier dispositivo.</p>
             </div>
             
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-              <Zap className="w-10 h-10 text-yellow-400 mb-4" />
-              <h3 className="font-bold text-xl text-white mb-2">Velocidad Extrema</h3>
-              <p className="text-gray-400 text-sm">Construido con Next.js para cargas instantáneas y una experiencia de usuario fluida.</p>
+            <div className="p-6 rounded-2xl bg-foreground/5 border border-border/50 hover:bg-foreground/10 transition-colors">
+              <Zap className="w-10 h-10 text-yellow-500 mb-4" />
+              <h3 className="font-bold text-xl text-foreground mb-2">Velocidad Extrema</h3>
+              <p className="text-foreground/60 text-sm font-medium">Construido con Next.js para cargas instantáneas y una experiencia de usuario fluida.</p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-              <Layout className="w-10 h-10 text-pink-400 mb-4" />
-              <h3 className="font-bold text-xl text-white mb-2">Diseño Premium</h3>
-              <p className="text-gray-400 text-sm">Estética moderna, animaciones suaves y una interfaz que transmite profesionalismo.</p>
+            <div className="p-6 rounded-2xl bg-foreground/5 border border-border/50 hover:bg-foreground/10 transition-colors">
+              <Layout className="w-10 h-10 text-pink-500 mb-4" />
+              <h3 className="font-bold text-xl text-foreground mb-2">Diseño Premium</h3>
+              <p className="text-foreground/60 text-sm font-medium">Estética moderna, animaciones suaves y una interfaz que transmite profesionalismo.</p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-              <Search className="w-10 h-10 text-blue-400 mb-4" />
-              <h3 className="font-bold text-xl text-white mb-2">SEO Optimizado</h3>
-              <p className="text-gray-400 text-sm">Estructura semántica, metadatos y optimización técnica para posicionar en Google.</p>
+            <div className="p-6 rounded-2xl bg-foreground/5 border border-border/50 hover:bg-foreground/10 transition-colors">
+              <Search className="w-10 h-10 text-blue-500 mb-4" />
+              <h3 className="font-bold text-xl text-foreground mb-2">SEO Optimizado</h3>
+              <p className="text-foreground/60 text-sm font-medium">Estructura semántica, metadatos y optimización técnica para posicionar en Google.</p>
             </div>
           </div>
         </Section>
 
         {/* Pricing / Packages */}
-        <Section className="bg-white/2">
+        <Section className="bg-foreground/[0.02]">
           <div className="flex flex-col items-center justify-center mb-16 text-center">
-            <h2 className="text-3xl font-bold font-heading text-white mb-4">Planes Todo Incluido</h2>
-            <p className="text-gray-400 mb-8">Elige el plan que mejor se adapte a tu etapa de crecimiento.</p>
+            <h2 className="text-3xl font-bold font-heading text-foreground mb-4">Planes Todo Incluido</h2>
+            <p className="text-foreground/60 font-medium mb-8">Elige el plan que mejor se adapte a tu etapa de crecimiento.</p>
             
             {/* Currency Switcher */}
             <div className="relative">
@@ -227,13 +227,13 @@ export default function WebDevPage() {
           </div>
 
           <div className="mt-16 text-center max-w-2xl mx-auto">
-             <div className="p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 backdrop-blur-sm">
+             <div className="p-8 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 backdrop-blur-sm">
                 <Code className="w-10 h-10 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">¿Prefieres ser dueño total del código?</h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                <h3 className="text-xl font-bold text-foreground mb-3">¿Prefieres ser dueño total del código?</h3>
+                <p className="text-foreground/70 text-sm leading-relaxed mb-6 font-medium">
                    Aunque nuestro modelo WaaS es de suscripción, ofrecemos la posibilidad de <strong>comprar el código fuente</strong> si en el futuro decides tener control total y migrar a tu propio servidor.
                 </p>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-foreground/5 border border-border/50 text-xs text-foreground/70">
                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                    El precio se cotiza de acuerdo al tipo de sitio solicitado.
                 </div>
@@ -249,11 +249,11 @@ export default function WebDevPage() {
                  <ShieldAlert className="w-64 h-64" />
               </div>
               
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
                  <Info className="w-6 h-6 text-primary" /> Información Importante del Servicio
               </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-gray-300 relative z-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm text-foreground/70 font-medium relative z-10">
                  <ul className="space-y-4">
                     <li className="flex gap-3">
                        <span className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 shrink-0"></span>

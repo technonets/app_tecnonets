@@ -23,6 +23,17 @@ export const metadata: Metadata = {
     type: 'website',
   },
   manifest: '/manifest.json',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   other: {
     'google-adsense-account': 'ca-pub-1534881385505133',
   },
@@ -40,6 +51,8 @@ import FacebookPixel from '@/components/analytics/FacebookPixel';
 import { CookieConsent } from "@/components/ui/CookieConsent";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -48,20 +61,27 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${inter.className} ${outfit.variable}`} suppressHydrationWarning>
       <body className="antialiased min-h-screen flex flex-col" suppressHydrationWarning>
-        <CurrencyProvider>
-          {/* Google AdSense - Global Integration */}
-          <Script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}
-            crossOrigin="anonymous"
-            strategy="lazyOnload"
-          />
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
-          <FacebookPixel pixelId={process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID} />
-          <WhatsAppButton />
-          {children}
-          <CookieConsent />
-        </CurrencyProvider>
+        <ThemeProvider
+          attribute="data-theme"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <CurrencyProvider>
+            {/* Google AdSense - Global Integration */}
+            <Script
+              async
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_ID}`}
+              crossOrigin="anonymous"
+              strategy="lazyOnload"
+            />
+            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
+            <FacebookPixel pixelId={process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID} />
+            <WhatsAppButton />
+            {children}
+            <CookieConsent />
+          </CurrencyProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

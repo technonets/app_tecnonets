@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, ShoppingBag, Code, Grid, Monitor, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { ThemeToggle } from './ThemeToggle';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,12 +18,12 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-background/80 backdrop-blur-md">
+    <nav className="fixed top-0 w-full z-50 border-b border-border/50 bg-background/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0 flex items-center gap-3">
             <Link href="/" className="flex items-center gap-2">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden">
+              <div className="relative w-8 h-8 rounded-sm overflow-hidden border border-border">
                 <Image 
                   src="/logo.png" 
                   alt="Tecnonets Logo" 
@@ -30,7 +31,7 @@ export function Navbar() {
                   className="object-cover"
                 />
               </div>
-              <span className="text-2xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+              <span className="text-xl font-bold font-heading tracking-tight text-foreground">
                 Tecnonets
               </span>
             </Link>
@@ -42,7 +43,7 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="px-3 py-2 rounded-md text-[15px] font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+                  className="px-3 py-2 rounded-md text-[15px] font-bold text-muted-foreground hover:text-primary transition-colors"
                 >
                   {link.name}
                 </Link>
@@ -50,9 +51,10 @@ export function Navbar() {
             </div>
           </div>
           
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-4">
+            <ThemeToggle />
             <Link href="/contacto">
-                <Button variant="primary" size="sm">
+                <Button variant="primary" size="sm" className="font-bold uppercase tracking-widest text-xs">
                 Contactar
                 </Button>
             </Link>
@@ -61,7 +63,7 @@ export function Navbar() {
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-muted-foreground hover:text-foreground focus:outline-none"
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? <X className="block h-6 w-6" /> : <Menu className="block h-6 w-6" />}
@@ -72,23 +74,24 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-background border-b border-white/5">
+        <div className="md:hidden bg-background border-b border-border/50 shadow-2xl">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-3 py-4 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/5"
+                className="flex items-center gap-3 px-3 py-4 rounded-md text-base font-bold text-muted-foreground hover:text-primary hover:bg-foreground/5 transition-all"
               >
                 <link.icon className="h-5 w-5 text-primary" />
                 {link.name}
               </Link>
             ))}
-            <div className="pt-4 pb-2">
-              <Link href="/contacto" onClick={() => setIsOpen(false)}>
+            <div className="pt-4 pb-2 flex items-center justify-between px-3">
+              <Link href="/contacto" onClick={() => setIsOpen(false)} className="flex-1 mr-4">
                 <Button className="w-full" variant="primary">Contactar</Button>
               </Link>
+              <ThemeToggle />
             </div>
           </div>
         </div>

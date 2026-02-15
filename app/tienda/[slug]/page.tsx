@@ -164,8 +164,16 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                          <div className="max-w-md mx-auto md:max-w-none">
                             <ServicePlanCard 
                                description="Suscripción Mensual Todo Incluido"
-                               setupFee={`$${product.price ? product.price.toLocaleString() : '0'} COP`}
-                               monthlyFee={product.category === 'Landing Pages' ? '$150.000 COP' : `$${product.monthlyPrice ? product.monthlyPrice.toLocaleString() : '0'} COP`}
+                               prices={{
+                                  setup: { 
+                                     COP: `$${product.price ? product.price.toLocaleString() : '0'}`, 
+                                     USD: `$${Math.round((product.price || 0) / 4000)}` 
+                                  },
+                                  monthly: { 
+                                     COP: product.category === 'Landing Pages' ? '$150.000' : `$${product.monthlyPrice ? product.monthlyPrice.toLocaleString() : '0'}`, 
+                                     USD: product.category === 'Landing Pages' ? '$39' : `$${Math.round((product.monthlyPrice || 0) / 4000)}` 
+                                  }
+                               }}
                                ctaLink={`https://wa.me/573000000000?text=${encodeURIComponent(`Hola, me interesa el plan WaaS (Website as a Service): ${product.title}`)}`}
                                isPopular={false}
                                setupFeatures={(product.category === 'Landing Pages' || product.title.includes('Landing')) ? [

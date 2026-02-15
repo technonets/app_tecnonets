@@ -6,12 +6,12 @@ import { SiTiktok } from 'react-icons/si';
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-background pt-16 pb-8">
+    <footer className="border-t border-border/50 bg-background pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+              <div className="relative w-10 h-10 rounded-sm overflow-hidden flex-shrink-0 border border-border">
                 <Image 
                   src="/logo.png" 
                   alt="Tecnonets Logo" 
@@ -19,11 +19,11 @@ export function Footer() {
                   className="object-cover"
                 />
               </div>
-              <span className="text-2xl font-bold font-heading bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+              <span className="text-2xl font-bold font-heading text-foreground tracking-tight">
                 Tecnonets
               </span>
             </Link>
-            <p className="text-gray-300 max-w-sm">
+            <p className="text-muted-foreground max-w-sm font-medium">
               Especialistas en <strong>diseño de páginas web</strong> y <strong>crear página web profesional</strong>. Automatización avanzada con Google Apps Script.
             </p>
             <div className="flex gap-4 mt-6">
@@ -31,7 +31,7 @@ export function Footer() {
                 href="https://youtube.com/@technonets" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-gray-300 hover:text-red-500 transition-colors"
+                className="text-muted-foreground hover:text-red-500 transition-colors"
                 aria-label="Visitar nuestro canal de YouTube"
               >
                 <Youtube className="w-6 h-6" />
@@ -40,7 +40,7 @@ export function Footer() {
                 href="https://www.tiktok.com/@technonets" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="Seguirnos en TikTok"
               >
                 <SiTiktok className="w-6 h-6" />
@@ -49,12 +49,12 @@ export function Footer() {
           </div>
           
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-4 text-white">Servicios</h3>
+            <h3 className="font-heading font-semibold text-lg mb-4 text-foreground uppercase tracking-tight">Servicios</h3>
             <ul className="space-y-3">
               <li>
                 <Link 
                   href="/servicios/automatizacion" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors font-bold"
                   onClick={(e) => {
                     if (window.location.pathname === '/servicios/automatizacion') {
                       e.preventDefault();
@@ -68,7 +68,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="/servicios/desarrollo-web" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors font-bold"
                   onClick={(e) => {
                     if (window.location.pathname === '/servicios/desarrollo-web') {
                       e.preventDefault();
@@ -83,12 +83,12 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-4 text-white">Recursos</h3>
+            <h3 className="font-heading font-semibold text-lg mb-4 text-foreground uppercase tracking-tight">Recursos</h3>
             <ul className="space-y-3">
               <li>
                 <Link 
                   href="/tienda" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors font-bold"
                   onClick={(e) => {
                     if (window.location.pathname === '/tienda') {
                       e.preventDefault();
@@ -102,7 +102,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="/blog" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors font-bold"
                   onClick={(e) => {
                     if (window.location.pathname === '/blog') {
                       e.preventDefault();
@@ -116,7 +116,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="/contacto" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors font-bold"
                   onClick={(e) => {
                     if (window.location.pathname === '/contacto') {
                       e.preventDefault();
@@ -130,14 +130,14 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-4 text-white">Aliados</h3>
+            <h3 className="font-heading font-semibold text-lg mb-4 text-foreground uppercase tracking-tight">Aliados</h3>
             <ul className="space-y-3">
               <li>
                 <a 
                   href="https://sistemascucuta.com/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="text-gray-300 hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors font-bold"
                 >
                   Sistemas Cúcuta
                 </a>
@@ -146,13 +146,13 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-500" suppressHydrationWarning>
+        <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-muted-foreground font-bold" suppressHydrationWarning>
             © {new Date().getFullYear()} Tecnonets. Todos los derechos reservados.
           </p>
-          <div className="flex gap-6 text-sm text-gray-500">
-            <Link href="/privacidad" className="hover:text-white transition-colors">Privacidad</Link>
-            <Link href="/terminos" className="hover:text-white transition-colors">Términos</Link>
+          <div className="flex gap-6 text-sm text-muted-foreground font-bold">
+            <Link href="/privacidad" className="hover:text-primary transition-colors">Privacidad</Link>
+            <Link href="/terminos" className="hover:text-primary transition-colors">Términos</Link>
           </div>
         </div>
       </div>

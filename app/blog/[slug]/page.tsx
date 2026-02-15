@@ -1,4 +1,4 @@
-import { ArrowLeft, Calendar, User, Share2 } from "lucide-react";
+import { ArrowLeft, Calendar, User, Share2, BookOpen } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
@@ -9,8 +9,6 @@ import { AdBanner } from "@/components/ui/AdBanner";
 import { notFound } from "next/navigation";
 import { getPosts } from "@/lib/blog";
 import Image from "next/image";
-
-// ... imports existing ...
 import { Metadata } from "next";
 
 // Generar Metadatos Dinámicos para SEO
@@ -33,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: post.title,
       description: post.excerpt,
       type: 'article',
-      publishedTime: post.date, // Idealmente convertir a ISO standard
+      publishedTime: post.date,
       authors: [post.author],
       images: post.image ? [{ url: post.image }] : [],
     },
@@ -50,9 +48,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const { slug } = await params;
   const decodedSlug = decodeURIComponent(slug);
   const posts = await getPosts();
-  
-  // Debug (Temporary) - REMOVED
-  
   const post = posts.find((p) => p.slug === decodedSlug);
 
   if (!post) {
@@ -68,7 +63,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     '@type': 'Article',
     headline: post.title,
     image: post.image ? [post.image] : [],
-    datePublished: new Date().toISOString(), // Fallback a hoy si no es parseable, ideal mejorar formato fecha
+    datePublished: new Date().toISOString(),
     dateModified: new Date().toISOString(),
     author: [{
         '@type': 'Person',
@@ -85,92 +80,83 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       />
       <Navbar />
       <main className="flex-grow pt-24 pb-20">
-      {/* Rest of the component ... */}
         <Section>
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
             
-            {/* Main Article Content */}
             <article className="lg:col-span-8 space-y-8">
-               <Link href="/blog">
-                  <Button variant="ghost" size="sm" className="gap-2 text-gray-400 hover:text-white -ml-2">
-                     <ArrowLeft className="w-4 h-4" /> Volver al Blog
-                  </Button>
-               </Link>
+                <Link href="/blog">
+                   <Button variant="ghost" size="sm" className="gap-2 text-foreground/50 hover:text-primary transition-colors -ml-2 font-bold uppercase tracking-widest text-[10px]">
+                      <ArrowLeft className="w-4 h-4" /> Volver al Blog
+                   </Button>
+                </Link>
 
-               <div className="space-y-4">
-                  <Badge variant="primary">{post.category}</Badge>
-                  <h1 className="text-4xl md:text-6xl font-bold font-heading text-white leading-tight">
-                     {post.title}
-                  </h1>
-                  <div className="flex items-center gap-6 text-gray-500 text-sm">
-                     <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> {post.date}</span>
-                     <span className="flex items-center gap-2"><User className="w-4 h-4" /> {post.author}</span>
-                  </div>
-               </div>
+                <div className="space-y-4">
+                   <Badge variant="primary">{post.category}</Badge>
+                   <h1 className="text-4xl md:text-6xl font-bold font-heading text-foreground leading-tight">
+                      {post.title}
+                   </h1>
+                   <div className="flex items-center gap-6 text-foreground/50 text-sm font-bold uppercase tracking-tight">
+                      <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> {post.date}</span>
+                      <span className="flex items-center gap-2"><User className="w-4 h-4" /> {post.author}</span>
+                   </div>
+                </div>
 
-               <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-gray-900 relative">
-                    {post.image ? (
-                         <Image 
-                            src={post.image} 
-                            alt={post.title} 
-                            fill
-                            className="object-cover" 
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 60vw"
-                            priority
-                        />
-                    ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900" />
-                    )}
-               </div>
+                <div className="w-full aspect-video rounded-3xl overflow-hidden border border-border/50 bg-foreground/5 relative shadow-2xl">
+                     {post.image ? (
+                          <Image 
+                             src={post.image} 
+                             alt={post.title} 
+                             fill
+                             className="object-cover" 
+                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 60vw"
+                             priority
+                         />
+                     ) : (
+                         <div className="w-full h-full bg-gradient-to-br from-primary/10 to-background" />
+                     )}
+                </div>
 
-               {/* Ad Content Top */}
-               <AdBanner slot="blog_post_top" />
+                <AdBanner slot="blog_post_top" />
 
-               <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-6">
-                  {isHtml ? (
-                      <div dangerouslySetInnerHTML={{ __html: post.content }} />
-                  ) : (
-                      post.content.split('\n').map((paragraph, idx) => (
-                          <p key={idx}>{paragraph}</p>
-                      ))
-                  )}
-                  
-                  {/* Ad Middle Content */}
-                  <AdBanner slot="blog_post_middle" format="rectangle" className="max-w-md mx-auto my-8" />
-               </div>
+                <div className="prose prose-slate dark:prose-invert max-w-none text-foreground/80 text-lg leading-relaxed space-y-6 font-medium">
+                   {isHtml ? (
+                       <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                   ) : (
+                       post.content.split('\n').map((paragraph, idx) => (
+                           <p key={idx}>{paragraph}</p>
+                       ))
+                   )}
+                   
+                   <AdBanner slot="blog_post_middle" format="rectangle" className="max-w-md mx-auto my-8" />
+                </div>
 
-               {/* Post Footer Ad */}
-               <AdBanner slot="blog_post_bottom" />
+                <AdBanner slot="blog_post_bottom" />
 
-               <div className="pt-8 border-t border-white/10 flex justify-between items-center">
-                  <div className="flex gap-4">
-                     <Button variant="outline" size="sm" className="gap-2">
-                        <Share2 className="w-4 h-4" /> Compartir
-                     </Button>
-                  </div>
-               </div>
+                <div className="pt-8 border-t border-border/50 flex justify-between items-center">
+                   <div className="flex gap-4">
+                      <Button variant="outline" size="sm" className="gap-2 font-bold">
+                         <Share2 className="w-4 h-4" /> Compartir
+                      </Button>
+                   </div>
+                </div>
             </article>
 
-            {/* Sidebar with vertical Ads */}
             <aside className="lg:col-span-4 space-y-8">
                <div className="lg:sticky lg:top-28 space-y-6">
-                  {/* Vertical Ad Sidebar */}
-                  <div className="p-5 bg-card border border-white/10 rounded-2xl">
-                     <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Publicidad</h3>
+                  <div className="p-5 bg-card border border-card-border rounded-2xl shadow-sm">
+                     <h3 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-4">Publicidad</h3>
                      <AdBanner slot="blog_post_sidebar_1" format="rectangle" style={{ minHeight: '400px' }} />
                   </div>
 
-                  {/* Related Resources CTA */}
-                  <div className="p-6 rounded-2xl bg-gradient-to-br from-violet-900/40 to-transparent border border-primary/30">
-                     <h3 className="font-bold text-white mb-3">¿Te gusta este contenido?</h3>
-                     <p className="text-sm text-gray-400 mb-6">En nuestra tienda tenemos recursos premium listos para instalar.</p>
+                  <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 backdrop-blur-sm shadow-xl">
+                     <h3 className="font-bold text-foreground mb-3">¿Te gusta este contenido?</h3>
+                     <p className="text-sm text-muted-foreground mb-6 font-medium">En nuestra tienda tenemos recursos premium listos para instalar.</p>
                      <Link href="/tienda">
-                        <Button className="w-full gap-2">Explorar Tienda</Button>
+                        <Button className="w-full gap-2 font-bold">Explorar Tienda</Button>
                      </Link>
                   </div>
 
-                  {/* Second Vertical Ad */}
-                  <div className="p-5 bg-card border border-white/10 rounded-2xl hidden lg:block">
+                  <div className="p-5 bg-card border border-card-border rounded-2xl hidden lg:block shadow-sm">
                      <AdBanner slot="blog_post_sidebar_2" format="rectangle" style={{ minHeight: '600px' }} />
                   </div>
                </div>

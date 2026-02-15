@@ -46,14 +46,14 @@ export default function AutomationPage() {
       <Navbar />
       <main className="flex-grow pt-20">
         {/* Main Header */}
-        <Section className="bg-gradient-to-b from-green-900/10 to-background">
+        <Section className="bg-gradient-to-b from-primary/5 to-background">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1 space-y-6">
               <Badge variant="secondary" className="mb-4">Experiencia en Google Apps Script</Badge>
-              <h1 className="text-4xl md:text-6xl font-bold font-heading text-white leading-tight">
-                Eficiencia Operativa con <span className="text-green-400">Google Workspace</span>
+              <h1 className="text-4xl md:text-6xl font-bold font-heading text-foreground leading-tight">
+                Eficiencia Operativa con <span className="text-green-500">Google Workspace</span>
               </h1>
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className="text-lg text-foreground/70 font-medium leading-relaxed">
                 Maximizamos la productividad empresarial mediante la automatización de procesos. Integramos hojas de cálculo, gestión de correos y calendarios en un ecosistema unificado.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -71,25 +71,25 @@ export default function AutomationPage() {
             <div className="flex-1 relative">
               {/* Visual representation of automation */}
               <div className="relative z-10 grid grid-cols-2 gap-4">
-                <div className="p-6 bg-card border border-white/10 rounded-2xl backdrop-blur-xl translate-y-8">
-                  <FileSpreadsheet className="w-10 h-10 text-green-400 mb-4" />
-                  <h3 className="font-bold text-white mb-2">Google Sheets</h3>
-                  <p className="text-sm text-gray-400">Dashboards y gestión de datos automatizada.</p>
+                <div className="p-6 bg-card border border-border/50 rounded-2xl backdrop-blur-xl translate-y-8">
+                  <FileSpreadsheet className="w-10 h-10 text-green-500 mb-4" />
+                  <h3 className="font-bold text-foreground mb-2">Google Sheets</h3>
+                  <p className="text-sm text-foreground/60 font-medium">Dashboards y gestión de datos automatizada.</p>
                 </div>
-                <div className="p-6 bg-card border border-white/10 rounded-2xl backdrop-blur-xl">
-                  <Mail className="w-10 h-10 text-red-400 mb-4" />
-                  <h3 className="font-bold text-white mb-2">Gmail</h3>
-                  <p className="text-sm text-gray-400">Envío masivo y filtrado inteligente de correos.</p>
+                <div className="p-6 bg-card border border-border/50 rounded-2xl backdrop-blur-xl">
+                  <Mail className="w-10 h-10 text-red-500 mb-4" />
+                  <h3 className="font-bold text-foreground mb-2">Gmail</h3>
+                  <p className="text-sm text-foreground/60 font-medium">Envío masivo y filtrado inteligente de correos.</p>
                 </div>
-                <div className="p-6 bg-card border border-white/10 rounded-2xl backdrop-blur-xl translate-y-8">
-                  <Calendar className="w-10 h-10 text-blue-400 mb-4" />
-                  <h3 className="font-bold text-white mb-2">Calendar</h3>
-                  <p className="text-sm text-gray-400">Gestión de eventos y recordatorios automáticos.</p>
+                <div className="p-6 bg-card border border-border/50 rounded-2xl backdrop-blur-xl translate-y-8">
+                  <Calendar className="w-10 h-10 text-blue-500 mb-4" />
+                  <h3 className="font-bold text-foreground mb-2">Calendar</h3>
+                  <p className="text-sm text-foreground/60 font-medium">Gestión de eventos y recordatorios automáticos.</p>
                 </div>
-                <div className="p-6 bg-card border border-white/10 rounded-2xl backdrop-blur-xl">
-                  <Database className="w-10 h-10 text-yellow-400 mb-4" />
-                  <h3 className="font-bold text-white mb-2">Base de Datos (Sheets)</h3>
-                  <p className="text-sm text-gray-400">Google Sheets como motor de datos centralizado y accesible.</p>
+                <div className="p-6 bg-card border border-border/50 rounded-2xl backdrop-blur-xl">
+                  <Database className="w-10 h-10 text-yellow-500 mb-4" />
+                  <h3 className="font-bold text-foreground mb-2">Base de Datos (Sheets)</h3>
+                  <p className="text-sm text-foreground/60 font-medium">Google Sheets como motor de datos centralizado y accesible.</p>
                 </div>
               </div>
               <div className="absolute inset-0 bg-green-500/20 blur-[120px] rounded-full z-0" />
@@ -103,11 +103,11 @@ export default function AutomationPage() {
         </div>
 
         {/* Examples Section */}
-        <Section id="casos-de-uso" className="bg-white/2">
+        <Section id="casos-de-uso" className="bg-foreground/[0.02]">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold font-heading text-white mb-4">Ejemplos de Automatización</h2>
-              <p className="text-gray-400">Soluciones reales que implementamos para optimizar tu negocio.</p>
+              <h2 className="text-3xl font-bold font-heading text-foreground mb-4">Ejemplos de Automatización</h2>
+              <p className="text-foreground/60 font-medium">Soluciones reales que implementamos para optimizar tu negocio.</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -143,10 +143,10 @@ export default function AutomationPage() {
                   icon: "🎯"
                 }
               ].map((item, i) => (
-                <div key={i} className="p-6 bg-card border border-white/5 rounded-2xl hover:border-green-500/30 transition-all hover:-translate-y-1">
+                <div key={i} className="p-6 bg-card border border-border/50 rounded-2xl hover:border-primary/30 transition-all hover:-translate-y-1">
                   <div className="text-3xl mb-4">{item.icon}</div>
-                  <h3 className="font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">{item.description}</p>
+                  <h3 className="font-bold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-sm text-foreground/60 font-medium leading-relaxed">{item.description}</p>
                 </div>
               ))}
             </div>

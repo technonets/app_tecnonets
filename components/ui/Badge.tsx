@@ -10,11 +10,11 @@ export function Badge({ children, variant = 'primary', className = '' }: BadgePr
   const variants = {
     primary: "bg-primary/10 text-primary border-primary/20",
     secondary: "bg-secondary/10 text-secondary border-secondary/20",
-    outline: "bg-transparent text-gray-400 border-gray-700",
+    outline: "bg-transparent text-foreground/50 border-border",
   };
 
   return (
-    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${variants[variant]} ${className}`}>
+    <span className={`inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] uppercase tracking-wider font-bold border ${variants[variant]} ${className}`}>
       {children}
     </span>
   );
