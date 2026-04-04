@@ -16,7 +16,7 @@
   "Hero": {
     "badge_primary": "Digital Solutions",
     "badge_secondary": "Web Presence and Automation",
-    "title": "Professional Web <italic>Design</italic><br>& Process Automation",
+    "title": "Professional Web <italic>Design</italic><nl/>& Process Automation",
     "subtitle": "We optimize workflows through advanced automation with Google Workspace and develop high-performance web infrastructure.",
     "cta_services": "Check Services",
     "cta_catalog": "View Resource Catalog"
@@ -193,7 +193,7 @@
   },
   "WebDev": {
     "badge": "Website as a Service (WaaS)",
-    "title": "Professional Web <br> <primary>& Website Creation</primary>",
+    "title": "Professional Web <nl/> <primary>& Website Creation</primary>",
     "subtitle": "Get a premium all-inclusive web presence: design, hosting, domain, and support, for a convenient monthly fee.",
     "plans": {
       "landing": {

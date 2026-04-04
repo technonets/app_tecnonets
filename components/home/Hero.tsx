@@ -22,7 +22,8 @@ export function Hero() {
         <h1 className="text-4xl md:text-7xl font-bold font-heading tracking-tight leading-[1.1] text-foreground text-balance">
           {t.rich('title', {
             italic: (chunks) => <span className="text-primary italic">{chunks}</span>,
-            br: () => <br className="hidden sm:block" />
+            primary: (chunks) => <span className="text-primary">{chunks}</span>,
+            nl: () => <br className="hidden sm:block" />
           })}
         </h1>
         

@@ -92,7 +92,7 @@ export default async function WebDevPage() {
             <Badge variant="primary">{t("badge")}</Badge>
             <h1 className="text-4xl md:text-6xl font-bold font-heading text-foreground leading-tight">
               {t.rich("title", {
-                br: () => <br />,
+                nl: () => <br />,
                 primary: (chunks) => <span className="text-primary">{chunks}</span>
               })}
             </h1>

@@ -16,7 +16,7 @@
   "Hero": {
     "badge_primary": "Soluciones Digitales",
     "badge_secondary": "Presencia Web y Automatización",
-    "title": "Diseño de Páginas Web <italic>Profesionales</italic><br>& Automatización de Procesos",
+    "title": "Diseño de Páginas Web <italic>Profesionales</italic><nl/>& Automatización de Procesos",
     "subtitle": "Optimizamos flujos de trabajo mediante automatización avanzada con Google Workspace y desarrollamos infraestructura web de alto rendimiento.",
     "cta_services": "Consultar Servicios",
     "cta_catalog": "Ver Catálogo de Recursos"
@@ -201,7 +201,7 @@
   },
   "WebDev": {
     "badge": "Website as a Service (WaaS)",
-    "title": "Diseño de Páginas Web <br> <primary>& Crear Sitios Profesionales</primary>",
+    "title": "Diseño de Páginas Web <nl/> <primary>& Crear Sitios Profesionales</primary>",
     "subtitle": "Obtén una presencia web premium con todo incluido: diseño, hosting, dominio y soporte, por una cómoda mensualidad.",
     "plans": {
       "landing": {
