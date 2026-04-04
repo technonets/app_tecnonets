@@ -15,11 +15,11 @@ export function Hero() {
 
       <div className="text-center relative z-10 max-w-4xl mx-auto space-y-8 px-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-foreground/5 border border-border/50 animate-fade-in-up">
-          <Badge variant="secondary">Soluciones Digitales</Badge>
-          <span className="text-sm text-foreground/60 font-medium tracking-wide uppercase">Presencia Web y Automatización</span>
+          <Badge variant="secondary">{t('badge_primary')}</Badge>
+          <span className="text-sm text-foreground/60 font-medium tracking-wide uppercase">{t('badge_secondary')}</span>
         </div>
         
-        <h1 className="text-4xl md:text-7xl font-bold font-heading tracking-tight leading-[1.1] text-foreground">
+        <h1 className="text-4xl md:text-7xl font-bold font-heading tracking-tight leading-[1.1] text-foreground text-balance">
           {t.rich('title', {
             italic: (chunks) => <span className="text-primary italic">{chunks}</span>,
             br: () => <br className="hidden sm:block" />

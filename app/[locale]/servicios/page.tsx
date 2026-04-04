@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { ArrowRight, Grid, Monitor, Code, CheckCircle } from "lucide-react";
+import { Link } from "@/i18n/routing";
+import { ArrowRight, Grid, Monitor, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card, CardTitle, CardDescription } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
@@ -7,67 +7,67 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { AdBanner } from "@/components/ui/AdBanner";
 import { Metadata } from "next";
+import { getTranslations, getLocale } from "next-intl/server";
 
 // SEO Metadata
-export const metadata: Metadata = {
-  title: "Servicios de Desarrollo Web y Automatización | Tecnonets",
-  description: "Servicios profesionales de automatización con Google Apps Script, desarrollo web con Next.js, Landing Pages y sitios corporativos. Optimiza tu negocio.",
-  keywords: "automatización, Google Apps Script, desarrollo web, Next.js, landing pages, sitios web, Colombia",
-  openGraph: {
-    title: "Servicios de Desarrollo Web y Automatización | Tecnonets",
-    description: "Servicios profesionales de automatización con Google Apps Script y desarrollo web con Next.js.",
-    type: "website",
-    siteName: "Tecnonets",
-  }
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Services");
+  const locale = await getLocale();
+  
+  return {
+    title: t("meta_title"),
+    description: t("meta_description"),
+    keywords: t("meta_keywords"),
+    openGraph: {
+      title: t("meta_title"),
+      description: t("meta_description"),
+      type: "website",
+      siteName: "Tecnonets",
+      url: `https://tecnonets.com/${locale}/servicios`
+    }
+  };
+}
 
-const services = [
-  {
-    title: "Automatización de Procesos",
-    description: "Conecta tus herramientas favoritas (Gmail, Sheets, Calendar) para trabajar por ti.",
-    icon: Grid,
-    href: "/servicios/automatizacion",
-    color: "text-green-400",
-    bg: "bg-green-500/20",
-    features: ["Google Sheets Avanzado", "Google Apps Script", "Integraciones API", "Dashboards Automáticos"]
-  },
-  {
-    title: "Desarrollo Web Profesional",
-    description: "Sitios web rápidos, modernos y optimizados para vender.",
-    icon: Monitor,
-    href: "/servicios/desarrollo-web",
-    color: "text-violet-400",
-    bg: "bg-violet-500/20",
-    features: ["Landing Pages", "Next.js Applications", "Mobile First Design", "SEO Optimizado"]
-  }
-];
+export default async function ServicesPage() {
+  const t = await getTranslations("Services");
+  const locale = await getLocale();
 
-// JSON-LD para servicios
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Servicios Tecnonets",
-  "itemListElement": [
+  const servicesList = [
     {
-      "@type": "Service",
-      "position": 1,
-      "name": "Automatización de Procesos",
-      "description": "Automatización con Google Apps Script, Sheets, Gmail y Calendar",
-      "provider": { "@type": "Organization", "name": "Tecnonets" },
-      "url": "https://tecnonets.com/servicios/automatizacion"
+      title: t("automation_title"),
+      description: t("automation_desc"),
+      icon: Grid,
+      href: "/servicios/automatizacion",
+      color: "text-green-400",
+      bg: "bg-green-500/20",
+      features: t.raw("automation_features")
     },
     {
-      "@type": "Service",
-      "position": 2,
-      "name": "Desarrollo Web Profesional",
-      "description": "Sitios web con Next.js, Landing Pages y sitios corporativos",
-      "provider": { "@type": "Organization", "name": "Tecnonets" },
-      "url": "https://tecnonets.com/servicios/desarrollo-web"
+      title: t("web_title"),
+      description: t("web_desc"),
+      icon: Monitor,
+      href: "/servicios/desarrollo-web",
+      color: "text-violet-400",
+      bg: "bg-violet-500/20",
+      features: t.raw("web_features")
     }
-  ]
-};
+  ];
 
-export default function ServicesPage() {
+  // JSON-LD para servicios
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": t("title"),
+    "itemListElement": servicesList.map((service, index) => ({
+      "@type": "Service",
+      "position": index + 1,
+      "name": service.title,
+      "description": service.description,
+      "provider": { "@type": "Organization", "name": "Tecnonets" },
+      "url": `https://tecnonets.com/${locale}${service.href}`
+    }))
+  };
+
   return (
     <>
       <script
@@ -79,9 +79,9 @@ export default function ServicesPage() {
         <Section className="bg-background">
           <div className="text-center">
             <div>
-              <h1 className="text-4xl font-bold font-heading text-foreground mb-6">Hablemos de tu Proyecto</h1>
+              <h1 className="text-4xl font-bold font-heading text-foreground mb-6">{t("page_title")}</h1>
               <p className="text-foreground/60 text-lg mb-8 font-medium">
-                ¿Tienes una idea en mente? Cuéntanos sobre tus necesidades de automatización o desarrollo web.
+                {t("page_subtitle")}
               </p>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {services.map((service) => (
+            {servicesList.map((service) => (
               <Link key={service.title} href={service.href} className="group">
                 <Card className="h-full hover:border-primary/50 transition-all duration-300">
                   <div className={`w-16 h-16 rounded-2xl ${service.bg} flex items-center justify-center mb-8 ${service.color} group-hover:scale-110 transition-transform duration-300`}>
@@ -103,7 +103,7 @@ export default function ServicesPage() {
                   </CardDescription>
 
                   <ul className="space-y-3 mb-8">
-                    {service.features.map((feature) => (
+                    {service.features.map((feature: string) => (
                       <li key={feature} className="flex items-center gap-3 text-foreground/70 font-medium">
                         <CheckCircle className={`w-5 h-5 ${service.color}`} />
                         {feature}
@@ -112,7 +112,7 @@ export default function ServicesPage() {
                   </ul>
 
                   <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all font-bold">
-                    Ver Detalles <ArrowRight className="w-4 h-4 ml-2" />
+                    {t("view_details")} <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Card>
               </Link>

@@ -93,7 +93,7 @@ export function Navbar() {
             ))}
             <div className="pt-4 pb-2 border-t border-border/50 space-y-4">
               <div className="flex items-center justify-between px-3">
-                <span className="text-xs font-bold text-muted-foreground uppercase opacity-50">Configuración</span>
+                <span className="text-xs font-bold text-muted-foreground uppercase opacity-50">{t('settings')}</span>
                 <div className="flex items-center gap-3">
                   <LocaleSwitcher />
                   <ThemeToggle />

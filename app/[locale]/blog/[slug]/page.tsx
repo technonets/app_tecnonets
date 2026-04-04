@@ -1,5 +1,6 @@
-import { ArrowLeft, Calendar, User, Share2, BookOpen } from "lucide-react";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/routing";
+import { ArrowLeft, User, Share2, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { Badge } from "@/components/ui/Badge";
@@ -12,15 +13,16 @@ import Image from "next/image";
 import { Metadata } from "next";
 
 // Generar Metadatos Dinámicos para SEO
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
+  const { slug, locale } = await params;
   const posts = await getPosts();
   const post = posts.find((p) => p.slug === slug);
+  const t = await getTranslations({ locale, namespace: 'Blog' });
 
   if (!post) {
       return {
-          title: "Artículo No Encontrado | Tecnonets",
-          description: "El artículo que buscas no existe."
+          title: locale === 'es' ? "Artículo No Encontrado | Tecnonets" : "Article Not Found | Tecnonets",
+          description: locale === 'es' ? "El artículo que buscas no existe." : "The article you are looking for does not exist."
       }
   }
 
@@ -44,8 +46,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+  const { slug, locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Blog' });
   const decodedSlug = decodeURIComponent(slug);
   const posts = await getPosts();
   const post = posts.find((p) => p.slug === decodedSlug);
@@ -63,12 +66,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     '@type': 'Article',
     headline: post.title,
     image: post.image ? [post.image] : [],
-    datePublished: new Date().toISOString(),
-    dateModified: new Date().toISOString(),
+    datePublished: post.date,
+    dateModified: post.date,
     author: [{
         '@type': 'Person',
         name: post.author,
-        url: 'https://tecnonets.com'
+        url: `https://tecnonets.com/${locale}`
     }]
   }
 
@@ -86,7 +89,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <article className="lg:col-span-8 space-y-8">
                 <Link href="/blog">
                    <Button variant="ghost" size="sm" className="gap-2 text-foreground/50 hover:text-primary transition-colors -ml-2 font-bold uppercase tracking-widest text-[10px]">
-                      <ArrowLeft className="w-4 h-4" /> Volver al Blog
+                      <ArrowLeft className="w-4 h-4" /> {t('back')}
                    </Button>
                 </Link>
 
@@ -112,7 +115,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                              priority
                          />
                      ) : (
-                         <div className="w-full h-full bg-gradient-to-br from-primary/10 to-background" />
+                          <div className="w-full h-full bg-gradient-to-br from-primary/10 to-background" />
                      )}
                 </div>
 
@@ -135,7 +138,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <div className="pt-8 border-t border-border/50 flex justify-between items-center">
                    <div className="flex gap-4">
                       <Button variant="outline" size="sm" className="gap-2 font-bold">
-                         <Share2 className="w-4 h-4" /> Compartir
+                         <Share2 className="w-4 h-4" /> {t('share')}
                       </Button>
                    </div>
                 </div>
@@ -144,15 +147,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <aside className="lg:col-span-4 space-y-8">
                <div className="lg:sticky lg:top-28 space-y-6">
                   <div className="p-5 bg-card border border-card-border rounded-2xl shadow-sm">
-                     <h3 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-4">Publicidad</h3>
+                     <h3 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-4">{t('sidebar_ads')}</h3>
                      <AdBanner slot="blog_post_sidebar_1" format="rectangle" style={{ minHeight: '400px' }} />
                   </div>
 
                   <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 backdrop-blur-sm shadow-xl">
-                     <h3 className="font-bold text-foreground mb-3">¿Te gusta este contenido?</h3>
-                     <p className="text-sm text-muted-foreground mb-6 font-medium">En nuestra tienda tenemos recursos premium listos para instalar.</p>
+                     <h3 className="font-bold text-foreground mb-3">{t('help_box_title')}</h3>
+                     <p className="text-sm text-muted-foreground mb-6 font-medium">{t('help_box_desc')}</p>
                      <Link href="/tienda">
-                        <Button className="w-full gap-2 font-bold">Explorar Tienda</Button>
+                        <Button className="w-full gap-2 font-bold">{t('help_box_cta')}</Button>
                      </Link>
                   </div>
 
@@ -170,10 +173,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   );
 }
 
-// Generar rutas estáticas para mejorar rendimiento (opcional pero recomendado)
+// Generar rutas estáticas para mejorar rendimiento
 export async function generateStaticParams() {
     const posts = await getPosts();
-    return posts.map((post) => ({
-        slug: post.slug,
-    }));
+    // Generamos para todos los locales
+    const locales = ['es', 'en'];
+    return locales.flatMap(locale => 
+        posts.map((post) => ({
+            slug: post.slug,
+            locale
+        }))
+    );
 }

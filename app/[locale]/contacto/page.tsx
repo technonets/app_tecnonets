@@ -1,17 +1,26 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
-
-export const metadata: Metadata = {
-  title: "Contacto | Tecnonets - Cotiza tu Proyecto Web o Automatización",
-  description: "Contáctanos para transformar tu negocio con desarrollo web profesional y automatización inteligente en Colombia.",
-};
+import { getTranslations, getLocale } from "next-intl/server";
 import { MessageSquare } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { Link } from "@/i18n/routing";
 
-export default function ContactPage() {
+// SEO Metadata
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Contact");
+  
+  return {
+    title: t("meta_title"),
+    description: t("meta_description"),
+  };
+}
+
+export default async function ContactPage() {
+  const t = await getTranslations("Contact");
+  
   return (
     <>
       <Navbar />
@@ -19,9 +28,9 @@ export default function ContactPage() {
         <Section>
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <h1 className="text-4xl font-bold font-heading text-foreground mb-6">Hablemos de tu Proyecto</h1>
+              <h1 className="text-4xl font-bold font-heading text-foreground mb-6">{t("title")}</h1>
               <p className="text-muted-foreground text-lg mb-8 font-medium">
-                ¿Tienes una idea en mente? Cuéntanos sobre tus necesidades de automatización o desarrollo web.
+                {t("subtitle")}
               </p>
               
               <div className="space-y-6">
@@ -55,7 +64,7 @@ export default function ContactPage() {
             </div>
 
             <div className="bg-card border border-card-border rounded-2xl p-8 shadow-sm">
-              <Suspense fallback={<div className="text-foreground">Cargando formulario...</div>}>
+              <Suspense fallback={<div className="text-foreground">{t("loading_form")}</div>}>
                 <ContactForm />
               </Suspense>
             </div>

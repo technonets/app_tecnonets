@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from "@/components/ui/Button";
+import { useTranslations } from 'next-intl';
 
-// Lista completa de países con códigos telefónicos
+// Full list of countries with phone codes
 const COUNTRIES = [
   { name: 'Afganistán', code: '+93', flag: '🇦🇫', digits: 9 },
   { name: 'Albania', code: '+355', flag: '🇦🇱', digits: 9 },
@@ -118,6 +119,7 @@ const COUNTRIES = [
 ];
 
 export function ContactForm() {
+  const t = useTranslations('Form');
   const searchParams = useSearchParams();
   const initialService = searchParams.get('servicio') || '';
   
@@ -136,19 +138,19 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSent, setIsSent] = useState(false);
   
-  // Estado para autocomplete de país
+  // Country autocomplete state
   const [countrySearch, setCountrySearch] = useState('');
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const [filteredCountries, setFilteredCountries] = useState(COUNTRIES);
 
-  // Filtrar países mientras el usuario escribe
+  // Filter countries as user types
   const handleCountrySearch = (value: string) => {
     setCountrySearch(value);
     setShowCountryDropdown(true);
     
     if (!value.trim()) {
       setFilteredCountries(COUNTRIES);
-      // Resetear país y código cuando se borra el campo
+      // Reset country and code when field is cleared
       setFormData(prev => ({
         ...prev,
         country: '',
@@ -162,7 +164,7 @@ export function ContactForm() {
     }
   };
 
-  // Seleccionar un país del dropdown
+  // Select a country from dropdown
   const selectCountry = (country: typeof COUNTRIES[0]) => {
     setFormData(prev => ({
       ...prev,
@@ -183,30 +185,30 @@ export function ContactForm() {
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
-    if (!formData.name.trim()) newErrors.name = 'El nombre es obligatorio';
+    if (!formData.name.trim()) newErrors.name = t('errors.name');
     if (!formData.email.trim()) {
-      newErrors.email = 'El email es obligatorio';
+      newErrors.email = t('errors.email');
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Email inválido';
+      newErrors.email = t('errors.email_invalid');
     }
     
-    // Validación de teléfono con longitud específica por país
+    // Phone validation with country-specific length
     if (!formData.phone.trim()) {
-      newErrors.phone = 'El número de teléfono es obligatorio';
+      newErrors.phone = t('errors.phone');
     } else {
       const selectedCountry = COUNTRIES.find(c => c.code === formData.countryCode);
       const phoneDigits = formData.phone.replace(/\D/g, '');
       if (selectedCountry && phoneDigits.length !== selectedCountry.digits) {
-        newErrors.phone = `Debe tener ${selectedCountry.digits} dígitos`;
+        newErrors.phone = t('errors.phone_digits', { digits: selectedCountry.digits });
       }
     }
     
-    if (!formData.country.trim()) newErrors.country = 'El país es obligatorio';
-    if (!formData.service.trim()) newErrors.service = 'Debes seleccionar un tipo de proyecto';
+    if (!formData.country.trim()) newErrors.country = t('errors.country');
+    if (!formData.service.trim()) newErrors.service = t('errors.service');
     if (formData.service === 'Otro' && !formData.otherService.trim()) {
-      newErrors.otherService = 'Por favor especifica tu necesidad';
+      newErrors.otherService = t('errors.other');
     }
-    if (!formData.message.trim()) newErrors.message = 'El mensaje es obligatorio';
+    if (!formData.message.trim()) newErrors.message = t('errors.message');
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -215,7 +217,7 @@ export function ContactForm() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
     setFormData(prev => ({ ...prev, [id]: value }));
-    // Limpiar error al escribir
+    // Clear error on type
     if (errors[id]) {
       setErrors(prev => {
         const newErrs = { ...prev };
@@ -253,7 +255,6 @@ export function ContactForm() {
       formDataToSubmit.append(FORM_IDS.countryCode, formData.countryCode);
       formDataToSubmit.append(FORM_IDS.phone, formData.phone.replace(/\s/g, ''));
       formDataToSubmit.append(FORM_IDS.service, formData.service);
-      // Only append otherService if it has a value, or always append if the form accepts empty
       formDataToSubmit.append(FORM_IDS.otherService, formData.otherService || '');
       formDataToSubmit.append(FORM_IDS.message, formData.message);
 
@@ -269,15 +270,12 @@ export function ContactForm() {
       setIsSent(true);
     } catch (error) {
       console.error("Error submitting form:", error);
-      // Even if it fails (which we can't fully detect with no-cors), we might want to show an error or fallback
-      // For now, assuming success or silent failure as per standard Google Forms no-cors behavior
-      setIsSent(true); // Treat as success for user experience if request went out
+      setIsSent(true); 
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Scroll to success message when shown
   const successRef = React.useRef<HTMLDivElement>(null);
   
   React.useEffect(() => {
@@ -294,8 +292,8 @@ export function ContactForm() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-2xl font-bold text-foreground mb-2">¡Mensaje Enviado!</h3>
-        <p className="text-foreground/60 font-medium">Gracias por contactarnos. Te responderemos lo antes posible por email o WhatsApp.</p>
+        <h3 className="text-2xl font-bold text-foreground mb-2">{t('success_title')}</h3>
+        <p className="text-foreground/60 font-medium">{t('success_desc')}</p>
         <Button variant="outline" className="mt-8" onClick={() => {
           setIsSent(false);
           setFormData({
@@ -309,7 +307,7 @@ export function ContactForm() {
             message: ''
           });
           setCountrySearch('');
-        }}>Enviar otro mensaje</Button>
+        }}>{t('send_another')}</Button>
       </div>
     );
   }
@@ -325,33 +323,33 @@ export function ContactForm() {
     <form className="space-y-6" onSubmit={handleSubmit} noValidate>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <label htmlFor="name" className="text-sm font-bold text-foreground/70">Nombre <span className="text-red-500">*</span></label>
+          <label htmlFor="name" className="text-sm font-bold text-foreground/70">{t('name_label')} <span className="text-red-500">*</span></label>
           <input 
             type="text" 
             id="name" 
             value={formData.name}
             onChange={handleChange}
             className={inputClasses('name')} 
-            placeholder="Tu nombre" 
+            placeholder={t('name_placeholder')} 
           />
           {errors.name && <p className="text-xs text-red-400 mt-1 animate-in fade-in slide-in-from-top-1">{errors.name}</p>}
         </div>
         <div className="space-y-2">
-          <label htmlFor="email" className="text-sm font-bold text-foreground/70">Email <span className="text-red-500">*</span></label>
+          <label htmlFor="email" className="text-sm font-bold text-foreground/70">{t('email_label')} <span className="text-red-500">*</span></label>
           <input 
             type="email" 
             id="email" 
             value={formData.email}
             onChange={handleChange}
             className={inputClasses('email')} 
-            placeholder="tu@email.com" 
+            placeholder={t('email_placeholder')} 
           />
           {errors.email && <p className="text-xs text-red-400 mt-1 animate-in fade-in slide-in-from-top-1">{errors.email}</p>}
         </div>
         
-        {/* Campo País con autocomplete */}
+        {/* Country field with autocomplete */}
         <div className="space-y-2 relative">
-          <label htmlFor="country" className="text-sm font-bold text-foreground/70">País <span className="text-red-500">*</span></label>
+          <label htmlFor="country" className="text-sm font-bold text-foreground/70">{t('country_label')} <span className="text-red-500">*</span></label>
           <div className="relative">
             <input
               type="text"
@@ -359,14 +357,12 @@ export function ContactForm() {
               value={countrySearch}
               onChange={(e) => handleCountrySearch(e.target.value)}
               onBlur={() => {
-                // Delay para permitir click en dropdown
                 setTimeout(() => setShowCountryDropdown(false), 200);
               }}
               className={inputClasses('country') + " pl-10"}
-              placeholder="🔍 Busca o selecciona tu país..."
+              placeholder={t('country_placeholder')}
               autoComplete="off"
             />
-            {/* Ícono de búsqueda */}
             <svg 
               className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" 
               fill="none" 
@@ -377,7 +373,6 @@ export function ContactForm() {
             </svg>
           </div>
           
-          {/* Dropdown de países filtrados */}
           {showCountryDropdown && filteredCountries.length > 0 && (
             <div className="absolute z-50 w-full mt-1 bg-card border border-border rounded-lg shadow-2xl max-h-60 overflow-y-auto">
               {filteredCountries.slice(0, 10).map(country => (
@@ -394,33 +389,27 @@ export function ContactForm() {
                   </div>
                 </button>
               ))}
-              {filteredCountries.length > 10 && (
-                <div className="px-4 py-2 text-xs text-foreground/50 text-center border-t border-border/50 font-bold uppercase tracking-tight">
-                  +{filteredCountries.length - 10} países más... Sigue escribiendo para filtrar
-                </div>
-              )}
             </div>
           )}
           
           {showCountryDropdown && filteredCountries.length === 0 && countrySearch && (
             <div className="absolute z-50 w-full mt-1 bg-gray-900 border border-white/20 rounded-lg shadow-2xl p-4 text-center text-gray-400">
-              No se encontraron países con "{countrySearch}"
+              {t('errors.no_country_results', { query: countrySearch })}
             </div>
           )}
           
           {errors.country && <p className="text-xs text-red-400 mt-1 animate-in fade-in slide-in-from-top-1">{errors.country}</p>}
         </div>
         
-        {/* Campo Teléfono con código de país auto-completado */}
         <div className="space-y-2 md:col-span-2">
-          <label className="text-sm font-bold text-foreground/70">Teléfono / WhatsApp <span className="text-red-500">*</span></label>
+          <label className="text-sm font-bold text-foreground/70">{t('phone_label')} <span className="text-red-500">*</span></label>
           <div className="flex gap-3">
             <input
               type="text"
               value={formData.countryCode}
               readOnly
               className="bg-foreground/5 border border-border/50 rounded-lg px-3 py-3 text-foreground focus:outline-none transition-all duration-300 w-[100px] cursor-not-allowed opacity-75 font-bold"
-              title="Se completa automáticamente al seleccionar el país"
+              title={t('phone_hint')}
             />
             <div className="flex-1">
               <input 
@@ -429,7 +418,7 @@ export function ContactForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 className={inputClasses('phone')} 
-                placeholder={formData.country ? "310 123 4567" : "Primero selecciona tu país"}
+                placeholder={formData.country ? t('phone_placeholder') : t('phone_wait')}
               />
             </div>
           </div>
@@ -438,46 +427,46 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="service" className="text-sm font-bold text-foreground/70">Tipo de Proyecto <span className="text-red-500">*</span></label>
+        <label htmlFor="service" className="text-sm font-bold text-foreground/70">{t('service_label')} <span className="text-red-500">*</span></label>
         <select 
           id="service" 
           value={formData.service}
           onChange={handleChange}
           className={inputClasses('service') + " [&>option]:text-black"}
         >
-          <option value="">Selecciona el tipo de proyecto</option>
-          <option value="Sitio Corporativo">Sitio Corporativo</option>
-          <option value="Landing Page">Landing Page</option>
-          <option value="Automatización Google Sheets">Automatización Google Sheets</option>
-          <option value="Otro">Otro</option>
+          <option value="">{t('service_placeholder')}</option>
+          <option value="Sitio Corporativo">{t('service_options.corporate')}</option>
+          <option value="Landing Page">{t('service_options.landing')}</option>
+          <option value="Automatización Google Sheets">{t('service_options.automation')}</option>
+          <option value="Otro">{t('service_options.other')}</option>
         </select>
         {errors.service && <p className="text-xs text-red-400 mt-1 animate-in fade-in slide-in-from-top-1">{errors.service}</p>}
       </div>
 
       {formData.service === 'Otro' && (
         <div className="space-y-2 animate-in fade-in slide-in-from-top-2 duration-300">
-          <label htmlFor="otherService" className="text-sm font-medium text-gray-300">Especifica tu necesidad <span className="text-red-400">*</span></label>
+          <label htmlFor="otherService" className="text-sm font-medium text-gray-300">{t('other_label')} <span className="text-red-400">*</span></label>
           <input 
             type="text" 
             id="otherService" 
             value={formData.otherService}
             onChange={handleChange}
             className={inputClasses('otherService')} 
-            placeholder="¿En qué podemos ayudarte?" 
+            placeholder={t('other_placeholder')} 
           />
           {errors.otherService && <p className="text-xs text-red-400 mt-1 animate-in fade-in slide-in-from-top-1">{errors.otherService}</p>}
         </div>
       )}
 
       <div className="space-y-2">
-        <label htmlFor="message" className="text-sm font-bold text-foreground/70">Mensaje <span className="text-red-500">*</span></label>
+        <label htmlFor="message" className="text-sm font-bold text-foreground/70">{t('message_label')} <span className="text-red-500">*</span></label>
         <textarea 
           id="message" 
           value={formData.message}
           onChange={handleChange}
           rows={4} 
           className={inputClasses('message')} 
-          placeholder="Cuéntanos brevemente sobre tu proyecto..." 
+          placeholder={t('message_placeholder')} 
         />
         {errors.message && <p className="text-xs text-red-400 mt-1 animate-in fade-in slide-in-from-top-1">{errors.message}</p>}
       </div>
@@ -489,9 +478,9 @@ export function ContactForm() {
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            Enviando...
+            {t('submitting')}
           </span>
-        ) : 'Enviar Mensaje'}
+        ) : t('submit')}
       </Button>
     </form>
   );

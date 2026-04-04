@@ -19,7 +19,7 @@ export function WhatsAppButton() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
+        aria-label={t('aria_label')}
         className="flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:shadow-[0_8px_40px_rgba(37,211,102,0.6)] hover:scale-110 hover:-rotate-6 transition-all duration-500 relative border border-white/30"
       >
         {/* Inner Ring for Tech Look */}

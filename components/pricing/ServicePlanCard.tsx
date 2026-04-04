@@ -1,8 +1,9 @@
 'use client';
 import { Check, HelpCircle, MessageSquare } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/Button";
 import { useCurrency } from "@/context/CurrencyContext";
+import { useTranslations } from 'next-intl';
 
 interface Price {
   COP: string;
@@ -12,8 +13,8 @@ interface Price {
 interface ServicePlanCardProps {
   title?: string;
   description: string;
-  setupFee?: string; // Legacy
-  monthlyFee?: string; // Legacy
+  setupFee?: string; 
+  monthlyFee?: string; 
   prices: {
     setup: Price;
     monthly: Price;
@@ -40,10 +41,12 @@ export function ServicePlanCard({
   ctaLink
 }: ServicePlanCardProps) {
   const { currency } = useCurrency();
+  const t = useTranslations('Store');
   
   const currentSetup = prices.setup[currency];
   const currentMonthly = prices.monthly[currency];
   const currencyLabel = currency === 'USD' ? 'USD' : 'COP';
+
   return (
     <div className={`
       relative flex flex-col p-8 rounded-3xl border transition-all duration-300 h-full
@@ -53,7 +56,7 @@ export function ServicePlanCard({
     `}>
       {isPopular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">
-          Más Popular
+          {t('popular')}
         </div>
       )}
 
@@ -66,7 +69,7 @@ export function ServicePlanCard({
       <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* Setup Fee */}
         <div className="bg-foreground/5 rounded-xl p-4 border border-border/50">
-          <p className="text-foreground/60 text-[10px] font-bold uppercase tracking-wider mb-1">Setup (Pago Único)</p>
+          <p className="text-foreground/60 text-[10px] font-bold uppercase tracking-wider mb-1">{t('setup_fee')} (Pago Único)</p>
           <div className="flex items-baseline gap-1">
             <span className="text-xl font-bold text-foreground">{currentSetup}</span>
             <span className="text-foreground/40 text-[10px]">{currencyLabel}</span>
@@ -76,10 +79,10 @@ export function ServicePlanCard({
 
         {/* Monthly Fee */}
         <div className={`rounded-xl p-4 border ${isPopular ? 'bg-primary/10 border-primary/20' : 'bg-foreground/5 border-border/50'}`}>
-          <p className={`${isPopular ? 'text-primary' : 'text-foreground/60'} text-[10px] font-bold uppercase tracking-wider mb-1`}>Mensualidad</p>
+          <p className={`${isPopular ? 'text-primary' : 'text-foreground/60'} text-[10px] font-bold uppercase tracking-wider mb-1`}>{t('monthly_fee')}</p>
           <div className="flex items-baseline gap-1">
              <span className="text-xl font-bold text-foreground">{currentMonthly}</span>
-             <span className="text-foreground/40 text-[10px]">{currencyLabel}/mes</span>
+             <span className="text-foreground/40 text-[10px]">{currencyLabel}/{t('month')}</span>
           </div>
           <p className="text-[10px] text-foreground/40 mt-1 uppercase font-bold tracking-tight">Mantenimiento & Soporte</p>
         </div>
@@ -92,7 +95,7 @@ export function ServicePlanCard({
           <div>
             <p className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
-              Qué incluye:
+              {t('includes')}:
             </p>
             <ul className="space-y-3">
               {features.map((feature, idx) => (
@@ -110,7 +113,7 @@ export function ServicePlanCard({
           <div>
             <p className="text-xs font-bold text-foreground mb-4 uppercase tracking-widest flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(139,92,246,0.5)]"></span>
-              Qué incluye el Setup
+              {t('setup_includes')}
             </p>
             <ul className="space-y-3">
               {setupFeatures.map((feature, idx) => (
@@ -128,7 +131,7 @@ export function ServicePlanCard({
           <div>
             <p className="text-xs font-bold text-foreground mb-4 uppercase tracking-widest flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]"></span>
-              Qué incluye la Mensualidad
+              {t('monthly_includes')}
             </p>
             <ul className="space-y-3">
               {monthlyFeatures.map((feature, idx) => (
@@ -144,7 +147,7 @@ export function ServicePlanCard({
         {/* NEW Not Included */}
         {notIncluded && (
           <div className="pt-4 border-t border-border/50">
-            <p className="text-xs font-bold text-foreground/40 mb-4 uppercase tracking-widest">No incluye</p>
+            <p className="text-xs font-bold text-foreground/40 mb-4 uppercase tracking-widest">{t('not_included')}</p>
             <ul className="space-y-2">
               {notIncluded.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-3 text-xs text-foreground/40 font-medium">
@@ -159,7 +162,7 @@ export function ServicePlanCard({
         {/* NEW Expected Outcome */}
         {expectedOutcome && (
           <div className="p-4 rounded-2xl bg-primary/5 border border-primary/10 mt-6">
-            <p className="text-xs font-bold text-primary mb-2 uppercase tracking-widest">Resultado Esperado</p>
+            <p className="text-xs font-bold text-primary mb-2 uppercase tracking-widest">{t('expected_outcome')}</p>
             <p className="text-sm text-foreground/70 italic font-medium">"{expectedOutcome}"</p>
           </div>
         )}
@@ -175,12 +178,12 @@ export function ServicePlanCard({
             <div className="absolute inset-0 bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
             <span className="relative flex items-center justify-center gap-2">
               <MessageSquare className="w-5 h-5" /> 
-              Comenzar Proyecto
+              {t('start_project')}
             </span>
           </Button>
         </Link>
         <p className="text-[10px] text-center text-foreground/40 mt-4 uppercase tracking-widest font-bold">
-           Asesoría personalizada vía WhatsApp
+           {t('whatsapp_advice')}
         </p>
       </div>
     </div>

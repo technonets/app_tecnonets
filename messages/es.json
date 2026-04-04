@@ -10,17 +10,154 @@
     "store": "Tienda",
     "guides": "Guías",
     "blog": "Blog",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "settings": "Configuración"
   },
   "Hero": {
-    "title": "Diseño de Páginas Web <italic>Profesionales</italic> <br/> & Automatización de Procesos",
+    "badge_primary": "Soluciones Digitales",
+    "badge_secondary": "Presencia Web y Automatización",
+    "title": "Diseño de Páginas Web <italic>Profesionales</italic><br>& Automatización de Procesos",
     "subtitle": "Optimizamos flujos de trabajo mediante automatización avanzada con Google Workspace y desarrollamos infraestructura web de alto rendimiento.",
     "cta_services": "Consultar Servicios",
     "cta_catalog": "Ver Catálogo de Recursos"
   },
+  "Partners": {
+    "title": "Aliado Estratégico",
+    "partner_subtitle": "Soluciones Informáticas & Soporte Técnico",
+    "partner_desc": "Empresa colombiana especializada en impulsar negocios a través de la tecnología. Con un equipo de ingenieros expertos y excelentes reseñas en Google, ofrecen el respaldo técnico que tu empresa necesita.",
+    "support_title": "Soporte Técnico",
+    "support_desc": "Mantenimiento de computadores y redes.",
+    "security_title": "Seguridad",
+    "security_desc": "Instalación de cámaras y software POS.",
+    "marketing_title": "Marketing & Web",
+    "marketing_desc": "Diseño web y marketing digital.",
+    "software_title": "Software Original",
+    "software_desc": "Licencias Microsoft y asesoría gratuita.",
+    "visit_btn": "Visitar Sistemas Cúcuta",
+    "alliance_title": "Aliado Tecnológico",
+    "alliance_desc": "Colaboración profesional para soluciones integrales.",
+    "location": "Ubicación",
+    "reviews": "Reseñas Google",
+    "quote": "\"Soluciones informáticas profesionales con el respaldo de ingenieros expertos.\""
+  },
+  "Services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Soluciones a medida para potenciar tu productividad y presencia digital.",
+    "view_all": "Ver todos",
+    "automation_title": "Automatización Google",
+    "automation_desc": "Conecta tus herramientas favoritas (Gmail, Sheets, Calendar) para trabajar por ti. Sincronización avanzada y scripts personalizados.",
+    "web_title": "Desarrollo Web Profesional",
+    "web_desc": "Sitios web rápidos, modernos y optimizados para vender. Landing Pages y sitios corporativos.",
+    "store_title": "Tienda de Código",
+    "store_desc": "Adquiere proyectos listos para usar. Plantillas de Sheets, Scripts y componentes web premium.",
+    "page_title": "Hablemos de tu Proyecto",
+    "page_subtitle": "¿Tienes una idea en mente? Cuéntanos sobre tus necesidades de automatización o desarrollo web.",
+    "automation_features": ["Google Sheets Avanzado", "Google Apps Script", "Integraciones API", "Dashboards Automáticos"],
+    "web_features": ["Landing Pages", "Next.js Applications", "Mobile First Design", "SEO Optimizado"],
+    "view_details": "Ver Detalles",
+    "meta_title": "Servicios de Desarrollo Web y Automatización | Tecnonets",
+    "meta_description": "Servicios profesionales de automatización con Google Apps Script, desarrollo web con Next.js, Landing Pages y sitios corporativos. Optimiza tu negocio.",
+    "meta_keywords": "automatización, Google Apps Script, desarrollo web, Next.js, landing pages, sitios web, Colombia"
+  },
+  "Store": {
+    "latest_title": "Últimos Recursos",
+    "latest_subtitle": "Descubre nuestros productos y servicios más recientes.",
+    "free": "GRATIS",
+    "free_download": "Descarga Gratuita",
+    "from": "Desde",
+    "details": "Ver Detalles",
+    "buy": "Comprar Ahora",
+    "setup_fee": "Setup",
+    "monthly_fee": "Mensualidad",
+    "month": "mes",
+    "popular": "Más Popular",
+    "includes": "Qué incluye",
+    "setup_includes": "Qué incluye el Setup",
+    "monthly_includes": "Qué incluye la Mensualidad",
+    "not_included": "No incluye",
+    "expected_outcome": "Resultado Esperado",
+    "start_project": "Comenzar Proyecto",
+    "whatsapp_advice": "Asesoría personalizada vía WhatsApp",
+    "features": "Características",
+    "whatsapp_cta": "Consultar por WhatsApp",
+    "buy_source": "Comprar Código Fuente",
+    "get_now": "Obtener Ahora",
+    "immediate_delivery": "Entrega Inmediata",
+    "quality_guarantee": "Garantía de Calidad",
+    "immediate_desc": "Archivos electrónicos disponibles al instante tras la gestión.",
+    "quality_desc": "Código limpio y optimizado siguiendo las mejores prácticas.",
+    "demo_btn": "Ver Ejemplo en Funcionamiento",
+    "tutorial_title": "Tutorial",
+    "waas_desc": "Suscripción Mensual Todo Incluido",
+    "owner_prompt": "¿Quieres ser dueño del código?",
+    "owner_desc": "Ofrecemos opción de compra definitiva. El precio varía según el proyecto.",
+    "cat_all": "Todos",
+    "cat_free": "Gratis",
+    "cat_web": "Páginas Web",
+    "cat_landing": "Landing Pages",
+    "cat_portfolio": "Portafolios",
+    "cat_sheets": "Google Sheets",
+    "cat_automation": "Automatización",
+    "catalog_title": "Catálogo de Recursos",
+    "catalog_subtitle": "Encuentra herramientas listas para tu negocio.",
+    "search_placeholder": "Buscar: CRM, Landing, Sheet...",
+    "no_products": "No se encontraron productos",
+    "no_products_desc": "Intenta con otra categoría o término de búsqueda.",
+    "clear_filters": "Limpiar filtros",
+    "price_label": "Precio del Recurso",
+    "why_us_title": "¿Por qué elegir Tecnonets?",
+    "benefit_1": "Experiencia real en AppScript",
+    "benefit_2": "Soporte técnico especializado",
+    "benefit_3": "Actualizaciones garantizadas",
+    "recommended": "Recomendado",
+    "plans": {
+      "landing": {
+        "setup_features": [
+          "Diseño Personalizado High-Conversion",
+          "Arquitectura Web para Crecimiento SEO",
+          "Estructura One-Page Responsive",
+          "Formulario de Contacto + WhatsApp",
+          "Configuración Inicial de Pixel",
+          "Certificado SSL y Seguridad Básica",
+          "Implementación Técnica Completa"
+        ],
+        "monthly_features": [
+          "Hosting de Alta Velocidad",
+          "Soporte Técnico Prioritario",
+          "Monitoreo de Funcionamiento",
+          "1 cambio menor mensual (texto o imagen, no rediseños)"
+        ]
+      },
+      "corporate": {
+        "setup_features": [
+          "Estructura de hasta 5 secciones",
+          "Blog / Noticias (Estructura)",
+          "Arquitectura Web para SEO",
+          "Configuración Analytics & Console",
+          "Diseño Corporativo Premium"
+        ],
+        "monthly_features": [
+          "Hosting Empresarial Administrado",
+          "Soporte Técnico Prioritario",
+          "Monitoreo de Uptime y Estabilidad",
+          "Actualizaciones de Seguridad",
+          "2 cambios menores mensuales (texto o imagen, no nuevas secciones ni rediseños)"
+        ]
+      },
+      "portfolio": {
+        "setup_features": [
+          "Diseño Profesional y Moderno",
+          "Galería de Proyectos Optimizada",
+          "Formulario de Contacto Integrado",
+          "Configuración de Metadatos SEO"
+        ]
+      }
+    }
+  },
   "WhatsApp": {
     "message": "Hola, me interesa saber más sobre sus servicios.",
-    "tooltip": "¡Contáctanos!"
+    "tooltip": "¡Contáctanos!",
+    "aria_label": "Chatear por WhatsApp"
   },
   "Footer": {
     "rights": "Todos los derechos reservados.",
@@ -30,7 +167,325 @@
     "allies": "Aliados",
     "privacy": "Privacidad",
     "terms": "Términos",
+    "web_design": "Diseño de Páginas Web",
     "youtube_aria": "Visitar nuestro canal de YouTube",
     "tiktok_aria": "Seguirnos en TikTok"
+  },
+  "Automation": {
+    "badge": "Experiencia en Google Apps Script",
+    "title": "Eficiencia Operativa con <green>Google Workspace</green>",
+    "subtitle": "Maximizamos la productividad empresarial mediante la automatización de procesos. Integramos hojas de cálculo, gestión de correos y calendarios en un ecosistema unificado.",
+    "cta_consult": "Agendar Consultoría",
+    "cta_examples": "Ver Ejemplos",
+    "sheets_title": "Google Sheets",
+    "sheets_desc": "Dashboards y gestión de datos automatizada.",
+    "gmail_title": "Gmail",
+    "gmail_desc": "Envío masivo y filtrado inteligente de correos.",
+    "calendar_title": "Calendar",
+    "calendar_desc": "Gestión de eventos y recordatorios automáticos.",
+    "db_title": "Base de Datos (Sheets)",
+    "db_desc": "Google Sheets como motor de datos centralizado y accesible.",
+    "examples_title": "Ejemplos de Automatización",
+    "examples_subtitle": "Soluciones reales que implementamos para optimizar tu negocio.",
+    "cases": [
+      { "title": "Correos Automáticos", "desc": "Envío programado y masivo de correos personalizados directamente desde tus hojas de datos.", "icon": "📧" },
+      { "title": "Respuestas de Formularios", "desc": "Automatiza acciones inmediatas (emails, alertas, registros) en cuanto un cliente llena tu formulario.", "icon": "📝" },
+      { "title": "Gestión de Calendario", "desc": "Creación automática de eventos y recordatorios sincronizados con tu flujo de trabajo de Google.", "icon": "📅" },
+      { "title": "Plantillas HTML Premium", "desc": "Correos con diseño profesional y personalizado (HTML) para una imagen de marca impecable.", "icon": "🎨" },
+      { "title": "Web Apps con AppScript", "desc": "Micro-aplicaciones web funcionales integradas totalmente con tu ecosistema de Google Sheets.", "icon": "🚀" },
+      { "title": "Landing Pages de Venta", "desc": "Páginas de aterrizaje optimizadas para convertir visitantes en clientes de manera efectiva.", "icon": "🎯" }
+    ],
+    "meta_title": "Automatización con Google Apps Script y Eficiencia Operativa | Tecnonets",
+    "meta_description": "Especialistas en automatización de procesos empresariales con Google Apps Script, Sheets y Gmail. Ahorra tiempo y optimiza tu negocio.",
+    "meta_keywords": "Google Apps Script, automatización de procesos, Google Sheets automatización, optimizar negocio, eficiencia operativa"
+  },
+  "WebDev": {
+    "badge": "Website as a Service (WaaS)",
+    "title": "Diseño de Páginas Web <br> <primary>& Crear Sitios Profesionales</primary>",
+    "subtitle": "Obtén una presencia web premium con todo incluido: diseño, hosting, dominio y soporte, por una cómoda mensualidad.",
+    "plans": {
+      "landing": {
+        "title": "Landing Page One-Page",
+        "desc": "Ideal para campañas publicitarias, lanzamientos de productos o captación de leads específica.",
+        "setup_features": [
+          "Diseño personalizado (High-Conversion)",
+          "Arquitectura web pensada para crecimiento SEO",
+          "Estructura optimizada para anuncios",
+          "Landing page one-page (Responsive)",
+          "Formulario integrado + WhatsApp",
+          "Configuración de Google Analytics",
+          "Configuración de Google Search Console",
+          "Certificado SSL y seguridad",
+          "Implementación técnica completa"
+        ],
+        "monthly_features": [
+          "Hosting administrado alta velocidad",
+          "Soporte técnico prioritario",
+          "Soporte ante caídas o errores",
+          "Monitoreo de uptime (Estabilidad)",
+          "1 cambio menor mensual (texto o imagen)",
+          "Mantenimiento técnico general"
+        ],
+        "not_included": [
+          "Gestión de campañas publicitarias",
+          "Rediseños completos",
+          "Cambios ilimitados",
+          "Creación de contenido o copies",
+          "SEO avanzado"
+        ],
+        "outcome": "Una landing rápida, estable y optimizada para convertir tráfico en contactos o ventas."
+      },
+      "corporate": {
+        "title": "Sitio Corporativo Plus",
+        "desc": "Presencia digital profesional para empresas que buscan autoridad, confianza y base SEO sólida.",
+        "setup_features": [
+          "Estructura corporativa de hasta 5 secciones",
+          "Diseño corporativo premium (Responsive)",
+          "Blog / Noticias (Estructura de blog)",
+          "Arquitectura web pensada para crecimiento SEO",
+          "Configuración de Google Analytics",
+          "Configuración de Google Search Console",
+          "Optimización SEO",
+          "Certificado SSL y seguridad"
+        ],
+        "monthly_features": [
+          "Hosting empresarial administrado",
+          "Soporte técnico prioritario",
+          "Soporte ante caídas o errores",
+          "Monitoreo de uptime (Estabilidad)",
+          "Actualizaciones de seguridad",
+          "2 cambios menores mensuales"
+        ],
+        "not_included": [
+          "Redacción de artículos de blog",
+          "Fotografía o video profesional",
+          "E-commerce avanzado",
+          "Integraciones API complejas",
+          "Estrategia SEO o link building"
+        ],
+        "outcome": "Un sitio web corporativo sólido que proyecta confianza y sirve como base técnica para tu SEO."
+      }
+    },
+    "features_title": "Características",
+    "feature_1_title": "Mobile First",
+    "feature_1_desc": "Diseñado pensando primero en la experiencia móvil, asegurando que se vea perfecto en cualquier dispositivo.",
+    "feature_2_title": "Velocidad Extrema",
+    "feature_2_desc": "Construido con Next.js para cargas instantáneas y una experiencia de usuario fluida.",
+    "feature_3_title": "Diseño Premium",
+    "feature_3_desc": "Estética moderna, animaciones suaves y una interfaz que transmite profesionalismo.",
+    "feature_4_title": "SEO Optimizado",
+    "feature_4_desc": "Estructura semántica, metadatos y optimización técnica para posicionar en Google.",
+    "pricing_title": "Planes Todo Incluido",
+    "pricing_subtitle": "Elige el plan que mejor se adapte a tu etapa de crecimiento.",
+    "buyout_title": "¿Prefieres ser dueño total del código?",
+    "buyout_desc": "Aunque nuestro modelo WaaS es de suscripción, ofrecemos la posibilidad de <bold>comprar el código fuente</bold> si en el futuro decides tener control total.",
+    "buyout_note": "El precio se cotiza de acuerdo al tipo de sitio solicitado.",
+    "info_title": "Información Importante del Servicio",
+    "info_items": [
+      { "title": "Servicio de Suscripción", "desc": "El sitio web funciona únicamente mientras el plan mensual esté activo." },
+      { "title": "Propiedad del Código", "desc": "No entregamos código fuente bajo este modelo. La infraestructura pertenece a Tecnonets." },
+      { "title": "Compra del Código (Buyout)", "desc": "Posibilidad de fee de liberación para control total en el futuro." },
+      { "title": "Dominio Incluido", "desc": "Renovación anual del dominio (.com) incluida con suscripción activa." },
+      { "title": "Cambios Mensuales", "desc": "Incluye cambios menores (textos, imágenes). Nuevas funciones se cotizan aparte." },
+      { "title": "Soporte Técnico", "desc": "Garantizamos operatividad 100%, seguridad y velocidad." }
+    ],
+    "meta_title": "Diseño de Páginas Web Profesionales y Crear Página Web | Tecnonets",
+    "meta_description": "Especialistas en crear páginas web profesionales: Landing Pages, sitios corporativos y tiendas virtuales. Diseño web en Colombia con todo incluido.",
+    "meta_keywords": "crear página web, diseño de páginas web, páginas web profesionales, diseño web colombia, landing pages de alta conversión"
+  },
+  "Contact": {
+    "title": "Hablemos de tu Proyecto",
+    "subtitle": "¿Tienes una idea en mente? Cuéntanos sobre tus necesidades de automatización o desarrollo web.",
+    "loading_form": "Cargando formulario...",
+    "meta_title": "Contacto | Tecnonets - Cotiza tu Proyecto Web o Automatización",
+    "meta_description": "Contáctanos para transformar tu negocio con desarrollo web profesional y automatización inteligente en Colombia."
+  },
+  "NotFound": {
+    "title": "404 - Página no encontrada",
+    "subtitle": "Lo sentimos, el recurso que buscas no existe o ha sido movido.",
+    "cta": "Volver al inicio",
+    "meta_title": "Página no encontrada | Tecnonets"
+  },
+  "Form": {
+    "name_label": "Nombre",
+    "name_placeholder": "Tu nombre",
+    "email_label": "Email",
+    "email_placeholder": "tu@email.com",
+    "country_label": "País",
+    "country_placeholder": "🔍 Busca o selecciona tu país...",
+    "phone_label": "Teléfono / WhatsApp",
+    "phone_placeholder": "310 123 4567",
+    "phone_hint": "Se completa automáticamente al seleccionar el país",
+    "phone_wait": "Primero selecciona tu país",
+    "service_label": "Tipo de Proyecto",
+    "service_placeholder": "Selecciona el tipo de proyecto",
+    "service_options": {
+      "corporate": "Sitio Corporativo",
+      "landing": "Landing Page",
+      "automation": "Automatización Google Sheets",
+      "other": "Otro"
+    },
+    "other_label": "Especifica tu necesidad",
+    "other_placeholder": "¿En qué podemos ayudarte?",
+    "message_label": "Mensaje",
+    "message_placeholder": "Cuéntanos brevemente sobre tu proyecto...",
+    "submit": "Enviar Mensaje",
+    "submitting": "Enviando...",
+    "success_title": "¡Mensaje Enviado!",
+    "success_desc": "Gracias por contactarnos. Te responderemos lo antes posible por email o WhatsApp.",
+    "send_another": "Enviar otro mensaje",
+    "errors": {
+      "name": "El nombre es obligatorio",
+      "email": "El email es obligatorio",
+      "email_invalid": "Email inválido",
+      "phone": "El número de teléfono es obligatorio",
+      "phone_digits": "Debe tener {digits} dígitos",
+      "country": "El país es obligatorio",
+      "service": "Debes seleccionar un tipo de proyecto",
+      "other": "Por favor especifica tu necesidad",
+      "message": "El mensaje es obligatorio",
+      "no_country_results": "No se encontraron países con \"{query}\""
+    }
+  },
+  "Privacy": {
+    "title": "Política de <primary>Privacidad</primary>",
+    "update": "Última actualización: {date}",
+    "intro_title": "Introducción",
+    "intro_text": "En <primary>Tecnonets</primary>, nos comprometemos a proteger tu privacidad y garantizar la seguridad de tus datos personales. Esta política describe cómo recopilamos, usamos y protegemos tu información cuando utilizas nuestros servicios de automatización, desarrollo web y productos digitales.",
+    "coll_title": "Información que Recopilamos",
+    "coll_contact_title": "Información de Contacto",
+    "coll_contact_desc": "Nombre, correo electrónico, número de teléfono y empresa cuando solicitas nuestros servicios o te suscribes a nuestro contenido.",
+    "coll_payment_title": "Información de Pago",
+    "coll_payment_desc": "Procesamos pagos a través de plataformas seguras de terceros. No almacenamos información de tarjetas de crédito en nuestros servidores.",
+    "coll_usage_title": "Datos de Uso",
+    "coll_usage_desc": "Información sobre cómo interactúas con nuestro sitio web mediante Google Analytics y Facebook Pixel para mejorar la experiencia del usuario.",
+    "usage_title": "Cómo Usamos tu Información",
+    "usage_items": [
+      "Proveer y mantener nuestros servicios de suscripción (WaaS)",
+      "Procesar pagos y gestionar tu cuenta de cliente",
+      "Enviar actualizaciones sobre tu servicio, cambios técnicos y soporte",
+      "Mejorar nuestros productos y servicios mediante análisis de uso",
+      "Cumplir con obligaciones legales y fiscales"
+    ],
+    "prot_title": "Protección de Datos",
+    "prot_intro": "Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos:",
+    "prot_items": [
+      "Certificados SSL en todos nuestros sitios web",
+      "Almacenamiento seguro en Google Drive con permisos restringidos",
+      "Acceso limitado solo a personal autorizado",
+      "Backups regulares de datos críticos"
+    ],
+    "cookies_title": "Cookies y Publicidad (Google AdSense)",
+    "cookies_intro": "Este sitio utiliza cookies para mejorar la experiencia del usuario y mostrar publicidad relevante. Específicamente respecto a Google AdSense:",
+    "cookies_items": [
+      "Proveedores externos, incluido Google, utilizan cookies para mostrar anuncios basados en las visitas anteriores del usuario a su sitio web o a otros sitios web.",
+      "El uso de cookies publicitarias permite a Google y a sus socios mostrar anuncios a los usuarios basados en sus visitas a sus sitios y/o a otros sitios de Internet.",
+      "Los usuarios pueden inhabilitar la publicidad personalizada visitando <link>Configuración de Anuncios</link>."
+    ],
+    "cookies_extra": "Además utilizamos <strong>Google Analytics</strong> para análisis de tráfico y <strong>Facebook Pixel</strong> para medición de conversiones.",
+    "rights_title": "Tus Derechos",
+    "rights_intro": "Tienes derecho a:",
+    "rights_items": [
+      "Acceder a tus datos personales",
+      "Rectificar información incorrecta",
+      "Solicitar la eliminación de tus datos",
+      "Oponerte al procesamiento de tus datos",
+      "Portabilidad de datos"
+    ],
+    "contact_title": "Contacto",
+    "contact_text": "Para ejercer tus derechos o realizar consultas sobre esta política de privacidad, contáctanos a través de WhatsApp o nuestro formulario de contacto en <link>tecnonets.com/contacto</link>",
+    "meta_title": "Política de Privacidad | Tecnonets",
+    "meta_description": "Política de privacidad y protección de datos de Tecnonets"
+  },
+  "Terms": {
+    "title": "Términos y <primary>Condiciones</primary>",
+    "update": "Última actualización: {date}",
+    "accept_title": "Aceptación de Términos",
+    "accept_text": "Al acceder y utilizar los servicios de <primary>Tecnonets</primary>, aceptas estar sujeto a estos términos y condiciones. Si no estás de acuerdo con alguna parte de estos términos, no debes utilizar nuestros servicios.",
+    "services_title": "Servicios Ofrecidos",
+    "services_waas_title": "1. Website as a Service (WaaS)",
+    "services_waas_desc": "Desarrollo y mantenimiento de sitios web y landing pages bajo modelo de suscripción mensual. Incluye hosting, SSL, dominio, soporte técnico y actualizaciones de contenido según el plan contratado.",
+    "services_auto_title": "2. Automatización Google Workspace",
+    "services_auto_desc": "Desarrollo de scripts personalizados, integraciones entre Google Sheets, Forms, Calendar y Gmail para optimizar procesos empresariales.",
+    "services_prod_title": "3. Productos Digitales",
+    "services_prod_desc": "Venta de plantillas, scripts y recursos digitales listos para usar. Algunos productos son gratuitos y otros requieren pago único.",
+    "waas_terms_title": "Términos del Servicio WaaS - Importante",
+    "waas_terms_items": [
+      { "title": "Modelo de Suscripción (WaaS):", "desc": "El servicio funciona bajo un modelo de suscripción o \"arrendamiento\". El sitio web está online y operativo únicamente mientras la mensualidad esté activa y al día." },
+      { "title": "Propiedad del Código:", "desc": "Tecnonets mantiene la propiedad intelectual y técnica del código fuente, infraestructura e implementación. El cliente tiene el derecho de uso y explotación comercial del sitio durante la vigencia del plan." },
+      { "title": "Soporte y Mantenimiento:", "desc": "Incluye monitoreo de uptime, parches de seguridad y soporte técnico ante fallos o caídas del servidor para garantizar la estabilidad del sitio." },
+      { "title": "Política de Cambios Mensuales:", "desc": "Landing Pages: 1 cambio menor mensual. Sitio Corporativo: 2 cambios menores mensuales (no rediseños)." },
+      { "title": "Blog y Contenido:", "desc": "Se entrega estructura técnica, no se incluye redacción de artículos." },
+      { "title": "Compra de Código (Buyout):", "desc": "Si deseas migrar y poseer el código, podrás solicitar un presupuesto de liberación." }
+    ],
+    "payments_title": "Pagos y Facturación",
+    "payments_items": [
+      "Los pagos se procesan a través de plataformas seguras de terceros",
+      "Las suscripciones se renuevan automáticamente cada mes",
+      "Los precios están sujetos a cambios con aviso previo de 30 días",
+      "No se ofrecen reembolsos del Setup Fee una vez iniciado el desarrollo",
+      "Puedes cancelar tu suscripción en cualquier momento sin penalización"
+    ],
+    "cancel_title": "Cancelación y Reembolsos",
+    "cancel_waas_title": "Servicios WaaS:",
+    "cancel_waas_desc": "Puedes cancelar en cualquier momento. El servicio permanece activo hasta el final del periodo + 7 días de gracia.",
+    "cancel_prod_title": "Productos Digitales:",
+    "cancel_prod_desc": "Debido a su naturaleza digital, no se aceptan devoluciones tras la descarga.",
+    "intel_title": "Propiedad Intelectual",
+    "intel_items": [
+      "Todo el código y diseño creado por Tecnonets es propiedad exclusiva de la empresa",
+      "Los clientes reciben una licencia de uso limitada durante la suscripción",
+      "El contenido del cliente (logos, fotos) sigue siendo propiedad del cliente",
+      "Productos digitales otorgan licencia personal o comercial"
+    ],
+    "limit_title": "Limitación de Responsabilidad",
+    "limit_intro": "Tecnonets no se hace responsable de:",
+    "limit_items": [
+      "Pérdida de datos por fallas de terceros",
+      "Interrupciones por mantenimiento programado",
+      "Daños indirectos o consecuentes",
+      "Contenido ilegal proporcionado por el cliente"
+    ],
+    "ads_title": "Publicidad y Google AdSense",
+    "ads_text": "Este sitio muestra anuncios de Google AdSense. Aceptas cumplir las directrices:",
+    "ads_items": [
+      { "title": "Prohibición de clics inválidos:", "desc": "Prohibido clics artificiales o incentivar a terceros." },
+      { "title": "Navegación engañosa:", "desc": "No usar métodos engañosos para colocar anuncios." },
+      { "title": "Contenido:", "desc": "No mostrar anuncios en contenido restringido o ilegal." }
+    ],
+    "mod_title": "Modificaciones a los Términos",
+    "mod_text": "Nos reservamos el derecho de modificar términos. El uso continuado tras notificación constituye aceptación.",
+    "contact_title": "Contacto",
+    "contact_text": "Para consultas, contáctanos vía WhatsApp o formulario en <link>tecnonets.com/contacto</link>",
+    "meta_title": "Términos y Condiciones | Tecnonets",
+    "meta_description": "Términos y condiciones de uso de los servicios de Tecnonets"
+  },
+  "Blog": {
+    "title": "Blog & <italic>Tutoriales</italic>",
+    "badge": "Contenido de Valor",
+    "subtitle": "Tutoriales detallados paso a paso para dominar las tecnologías que impulsan el futuro de la web.",
+    "empty": "No hay artículos publicados aún.",
+    "read_more": "Leer Post",
+    "sidebar_featured": "Destacado",
+    "sidebar_help_title": "¿Buscas algo específico?",
+    "sidebar_help_desc": "Automatizamos tus procesos con Google Sheets y AppScript.",
+    "sidebar_cta": "Pedir Presupuesto",
+    "sidebar_ads": "Publicidad",
+    "back": "Volver al Blog",
+    "share": "Compartir",
+    "help_box_title": "¿Te gusta este contenido?",
+    "help_box_desc": "En nuestra tienda tenemos recursos premium listos para instalar.",
+    "help_box_cta": "Explorar Tienda",
+    "meta_title": "Blog & Tutoriales de Automatización y Desarrollo Web | Tecnonets",
+    "meta_description": "Aprende a optimizar tu negocio con tutoriales paso a paso sobre Google Apps Script, Excel y desarrollo web profesional."
+  },
+  "Guides": {
+    "title": "Guías <italic>Pro</italic>",
+    "badge": "Contenido de Valor",
+    "subtitle": "Tutoriales detallados paso a paso para dominar las tecnologías que impulsan el futuro de la web.",
+    "read_more": "Leer Guía",
+    "back": "Volver a Guías",
+    "meta_title": "Guías Técnicas | Tecnonets",
+    "meta_description": "Aprende con nuestras guías completas sobre desarrollo web, PWA, SEO y más."
   }
 }

@@ -1,9 +1,10 @@
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/routing";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Section } from "@/components/ui/Section";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import Link from "next/link";
 import Image from "next/image";
 import { getGuideData, getAllGuides } from "@/lib/guides";
 import { ArrowLeft, Calendar, User, BookOpen } from "lucide-react";
@@ -11,12 +12,14 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { AdBanner } from "@/components/ui/AdBanner";
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
+  const { slug, locale } = await params;
   try {
     const guide = await getGuideData(slug);
+    const t = await getTranslations({ locale, namespace: 'Guides' });
+    
     return {
-      title: `${guide.title} | Guías Tecnonets`,
+      title: `${guide.title} | ${t('meta_title')}`,
       description: guide.description,
       openGraph: {
         title: guide.title,
@@ -28,12 +31,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       },
     };
   } catch (e) {
-    return { title: "Guía No Encontrada" };
+    return { title: locale === 'es' ? "Guía No Encontrada" : "Guide Not Found" };
   }
 }
 
-export default async function GuidePostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function GuidePostPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+  const { slug, locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Guides' });
+  const b = await getTranslations({ locale, namespace: 'Blog' });
   
   let guide;
   try {
@@ -57,19 +62,19 @@ export default async function GuidePostPage({ params }: { params: Promise<{ slug
         "author": [{
           "@type": "Person",
           "name": guide.author,
-          "url": baseUrl
+          "url": `${baseUrl}/${locale}`
         }],
         "publisher": {
           "@type": "Organization",
           "name": "Tecnonets",
           "logo": {
             "@type": "ImageObject",
-            "url": `${baseUrl}/favicon.ico`
+            "url": `${baseUrl}/logo.png`
           }
         },
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": `${baseUrl}/guias/${slug}`
+          "@id": `${baseUrl}/${locale}/guias/${slug}`
         }
       },
       {
@@ -78,20 +83,20 @@ export default async function GuidePostPage({ params }: { params: Promise<{ slug
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Inicio",
-            "item": baseUrl
+            "name": locale === 'es' ? "Inicio" : "Home",
+            "item": `${baseUrl}/${locale}`
           },
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Guías",
-            "item": `${baseUrl}/guias`
+            "name": locale === 'es' ? "Guías" : "Guides",
+            "item": `${baseUrl}/${locale}/guias`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": guide.title,
-            "item": `${baseUrl}/guias/${slug}`
+            "item": `${baseUrl}/${locale}/guias/${slug}`
           }
         ]
       }
@@ -115,7 +120,7 @@ export default async function GuidePostPage({ params }: { params: Promise<{ slug
               <div className="space-y-8">
                 <Link href="/guias">
                   <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground hover:text-primary -ml-2 font-bold uppercase tracking-widest text-[10px]">
-                    <ArrowLeft className="w-4 h-4" /> Volver a Guías
+                    <ArrowLeft className="w-4 h-4" /> {t('back')}
                   </Button>
                 </Link>
                 
@@ -163,11 +168,11 @@ export default async function GuidePostPage({ params }: { params: Promise<{ slug
               <div className="pt-12 border-t border-card-border">
                 <div className="p-8 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left shadow-xl">
                   <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-foreground">¿Te ha servido esta guía?</h3>
-                    <p className="text-muted-foreground font-medium">Si necesitas ayuda implementando estas tecnologías en tu negocio, ¡contáctanos!</p>
+                    <h3 className="text-xl font-bold text-foreground">{b('help_box_title')}</h3>
+                    <p className="text-muted-foreground font-medium">{b('help_box_desc')}</p>
                   </div>
                   <Link href="/contacto">
-                    <Button className="px-8 font-bold">Contactar Soporte</Button>
+                    <Button className="px-8 font-bold">{locale === 'es' ? 'Contactar Soporte' : 'Contact Support'}</Button>
                   </Link>
                 </div>
               </div>
@@ -177,15 +182,15 @@ export default async function GuidePostPage({ params }: { params: Promise<{ slug
             <aside className="lg:col-span-4 space-y-8">
               <div className="lg:sticky lg:top-32 space-y-8">
                 <div className="p-6 bg-card border border-card-border rounded-2xl shadow-sm">
-                  <h3 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-4">Publicidad</h3>
+                  <h3 className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-4">{b('sidebar_ads')}</h3>
                   <AdBanner slot="guide_sidebar" format="rectangle" style={{ minHeight: '400px' }} />
                 </div>
 
                 <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 shadow-xl">
-                  <h4 className="font-bold text-foreground mb-2">Más Guías Técnicas</h4>
-                  <p className="text-sm text-muted-foreground mb-6 font-medium">Explora otros tutoriales para potenciar tu presencia digital.</p>
+                  <h4 className="font-bold text-foreground mb-2">{locale === 'es' ? 'Más Guías Técnicas' : 'More Technical Guides'}</h4>
+                  <p className="text-sm text-muted-foreground mb-6 font-medium">{t('subtitle')}</p>
                   <Link href="/guias">
-                    <Button variant="outline" className="w-full font-bold">Ver Catálogo</Button>
+                    <Button variant="outline" className="w-full font-bold">{locale === 'es' ? 'Ver Catálogo' : 'View Catalog'}</Button>
                   </Link>
                 </div>
               </div>
@@ -201,7 +206,11 @@ export default async function GuidePostPage({ params }: { params: Promise<{ slug
 
 export async function generateStaticParams() {
   const guides = await getAllGuides();
-  return guides.map((guide) => ({
-    slug: guide.slug,
-  }));
+  const locales = ['es', 'en'];
+  return locales.flatMap(locale => 
+    guides.map((guide) => ({
+      slug: guide.slug,
+      locale
+    }))
+  );
 }

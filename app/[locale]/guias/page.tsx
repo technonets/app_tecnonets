@@ -1,20 +1,29 @@
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/routing";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Section } from "@/components/ui/Section";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import Link from "next/link";
 import Image from "next/image";
 import { getAllGuides } from "@/lib/guides";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { AdBanner } from "@/components/ui/AdBanner";
+import { Metadata } from "next";
 
-export const metadata = {
-  title: "Guías Técnicas | Tecnonets",
-  description: "Aprende con nuestras guías completas sobre desarrollo web, PWA, SEO y más.",
-};
+// Generar Metadatos Dinámicos para SEO
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Guides");
+  
+  return {
+    title: t("meta_title"),
+    description: t("meta_description"),
+  };
+}
 
-export default async function GuidesPage() {
+export default async function GuidesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations("Guides");
   const guides = await getAllGuides();
 
   return (
@@ -24,12 +33,14 @@ export default async function GuidesPage() {
         <Section>
           <div className="max-w-7xl mx-auto">
             <div className="text-center space-y-4 mb-16">
-              <Badge variant="primary" className="px-4 py-1">Contenido de Valor</Badge>
+              <Badge variant="primary" className="px-4 py-1">{t('badge')}</Badge>
               <h1 className="text-4xl md:text-6xl font-bold font-heading text-foreground">
-                Guías <span className="text-primary italic">Pro</span>
+                {t.rich('title', {
+                  italic: (chunks) => <span className="text-primary italic">{chunks}</span>
+                })}
               </h1>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium">
-                Tutoriales detallados paso a paso para dominar las tecnologías que impulsan el futuro de la web.
+                {t('subtitle')}
               </p>
             </div>
 
@@ -67,7 +78,7 @@ export default async function GuidesPage() {
                         {guide.description}
                       </p>
                       <Button variant="ghost" className="w-full justify-between p-0 hover:bg-transparent group-hover:text-primary transition-all font-bold uppercase tracking-widest text-[10px]">
-                        Leer Guía <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        {t('read_more')} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </div>
                   </article>

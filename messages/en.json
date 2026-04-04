@@ -10,17 +10,146 @@
     "store": "Store",
     "guides": "Guides",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "settings": "Settings"
   },
   "Hero": {
-    "title": "Professional Web <italic>Design</italic> <br/> & Process Automation",
+    "badge_primary": "Digital Solutions",
+    "badge_secondary": "Web Presence and Automation",
+    "title": "Professional Web <italic>Design</italic><br>& Process Automation",
     "subtitle": "We optimize workflows through advanced automation with Google Workspace and develop high-performance web infrastructure.",
     "cta_services": "Check Services",
     "cta_catalog": "View Resource Catalog"
   },
+  "Partners": {
+    "title": "Strategic Partner",
+    "partner_subtitle": "IT Solutions & Technical Support",
+    "partner_desc": "Colombian company specialized in driving businesses through technology. With a team of expert engineers and excellent Google reviews, they offer the technical support your business needs.",
+    "support_title": "Technical Support",
+    "support_desc": "Computer and network maintenance.",
+    "security_title": "Security",
+    "security_desc": "CCTV installation and POS software.",
+    "marketing_title": "Marketing & Web",
+    "marketing_desc": "Web design and digital marketing.",
+    "software_title": "Original Software",
+    "software_desc": "Microsoft licenses and free consultation.",
+    "visit_btn": "Visit Sistemas Cúcuta",
+    "alliance_title": "Technology Ally",
+    "alliance_desc": "Professional collaboration for comprehensive solutions.",
+    "location": "Location",
+    "reviews": "Google Reviews",
+    "quote": "\"Professional IT solutions with the support of expert engineers.\""
+  },
+  "Services": {
+    "title": "Our Services",
+    "subtitle": "Tailor-made solutions to boost your productivity and digital presence.",
+    "view_all": "View all",
+    "automation_title": "Google Automation",
+    "automation_desc": "Advanced synchronization between Sheets, Forms, Calendar, and Gmail. Custom scripts to save hours of manual work.",
+    "web_title": "Web Design",
+    "web_desc": "Experts in creating professional websites, high-conversion landing pages, and modern corporate sites.",
+    "store_title": "Code Store",
+    "store_desc": "Acquire ready-to-use projects. Sheets templates, scripts, and premium web components to accelerate your developments."
+  },
+  "Store": {
+    "latest_title": "Latest Resources",
+    "latest_subtitle": "Discover our most recent products and services.",
+    "free": "FREE",
+    "free_download": "Free Download",
+    "from": "From",
+    "details": "View Details",
+    "buy": "Buy Now",
+    "setup_fee": "Setup",
+    "monthly_fee": "Monthly Fee",
+    "month": "month",
+    "popular": "Most Popular",
+    "includes": "What's included",
+    "setup_includes": "What's included in Setup",
+    "monthly_includes": "What's included in Monthly",
+    "not_included": "Not included",
+    "expected_outcome": "Expected Outcome",
+    "start_project": "Start Project",
+    "whatsapp_advice": "Personalized advice via WhatsApp",
+    "features": "Features",
+    "whatsapp_cta": "Inquire via WhatsApp",
+    "buy_source": "Buy Source Code",
+    "get_now": "Get Now",
+    "immediate_delivery": "Immediate Delivery",
+    "quality_guarantee": "Quality Guarantee",
+    "immediate_desc": "Electronic files available instantly after processing.",
+    "quality_desc": "Clean and optimized code following best practices.",
+    "demo_btn": "View Live Demo",
+    "tutorial_title": "Tutorial",
+    "waas_desc": "All-Inclusive Monthly Subscription",
+    "owner_prompt": "Want to own the code?",
+    "owner_desc": "We offer a permanent purchase option. Price varies by project.",
+    "cat_all": "All",
+    "cat_free": "Free",
+    "cat_web": "Web Design",
+    "cat_landing": "Landing Pages",
+    "cat_portfolio": "Portfolios",
+    "cat_sheets": "Google Sheets",
+    "cat_automation": "Automation",
+    "catalog_title": "Resource Catalog",
+    "catalog_subtitle": "Find ready-to-use tools for your business.",
+    "search_placeholder": "Search: CRM, Landing, Sheet...",
+    "no_products": "No products found",
+    "no_products_desc": "Try with another category or search term.",
+    "clear_filters": "Clear filters",
+    "price_label": "Resource Price",
+    "why_us_title": "Why choose Tecnonets?",
+    "benefit_1": "Real experience in AppScript",
+    "benefit_2": "Specialized technical support",
+    "benefit_3": "Guaranteed updates",
+    "recommended": "Recommended",
+    "plans": {
+      "landing": {
+        "setup_features": [
+          "Custom High-Conversion Design",
+          "Web Architecture for SEO Growth",
+          "Responsive One-Page Structure",
+          "Contact Form + WhatsApp",
+          "Initial Pixel Configuration",
+          "SSL Certificate and Basic Security",
+          "Full Technical Implementation"
+        ],
+        "monthly_features": [
+          "High-Speed Hosting",
+          "Priority Technical Support",
+          "Operation Monitoring",
+          "1 minor monthly change (text or image, no redesigns)"
+        ]
+      },
+      "corporate": {
+        "setup_features": [
+          "Structure up to 5 sections",
+          "Blog / News (Structure)",
+          "Web Architecture for SEO",
+          "Analytics & Console Configuration",
+          "Premium Corporate Design"
+        ],
+        "monthly_features": [
+          "Managed Enterprise Hosting",
+          "Priority Technical Support",
+          "Uptime and Stability Monitoring",
+          "Security Updates",
+          "2 minor monthly changes (text or image, no new sections or redesigns)"
+        ]
+      },
+      "portfolio": {
+        "setup_features": [
+          "Professional and Modern Design",
+          "Optimized Project Gallery",
+          "Integrated Contact Form",
+          "SEO Metadata Configuration"
+        ]
+      }
+    }
+  },
   "WhatsApp": {
     "message": "Hello, I'm interested in learning more about your services.",
-    "tooltip": "Contact us!"
+    "tooltip": "Contact us!",
+    "aria_label": "Chat on WhatsApp"
   },
   "Footer": {
     "rights": "All rights reserved.",
@@ -30,7 +159,325 @@
     "allies": "Allies",
     "privacy": "Privacy",
     "terms": "Terms",
+    "web_design": "Web Design",
     "youtube_aria": "Visit our YouTube channel",
     "tiktok_aria": "Follow us on TikTok"
+  },
+  "Automation": {
+    "badge": "Google Apps Script Experience",
+    "title": "Operational Efficiency with <green>Google Workspace</green>",
+    "subtitle": "We maximize business productivity through process automation. We integrate spreadsheets, email management, and calendars into a unified ecosystem.",
+    "cta_consult": "Schedule Consultation",
+    "cta_examples": "See Examples",
+    "sheets_title": "Google Sheets",
+    "sheets_desc": "Automated dashboards and data management.",
+    "gmail_title": "Gmail",
+    "gmail_desc": "Mass mailing and intelligent email filtering.",
+    "calendar_title": "Calendar",
+    "calendar_desc": "Automated event and reminder management.",
+    "db_title": "Database (Sheets)",
+    "db_desc": "Google Sheets as a centralized and accessible data engine.",
+    "examples_title": "Automation Examples",
+    "examples_subtitle": "Real solutions we implement to optimize your business.",
+    "cases": [
+      { "title": "Automatic Emails", "desc": "Scheduled and mass personalized emails directly from your data sheets.", "icon": "📧" },
+      { "title": "Form Responses", "desc": "Automate immediate actions (emails, alerts, logs) as soon as a customer fills your form.", "icon": "📝" },
+      { "title": "Calendar Management", "desc": "Automatic creation of events and reminders synced with your Google workflow.", "icon": "📅" },
+      { "title": "Premium HTML Templates", "desc": "Emails with professional and personalized design (HTML) for a flawless brand image.", "icon": "🎨" },
+      { "title": "Web Apps with AppScript", "desc": "Functional micro web applications fully integrated with your Google Sheets ecosystem.", "icon": "🚀" },
+      { "title": "Sales Landing Pages", "desc": "Landing pages optimized to effectively convert visitors into customers.", "icon": "🎯" }
+    ],
+    "meta_title": "Automation with Google Apps Script and Operational Efficiency | Tecnonets",
+    "meta_description": "Specialists in business process automation with Google Apps Script, Sheets, and Gmail. Save time and optimize your business.",
+    "meta_keywords": "Google Apps Script, process automation, Google Sheets automation, business optimization, operational efficiency"
+  },
+  "WebDev": {
+    "badge": "Website as a Service (WaaS)",
+    "title": "Professional Web <br> <primary>& Website Creation</primary>",
+    "subtitle": "Get a premium all-inclusive web presence: design, hosting, domain, and support, for a convenient monthly fee.",
+    "plans": {
+      "landing": {
+        "title": "One-Page Landing Page",
+        "desc": "Ideal for advertising campaigns, product launches, or specific lead generation.",
+        "setup_features": [
+          "Custom design (High-Conversion)",
+          "SEO-friendly web architecture",
+          "Ad-optimized structure",
+          "Responsive one-page landing page",
+          "Integrated form + WhatsApp",
+          "Google Analytics setup",
+          "Google Search Console setup",
+          "SSL certificate and security",
+          "Full technical implementation"
+        ],
+        "monthly_features": [
+          "High-speed managed hosting",
+          "Priority technical support",
+          "Uptime/error support",
+          "Uptime monitoring (Stability)",
+          "1 minor monthly change (text or image)",
+          "General technical maintenance"
+        ],
+        "not_included": [
+          "Ad campaign management",
+          "Full redesigns",
+          "Unlimited changes",
+          "Content or copy creation",
+          "Advanced SEO"
+        ],
+        "outcome": "A fast, stable, and entry-ready landing page optimized to convert traffic into contacts or sales."
+      },
+      "corporate": {
+        "title": "Corporate Site Plus",
+        "desc": "Professional digital presence for companies seeking authority, trust, and a solid SEO base.",
+        "setup_features": [
+          "Corporate structure up to 5 sections",
+          "Premium corporate design (Responsive)",
+          "Blog / News (Blog structure)",
+          "SEO-friendly web architecture",
+          "Google Analytics setup",
+          "Google Search Console setup",
+          "SEO optimization",
+          "SSL certificate and security"
+        ],
+        "monthly_features": [
+          "Managed enterprise hosting",
+          "Priority technical support",
+          "Uptime/error support",
+          "Uptime monitoring (Stability)",
+          "Security updates",
+          "2 minor monthly changes"
+        ],
+        "not_included": [
+          "Blog post writing",
+          "Professional photography or video",
+          "Advanced E-commerce",
+          "Complex API integrations",
+          "SEO strategy or link building"
+        ],
+        "outcome": "A solid corporate website projecting trust and serving as the technical base for your SEO strategy."
+      }
+    },
+    "features_title": "Features",
+    "feature_1_title": "Mobile First",
+    "feature_1_desc": "Designed thinking first of the mobile experience, ensuring it looks perfect on any device.",
+    "feature_2_title": "Extreme Speed",
+    "feature_2_desc": "Built with Next.js for instant loads and a smooth user experience.",
+    "feature_3_title": "Premium Design",
+    "feature_3_desc": "Modern aesthetics, smooth animations, and an interface that transmits professionalism.",
+    "feature_4_title": "Optimized SEO",
+    "feature_4_desc": "Semantic structure, metadata, and technical optimization to rank on Google.",
+    "pricing_title": "All-Inclusive Plans",
+    "pricing_subtitle": "Choose the plan that best fits your growth stage.",
+    "buyout_title": "Prefer to fully own the code?",
+    "buyout_desc": "Although our WaaS model is subscription-based, we offer the possibility to <bold>buy the source code</bold> if you decide to have full control in the future.",
+    "buyout_note": "The price is quoted according to the type of site requested.",
+    "info_title": "Important Service Information",
+    "info_items": [
+      { "title": "Subscription Service", "desc": "The website works only while the monthly plan is active and up to date." },
+      { "title": "Code Ownership", "desc": "We do not deliver source code under this model. Infrastructure belongs to Tecnonets." },
+      { "title": "Source Code Purchase (Buyout)", "desc": "Possibility of a release fee for full control in the future." },
+      { "title": "Domain Included", "desc": "Annual renewal of the domain (.com) included with active subscription." },
+      { "title": "Monthly Changes", "desc": "Includes minor changes (text, images). New features are quoted separately." },
+      { "title": "Technical Support", "desc": "We guarantee 100% operability, security, and speed." }
+    ],
+    "meta_title": "Professional Web Design and Create Website | Tecnonets",
+    "meta_description": "Specialists in creating professional websites: Landing Pages, corporate sites, and virtual stores. Web design in Colombia all-inclusive.",
+    "meta_keywords": "create website, web design, professional websites, web design colombia, high-conversion landing pages"
+  },
+  "Contact": {
+    "title": "Let's Talk About Your Project",
+    "subtitle": "Have an idea in mind? Tell us about your automation or web development needs.",
+    "loading_form": "Loading form...",
+    "meta_title": "Contact | Tecnonets - Quote your Web Project or Automation",
+    "meta_description": "Contact us to transform your business with professional web development and intelligent automation in Colombia."
+  },
+  "NotFound": {
+    "title": "404 - Page Not Found",
+    "subtitle": "Sorry, the resource you are looking for does not exist or has been moved.",
+    "cta": "Back to Home",
+    "meta_title": "Page Not Found | Tecnonets"
+  },
+  "Form": {
+    "name_label": "Name",
+    "name_placeholder": "Your name",
+    "email_label": "Email",
+    "email_placeholder": "you@email.com",
+    "country_label": "Country",
+    "country_placeholder": "🔍 Search or select your country...",
+    "phone_label": "Phone / WhatsApp",
+    "phone_placeholder": "310 123 4567",
+    "phone_hint": "Autocompletes when selecting country",
+    "phone_wait": "Select your country first",
+    "service_label": "Project Type",
+    "service_placeholder": "Select project type",
+    "service_options": {
+      "corporate": "Corporate Site",
+      "landing": "Landing Page",
+      "automation": "Google Sheets Automation",
+      "other": "Other"
+    },
+    "other_label": "Specify your need",
+    "other_placeholder": "How can we help you?",
+    "message_label": "Message",
+    "message_placeholder": "Tell us briefly about your project...",
+    "submit": "Send Message",
+    "submitting": "Sending...",
+    "success_title": "Message Sent!",
+    "success_desc": "Thank you for contacting us. We will respond as soon as possible via email or WhatsApp.",
+    "send_another": "Send another message",
+    "errors": {
+      "name": "Name is required",
+      "email": "Email is required",
+      "email_invalid": "Invalid email",
+      "phone": "Phone number is required",
+      "phone_digits": "Must have {digits} digits",
+      "country": "Country is required",
+      "service": "You must select a project type",
+      "other": "Please specify your need",
+      "message": "Message is required",
+      "no_country_results": "No countries found with \"{query}\""
+    }
+  },
+  "Privacy": {
+    "title": "Privacy <primary>Policy</primary>",
+    "update": "Last updated: {date}",
+    "intro_title": "Introduction",
+    "intro_text": "At <primary>Tecnonets</primary>, we are committed to protecting your privacy and ensuring the security of your personal data. This policy describes how we collect, use, and protect your information when you use our automation services, web development, and digital products.",
+    "coll_title": "Information We Collect",
+    "coll_contact_title": "Contact Information",
+    "coll_contact_desc": "Name, email, phone number, and company when you request our services or subscribe to our content.",
+    "coll_payment_title": "Payment Information",
+    "coll_payment_desc": "We process payments through secure third-party platforms. We do not store credit card information on our servers.",
+    "coll_usage_title": "Usage Data",
+    "coll_usage_desc": "Information about how you interact with our website via Google Analytics and Facebook Pixel to improve user experience.",
+    "usage_title": "How We Use Your Information",
+    "usage_items": [
+      "Provide and maintain our subscription services (WaaS)",
+      "Process payments and manage your client account",
+      "Send updates about your service, technical changes, and support",
+      "Improve our products and services through usage analysis",
+      "Comply with legal and fiscal obligations"
+    ],
+    "prot_title": "Data Protection",
+    "prot_intro": "We implement technical and organizational security measures to protect your data:",
+    "prot_items": [
+      "SSL certificates on all our websites",
+      "Secure storage on Google Drive with restricted permissions",
+      "Limited access only to authorized personnel",
+      "Regular backups of critical data"
+    ],
+    "cookies_title": "Cookies and Advertising (Google AdSense)",
+    "cookies_intro": "This site uses cookies to improve user experience and show relevant advertising. Specifically regarding Google AdSense:",
+    "cookies_items": [
+      "Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to your website or other websites.",
+      "Google's use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.",
+      "Users may opt out of personalized advertising by visiting <link>Ads Settings</link>."
+    ],
+    "cookies_extra": "We also use <strong>Google Analytics</strong> for traffic analysis and <strong>Facebook Pixel</strong> for conversion measurement.",
+    "rights_title": "Your Rights",
+    "rights_intro": "You have the right to:",
+    "rights_items": [
+      "Access your personal data",
+      "Rectify incorrect information",
+      "Request the deletion of your data",
+      "Object to the processing of your data",
+      "Data portability"
+    ],
+    "contact_title": "Contact",
+    "contact_text": "To exercise your rights or make inquiries about this privacy policy, contact us via WhatsApp or our contact form at <link>tecnonets.com/contacto</link>",
+    "meta_title": "Privacy Policy | Tecnonets",
+    "meta_description": "Tecnonets privacy policy and data protection"
+  },
+  "Terms": {
+    "title": "Terms & <primary>Conditions</primary>",
+    "update": "Last updated: {date}",
+    "accept_title": "Acceptance of Terms",
+    "accept_text": "By accessing and using <primary>Tecnonets</primary> services, you agree to be bound by these terms and conditions. If you do not agree with any part of these terms, you should not use our services.",
+    "services_title": "Services Offered",
+    "services_waas_title": "1. Website as a Service (WaaS)",
+    "services_waas_desc": "Development and maintenance of websites and landing pages under a monthly subscription model. Includes hosting, SSL, domain, technical support, and content updates according to the contracted plan.",
+    "services_auto_title": "2. Google Workspace Automation",
+    "services_auto_desc": "Development of custom scripts, integrations between Google Sheets, Forms, Calendar, and Gmail to optimize business processes.",
+    "services_prod_title": "3. Digital Products",
+    "services_prod_desc": "Sale of templates, scripts, and digital resources ready to use. Some products are free and others require a one-time payment.",
+    "waas_terms_title": "WaaS Service Terms - Important",
+    "waas_terms_items": [
+      { "title": "Subscription Model (WaaS):", "desc": "The service works under a subscription or \"lease\" model. The website is online and operational only while the monthly payment is active and up to date." },
+      { "title": "Code Ownership:", "desc": "Tecnonets maintains the intellectual and technical ownership of the source code, infrastructure, and implementation. The client has the right of use and commercial exploitation of the site during the plan's validity." },
+      { "title": "Support and Maintenance:", "desc": "Includes uptime monitoring, security patches, and technical support for server failures or crashes to guarantee site stability." },
+      { "title": "Monthly Changes Policy:", "desc": "Landing Pages: 1 minor monthly change. Corporate Site: 2 minor monthly changes (no redesigns)." },
+      { "title": "Blog and Content:", "desc": "Technical structure is delivered; article writing is not included." },
+      { "title": "Code Buyout:", "desc": "If you wish to migrate and own the code, you can request a buyout fee quote." }
+    ],
+    "payments_title": "Payments and Billing",
+    "payments_items": [
+      "Payments are processed through secure third-party platforms",
+      "Subscriptions renew automatically each month",
+      "Prices are subject to change with 30-day prior notice",
+      "No refunds are offered for the Setup Fee once development has started",
+      "You can cancel your subscription at any time without penalty"
+    ],
+    "cancel_title": "Cancellation and Refunds",
+    "cancel_waas_title": "WaaS Services:",
+    "cancel_waas_desc": "Cancel at any time. Service remains active until the end of the period + 7 grace days.",
+    "cancel_prod_title": "Digital Products:",
+    "cancel_prod_desc": "Due to their digital nature, no refunds are accepted after download.",
+    "intel_title": "Intellectual Property",
+    "intel_items": [
+      "All code and design created by Tecnonets are the exclusive property of the company",
+      "Clients receive a limited user license during their subscription",
+      "Client-provided content (logos, photos) remains the property of the client",
+      "Digital products grant personal or commercial license as specified"
+    ],
+    "limit_title": "Limitation of Liability",
+    "limit_intro": "Tecnonets is not responsible for:",
+    "limit_items": [
+      "Loss of data due to third-party failures",
+      "Service interruptions for scheduled maintenance",
+      "Indirect or consequential damages",
+      "Illegal content provided by the client"
+    ],
+    "ads_title": "Advertising and Google AdSense",
+    "ads_text": "This website shows ads from Google AdSense. You agree to comply with the guidelines:",
+    "ads_items": [
+      { "title": "Prohibition of invalid clicks:", "desc": "Artificial clicks or incentivizing third parties is strictly prohibited." },
+      { "title": "Deceptive navigation:", "desc": "Deceptive methods shall not be used to place ads confused with content." },
+      { "title": "Content:", "desc": "We commit not to show ads on restricted or illegal content." }
+    ],
+    "mod_title": "Modifications to Terms",
+    "mod_text": "We reserve the right to modify terms. Continued use after notification constitutes acceptance.",
+    "contact_title": "Contact",
+    "contact_text": "For inquiries, contact us via WhatsApp or our form at <link>tecnonets.com/contacto</link>",
+    "meta_title": "Terms and Conditions | Tecnonets",
+    "meta_description": "Terms and conditions of use for Tecnonets services"
+  },
+  "Blog": {
+    "title": "Blog & <italic>Tutorials</italic>",
+    "badge": "Valuable Content",
+    "subtitle": "Detailed step-by-step tutorials to master the technologies driving the future of the web.",
+    "empty": "No articles published yet.",
+    "read_more": "Read Post",
+    "sidebar_featured": "Featured",
+    "sidebar_help_title": "Looking for something specific?",
+    "sidebar_help_desc": "We automate your processes with Google Sheets and AppScript.",
+    "sidebar_cta": "Request Quote",
+    "sidebar_ads": "Advertising",
+    "back": "Back to Blog",
+    "share": "Share",
+    "help_box_title": "Do you like this content?",
+    "help_box_desc": "In our store we have premium resources ready to install.",
+    "help_box_cta": "Explore Store",
+    "meta_title": "Automation & Web Development Blog | Tecnonets",
+    "meta_description": "Learn to optimize your business with step-by-step tutorials on Google Apps Script, Excel, and professional web development."
+  },
+  "Guides": {
+    "title": "Pro <italic>Guides</italic>",
+    "badge": "Valuable Content",
+    "subtitle": "Detailed step-by-step tutorials to master the technologies driving the future of the web.",
+    "read_more": "Read Guide",
+    "back": "Back to Guides",
+    "meta_title": "Technical Guides | Tecnonets",
+    "meta_description": "Learn with our comprehensive guides on web development, PWA, SEO, and more."
   }
 }

@@ -2,61 +2,73 @@
   {
     "id": "crm-sheets",
     "title": "CRM Completo en Google Sheets",
+    "title_en": "Complete CRM in Google Sheets",
     "price": 29,
     "category": "Google Sheets",
     "tags": ["ventas", "clientes", "crm", "gestión"],
     "image": "/images/products/crm-placeholder.jpg",
     "description": "Sistema de gestión de clientes con dashboard automático y envío de correos.",
+    "description_en": "Customer management system with automatic dashboard and email scheduling.",
     "checkoutUrl": "https://tecnonets.lemonsqueezy.com/checkout/buy/cbe21f86-a451-4209-8b24-c2d523fbf554"
   },
   {
     "id": "landing-gym",
     "title": "Template Landing Page Gimnasio",
+    "title_en": "Gym Landing Page Template",
     "price": 49,
     "category": "Next.js",
     "tags": ["deporte", "salud", "gym", "fitness"],
     "image": "/images/products/gym-placeholder.jpg",
     "description": "Plantilla moderna dark mode para centros deportivos o entrenadores.",
+    "description_en": "Modern dark mode template for sport centers or personal trainers.",
     "checkoutUrl": "https://tecnonets.lemonsqueezy.com/checkout/buy/cbe21f86-a451-4209-8b24-c2d523fbf554"
   },
   {
     "id": "landing-barberia",
     "title": "Plantilla Barbería Vintage",
+    "title_en": "Vintage Barbershop Template",
     "price": 45,
     "category": "Next.js",
     "tags": ["barbería", "estilismo", "citas", "belleza"],
     "image": "/images/products/barber-placeholder.jpg",
     "description": "Diseño clásico con sistema de reservas integrado y galería de cortes.",
+    "description_en": "Classic design with integrated booking system and haircut gallery.",
     "checkoutUrl": "https://tecnonets.lemonsqueezy.com/checkout/buy/cbe21f86-a451-4209-8b24-c2d523fbf554"
   },
   {
     "id": "menu-restaurante",
     "title": "Menú Digital Q-Restaurant",
+    "title_en": "Q-Restaurant Digital Menu",
     "price": 39,
     "category": "Next.js",
     "tags": ["restaurante", "comida", "menú", "qr"],
     "image": "/images/products/menu-placeholder.jpg",
     "description": "Carta digital interactiva con categorías y fotos de platos.",
+    "description_en": "Interactive digital menu with categories and dish photos.",
     "checkoutUrl": "https://tecnonets.lemonsqueezy.com/checkout/buy/cbe21f86-a451-4209-8b24-c2d523fbf554"
   },
   {
     "id": "bot-whatsapp",
     "title": "Bot de Reservas WhatsApp",
+    "title_en": "WhatsApp Reservation Bot",
     "price": 35,
     "category": "Automation",
     "tags": ["mensajería", "bot", "whatsapp", "reservas"],
     "image": "/images/products/bot-placeholder.jpg",
     "description": "Script para agendar citas automáticamente leyendo mensajes.",
+    "description_en": "Script to automatically schedule appointments by reading messages.",
     "checkoutUrl": "https://tecnonets.lemonsqueezy.com/checkout/buy/cbe21f86-a451-4209-8b24-c2d523fbf554"
   },
   {
     "id": "dashboard-finanzas",
     "title": "Dashboard Financiero Personal",
+    "title_en": "Personal Financial Dashboard",
     "price": 19,
     "category": "Google Sheets",
     "tags": ["finanzas", "dinero", "ahorro", "presupuesto"],
     "image": "/images/products/finance-placeholder.jpg",
     "description": "Controla tus gastos e ingresos con gráficos mensuales interactivos.",
+    "description_en": "Track your expenses and income with interactive monthly charts.",
     "checkoutUrl": "https://tecnonets.lemonsqueezy.com/checkout/buy/cbe21f86-a451-4209-8b24-c2d523fbf554"
   }
 ]

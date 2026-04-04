@@ -1,14 +1,40 @@
+import { Metadata } from 'next';
+import { getTranslations, getLocale } from "next-intl/server";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Section } from "@/components/ui/Section";
 import { Shield, Lock, Eye, Database, UserCheck, Mail } from "lucide-react";
+import { Link } from "@/i18n/routing";
 
-export const metadata = {
-  title: "Política de Privacidad | Tecnonets",
-  description: "Política de privacidad y protección de datos de Tecnonets",
-};
+// SEO Metadata
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Privacy");
+  
+  return {
+    title: t("meta_title"),
+    description: t("meta_description"),
+  };
+}
 
-export default function PrivacyPage() {
+export default async function PrivacyPage() {
+  const t = await getTranslations("Privacy");
+  const locale = await getLocale();
+  
+  const richTextConfig = {
+    primary: (chunks: React.ReactNode) => <span className="text-primary italic">{chunks}</span>,
+    bold: (chunks: React.ReactNode) => <span className="text-primary font-bold">{chunks}</span>,
+    link: (chunks: React.ReactNode) => (
+      <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-bold">
+        {chunks}
+      </a>
+    ),
+    contact_link: (chunks: React.ReactNode) => (
+      <Link href="/contacto" className="text-primary hover:underline font-bold">
+        {chunks}
+      </Link>
+    )
+  };
+
   return (
     <>
       <Navbar />
@@ -18,178 +44,140 @@ export default function PrivacyPage() {
             {/* Header */}
             <div className="text-center mb-16">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 mb-6 shadow-xl">
-                <Shield className="w-8 h-8 text-primary" />
+                < Shield className="w-8 h-8 text-primary" />
               </div>
               <h1 className="text-4xl md:text-5xl font-bold font-heading text-foreground mb-4">
-                Política de <span className="text-primary italic">Privacidad</span>
+                {t.rich("title", {
+                  primary: (chunks) => <span className="text-primary italic">{chunks}</span>
+                })}
               </h1>
               <p className="text-muted-foreground font-bold">
-                Última actualización: {new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
+                {t("update", { date: new Date().toLocaleDateString(locale === 'es' ? 'es-ES' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' }) })}
               </p>
             </div>
 
             {/* Content */}
             <div className="prose prose-slate dark:prose-invert prose-lg max-w-none space-y-12">
               
-              {/* Introducción */}
+              {/* Introduction */}
               <div className="bg-card border border-card-border rounded-2xl p-8 shadow-sm">
                 <h2 className="text-2xl font-bold text-card-foreground mb-4 flex items-center gap-3">
                   <Eye className="w-6 h-6 text-primary" />
-                  Introducción
+                  {t("intro_title")}
                 </h2>
                 <p className="text-muted-foreground leading-relaxed font-medium">
-                  En <span className="text-primary font-bold">Tecnonets</span>, nos comprometemos a proteger tu privacidad y garantizar la seguridad de tus datos personales. Esta política describe cómo recopilamos, usamos y protegemos tu información cuando utilizas nuestros servicios de automatización, desarrollo web y productos digitales.
+                  {t.rich("intro_text", richTextConfig)}
                 </p>
               </div>
 
-              {/* Información que Recopilamos */}
+              {/* Data Collection */}
               <div className="bg-card border border-card-border rounded-2xl p-8 shadow-sm">
                 <h2 className="text-2xl font-bold text-card-foreground mb-4 flex items-center gap-3">
                   <Database className="w-6 h-6 text-primary" />
-                  Información que Recopilamos
+                  {t("coll_title")}
                 </h2>
                 <div className="space-y-4 text-muted-foreground font-medium">
                   <div>
-                    <h3 className="text-lg font-bold text-card-foreground mb-2">Información de Contacto</h3>
-                    <p className="leading-relaxed">Nombre, correo electrónico, número de teléfono y empresa cuando solicitas nuestros servicios o te suscribes a nuestro contenido.</p>
+                    <h3 className="text-lg font-bold text-card-foreground mb-2">{t("coll_contact_title")}</h3>
+                    <p className="leading-relaxed">{t("coll_contact_desc")}</p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-card-foreground mb-2">Información de Pago</h3>
-                    <p className="leading-relaxed">Procesamos pagos a través de plataformas seguras de terceros. No almacenamos información de tarjetas de crédito en nuestros servidores.</p>
+                    <h3 className="text-lg font-bold text-card-foreground mb-2">{t("coll_payment_title")}</h3>
+                    <p className="leading-relaxed">{t("coll_payment_desc")}</p>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-card-foreground mb-2">Datos de Uso</h3>
-                    <p className="leading-relaxed">Información sobre cómo interactúas con nuestro sitio web mediante Google Analytics y Facebook Pixel para mejorar la experiencia del usuario.</p>
+                    <h3 className="text-lg font-bold text-card-foreground mb-2">{t("coll_usage_title")}</h3>
+                    <p className="leading-relaxed">{t("coll_usage_desc")}</p>
                   </div>
                 </div>
               </div>
 
-              {/* Cómo Usamos tu Información */}
+              {/* How we use information */}
               <div className="bg-card border border-card-border rounded-2xl p-8 shadow-sm">
                 <h2 className="text-2xl font-bold text-card-foreground mb-4 flex items-center gap-3">
                   <UserCheck className="w-6 h-6 text-primary" />
-                  Cómo Usamos tu Información
+                  {t("usage_title")}
                 </h2>
                 <ul className="space-y-3 text-muted-foreground font-medium">
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Proveer y mantener nuestros servicios de suscripción (WaaS)</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Procesar pagos y gestionar tu cuenta de cliente</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Enviar actualizaciones sobre tu servicio, cambios técnicos y soporte</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Mejorar nuestros productos y servicios mediante análisis de uso</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Cumplir con obligaciones legales y fiscales</span>
-                  </li>
+                  {(t.raw("usage_items") as string[]).map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="text-primary mt-1 font-bold">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
-              {/* Protección de Datos */}
+              {/* Data Protection */}
               <div className="bg-card border border-card-border rounded-2xl p-8 shadow-sm">
                 <h2 className="text-2xl font-bold text-card-foreground mb-4 flex items-center gap-3">
                   <Lock className="w-6 h-6 text-primary" />
-                  Protección de Datos
+                  {t("prot_title")}
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-4 font-medium">
-                  Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos:
+                  {t("prot_intro")}
                 </p>
                 <ul className="space-y-3 text-muted-foreground font-medium">
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Certificados SSL en todos nuestros sitios web</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Almacenamiento seguro en Google Drive con permisos restringidos</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Acceso limitado solo a personal autorizado</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Backups regulares de datos críticos</span>
-                  </li>
+                   {(t.raw("prot_items") as string[]).map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="text-primary mt-1 font-bold">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
+              {/* Cookies & AdSense */}
               <div className="bg-card border border-card-border rounded-2xl p-8 shadow-sm">
-                <h2 className="text-2xl font-bold text-card-foreground mb-4">Cookies y Publicidad (Google AdSense)</h2>
+                <h2 className="text-2xl font-bold text-card-foreground mb-4">{t("cookies_title")}</h2>
                 <div className="text-muted-foreground leading-relaxed mb-4 font-medium space-y-4">
-                  <p>Este sitio utiliza cookies para mejorar la experiencia del usuario y mostrar publicidad relevante. Específicamente respecto a Google AdSense:</p>
+                  <p>{t("cookies_intro")}</p>
                   <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <span className="text-primary mt-1 font-bold">•</span>
-                      <span>Proveedores externos, incluido Google, utilizan cookies para mostrar anuncios basados en las visitas anteriores del usuario a su sitio web o a otros sitios web.</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-primary mt-1 font-bold">•</span>
-                      <span>El uso de cookies publicitarias permite a Google y a sus socios mostrar anuncios a los usuarios basados en sus visitas a sus sitios y/o a otros sitios de Internet.</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-primary mt-1 font-bold">•</span>
-                      <span>
-                        Los usuarios pueden inhabilitar la publicidad personalizada visitando <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-bold">Configuración de Anuncios</a>. 
-                      </span>
-                    </li>
+                    {(t.raw("cookies_items") as string[]).map((item, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="text-primary mt-1 font-bold">•</span>
+                        <span>
+                          {i === 2 ? t.rich(`cookies_items.${i}`, richTextConfig) : item}
+                        </span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="mt-4 pt-4 border-t border-card-border">
                   <p className="text-sm text-muted-foreground font-bold">
-                    Además utilizamos <strong>Google Analytics</strong> para análisis de tráfico y <strong>Facebook Pixel</strong> para medición de conversiones.
+                    {t.rich("cookies_extra", {
+                      strong: (chunks) => <strong>{chunks}</strong>
+                    })}
                   </p>
                 </div>
               </div>
 
-              {/* Tus Derechos */}
+              {/* Rights */}
               <div className="bg-card border border-card-border rounded-2xl p-8 shadow-sm">
-                <h2 className="text-2xl font-bold text-card-foreground mb-4">Tus Derechos</h2>
+                <h2 className="text-2xl font-bold text-card-foreground mb-4">{t("rights_title")}</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4 font-medium">
-                  Tienes derecho a:
+                  {t("rights_intro")}
                 </p>
                 <ul className="space-y-3 text-muted-foreground font-medium">
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Acceder a tus datos personales</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Rectificar información incorrecta</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Solicitar la eliminación de tus datos</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Oponerte al procesamiento de tus datos</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-primary mt-1 font-bold">•</span>
-                    <span>Portabilidad de datos</span>
-                  </li>
+                  {(t.raw("rights_items") as string[]).map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="text-primary mt-1 font-bold">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
-              {/* Contacto */}
+              {/* Contact */}
               <div className="bg-primary/5 border border-primary/20 rounded-2xl p-8 shadow-xl">
                 <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center gap-3">
                   <Mail className="w-6 h-6 text-primary" />
-                  Contacto
+                  {t("contact_title")}
                 </h2>
                 <p className="text-muted-foreground leading-relaxed font-medium">
-                  Para ejercer tus derechos o realizar consultas sobre esta política de privacidad, contáctanos a través de WhatsApp o nuestro formulario de contacto en{" "}
-                  <a href="/contacto" className="text-primary hover:underline font-bold">tecnonets.com/contacto</a>
+                  {t.rich("contact_text", {
+                    link: (chunks) => <Link href="/contacto" className="text-primary hover:underline font-bold">{chunks}</ Link>
+                  })}
                 </p>
               </div>
 

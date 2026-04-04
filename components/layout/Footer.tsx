@@ -70,7 +70,7 @@ export function Footer() {
                   href="/servicios/desarrollo-web" 
                   className="text-muted-foreground hover:text-primary transition-colors font-bold"
                 >
-                  Diseño de Páginas Web
+                  {t('web_design')}
                 </Link>
               </li>
             </ul>
