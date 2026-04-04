@@ -29,7 +29,7 @@ const jsonLd = {
       },
       "description": "Expertos en diseño de páginas web profesionales y automatización de procesos con Google Workspace en Colombia.",
       "sameAs": [
-        "https://wa.me/573244916040",
+        "https://wa.me/573207093764",
         "https://youtube.com/@technonets",
         "https://www.tiktok.com/@technonets"
       ]
@@ -50,7 +50,7 @@ const jsonLd = {
         "longitude": -74.0817
       },
       "url": "https://tecnonets.com",
-      "telephone": "+573244916040",
+      "telephone": "+573207093764",
       "priceRange": "$$"
     },
     {

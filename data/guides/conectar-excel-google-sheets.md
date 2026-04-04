@@ -30,14 +30,21 @@ Primero, necesitamos crear el "receptor" en la nube que recibirá los datos de E
 > **Nombre de la Hoja**: Para que el código funcione sin cambios, la pestaña de tu Google Sheet donde se guardarán los registros debe llamarse exactamente **"Datos"**. Si prefieres otro nombre, deberás modificarlo en la variable `NOMBRE_HOJA_DATOS` del script.
 
 1. Abre tu Google Sheet y ve a **Extensiones > Apps Script**.
-2. Copia y pega el siguiente código (reemplazando `ID_HOJA_CALCULO` con el ID de tu hoja):
+2. Copia y pega el siguiente código en el editor:
+
+> [!TIP]
+> **¿Cómo obtener el ID de tu hoja?**
+> Lo encuentras en la URL de tu navegador, entre `/d/` y `/edit`.
+> Ejemplo: `https://docs.google.com/spreadsheets/d/1z6...98I/edit` -> El ID es **`1z6...98I`**.
 
 ```javascript
 /**
  * Procesa solicitudes POST enviadas desde Excel VBA y agrega los datos a Google Sheets.
  */
 function doPost(solicitud) {
-  const ID_HOJA_CALCULO = "1z6cokWXQVm4iRHrmqKrn4JgF4Ulty-xf5wcXG6AJ98I";
+  // 1. REEMPLAZA ESTO CON EL ID DE TU GOOGLE SHEET (lo obtuviste arriba)
+  const ID_HOJA_CALCULO = "TU_ID_DE_HOJA_AQUI";
+
   const NOMBRE_HOJA_DATOS = "Datos";
   const NOMBRE_HOJA_LOGS = "Logs";
 
@@ -143,24 +150,18 @@ Para que Excel pueda comunicarse con el mundo exterior, necesitamos configurar e
 > [!IMPORTANT]
 > **Nombre de la Hoja en Excel**: Tu libro de Excel debe tener una pestaña llamada exactamente **"Info"**, que es donde el código buscará los datos para enviar.
 
-### ⚙️ Requisitos Técnicos y Referencias
+### ⚙️ Preparación del Entorno en Excel
 
-Antes de pegar el código, es vital entender cómo Excel gestiona las librerías externas. Tienes dos caminos:
+Para que Excel pueda conectarse con Google Sheets, necesitamos habilitar la comunicación HTTP. Aquí te explico qué debes configurar antes de usar el código:
 
-| Característica  | **Early Binding** (Recomendado)         | **Late Binding** (Compatible)    |
-| :-------------- | :-------------------------------------- | :------------------------------- |
-| **Referencia**  | Requiere marcar "Microsoft XML, v6.0"   | No requiere configuración previa |
-| **Velocidad**   | Más rápido (compilación previa)         | Ligeramente más lento            |
-| **Desarrollo**  | Tiene **IntelliSense** (autocompletado) | Sin ayuda del editor             |
-| **Estabilidad** | Alta en entornos controlados            | Alta en distribución masiva      |
+> [!TIP]
+> **Elección de Referencia**: Recomendamos activar la referencia manual. Esto permite que Excel "entienda" mejor las peticiones y sea más rápido al procesar los datos.
 
-#### Cómo activar la referencia (Paso Crítico)
+#### Cómo activar la Referencia (Muy Recomendado)
 
-Si buscas estabilidad y facilidad al programar, activa la referencia:
-
-1. En el editor de VBA (`Alt + F11`), ve a **Herramientas > Referencias**.
-2. Busca y marca **Microsoft XML, v6.0**.
-3. Haz clic en **Aceptar**.
+1. En el editor de VBA (`Alt + F11`), dirígete al menú superior en **Herramientas > Referencias**.
+2. Desliza la lista hasta encontrar **Microsoft XML, v6.0** y marca la casilla.
+3. Haz clic en **Aceptar**. Esto activará el soporte nativo para peticiones web de alto rendimiento.
 
 ---
 

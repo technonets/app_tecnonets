@@ -174,7 +174,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                                      USD: product.category === 'Landing Pages' ? '$39' : `$${Math.round((product.monthlyPrice || 0) / 4000)}` 
                                   }
                                }}
-                               ctaLink={`https://wa.me/573000000000?text=${encodeURIComponent(`Hola, me interesa el plan WaaS (Website as a Service): ${product.title}`)}`}
+                               ctaLink={`https://wa.me/573207093764?text=${encodeURIComponent(`Hola, me interesa el plan WaaS (Website as a Service): ${product.title}`)}`}
                                isPopular={false}
                                setupFeatures={(product.category === 'Landing Pages' || product.title.includes('Landing')) ? [
                                   "Diseño Personalizado High-Conversion",
