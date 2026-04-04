@@ -1,0 +1,36 @@
+{
+  "Index": {
+    "title": "Web Design and Create Professional Website | Tecnonets",
+    "description": "Experts in creating professional websites, high-conversion landing pages, and web design solutions in Colombia. Transform your digital presence!",
+    "keywords": "create website, web design, professional websites, web development colombia, professional landing pages"
+  },
+  "Navbar": {
+    "home": "Home",
+    "services": "Services",
+    "store": "Store",
+    "guides": "Guides",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "title": "Professional Web <italic>Design</italic> <br/> & Process Automation",
+    "subtitle": "We optimize workflows through advanced automation with Google Workspace and develop high-performance web infrastructure.",
+    "cta_services": "Check Services",
+    "cta_catalog": "View Resource Catalog"
+  },
+  "WhatsApp": {
+    "message": "Hello, I'm interested in learning more about your services.",
+    "tooltip": "Contact us!"
+  },
+  "Footer": {
+    "rights": "All rights reserved.",
+    "description": "Specialists in <bold>web design</bold> and <bold>professional website creation</bold>. Advanced automation with Google Apps Script.",
+    "services": "Services",
+    "resources": "Resources",
+    "allies": "Allies",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "youtube_aria": "Visit our YouTube channel",
+    "tiktok_aria": "Follow us on TikTok"
+  }
+}

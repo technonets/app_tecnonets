@@ -1,0 +1,36 @@
+{
+  "Index": {
+    "title": "Diseño de Páginas Web y Crear Página Web Profesional | Tecnonets",
+    "description": "Expertos en crear páginas web profesionales, landing pages de alta conversión y soluciones de diseño web en Colombia. ¡Transforma tu presencia digital!",
+    "keywords": "crear página web, diseño de páginas web, páginas web profesionales, desarrollo web colombia, landing pages profesionales"
+  },
+  "Navbar": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "store": "Tienda",
+    "guides": "Guías",
+    "blog": "Blog",
+    "contact": "Contacto"
+  },
+  "Hero": {
+    "title": "Diseño de Páginas Web <italic>Profesionales</italic> <br/> & Automatización de Procesos",
+    "subtitle": "Optimizamos flujos de trabajo mediante automatización avanzada con Google Workspace y desarrollamos infraestructura web de alto rendimiento.",
+    "cta_services": "Consultar Servicios",
+    "cta_catalog": "Ver Catálogo de Recursos"
+  },
+  "WhatsApp": {
+    "message": "Hola, me interesa saber más sobre sus servicios.",
+    "tooltip": "¡Contáctanos!"
+  },
+  "Footer": {
+    "rights": "Todos los derechos reservados.",
+    "description": "Especialistas en <bold>diseño de páginas web</bold> y <bold>crear página web profesional</bold>. Automatización avanzada con Google Apps Script.",
+    "services": "Servicios",
+    "resources": "Recursos",
+    "allies": "Aliados",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "youtube_aria": "Visitar nuestro canal de YouTube",
+    "tiktok_aria": "Seguirnos en TikTok"
+  }
+}

@@ -1,10 +1,12 @@
-
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { Badge } from "@/components/ui/Badge";
+import { useTranslations } from 'next-intl';
 
 export function Hero() {
+  const t = useTranslations('Hero');
+
   return (
     <Section className="min-h-[85vh] flex items-center justify-center border-b border-border/50">
       {/* Industrial Background Grid */}
@@ -18,20 +20,22 @@ export function Hero() {
         </div>
         
         <h1 className="text-4xl md:text-7xl font-bold font-heading tracking-tight leading-[1.1] text-foreground">
-          Diseño de Páginas Web <span className="text-primary italic">Profesionales</span> <br className="hidden sm:block" />
-          & Automatización de Procesos
+          {t.rich('title', {
+            italic: (chunks) => <span className="text-primary italic">{chunks}</span>,
+            br: () => <br className="hidden sm:block" />
+          })}
         </h1>
         
         <p className="text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed font-medium">
-          Optimizamos flujos de trabajo mediante automatización avanzada con Google Workspace y desarrollamos infraestructura web de alto rendimiento.
+          {t('subtitle')}
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Button href="/servicios/automatizacion" size="lg" className="w-full sm:w-auto gap-2">
-            Consultar Servicios <ArrowRight className="w-5 h-5" />
+            {t('cta_services')} <ArrowRight className="w-5 h-5" />
           </Button>
           <Button href="/tienda" variant="outline" size="lg" className="w-full sm:w-auto">
-            Ver Catálogo de Recursos
+            {t('cta_catalog')}
           </Button>
         </div>
       </div>

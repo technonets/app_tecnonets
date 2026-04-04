@@ -1,11 +1,13 @@
 'use client';
 
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from 'next-intl';
 
 export function WhatsAppButton() {
+  const t = useTranslations('WhatsApp');
   
   const phoneNumber = "573207093764";
-  const message = "Hola, me interesa saber más sobre sus servicios.";
+  const message = t('message');
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     message
@@ -26,7 +28,7 @@ export function WhatsAppButton() {
         {/* Sophisticated Tooltip with Glassmorphism */}
         <span className="absolute right-full mr-5 bg-foreground/90 backdrop-blur-md text-background text-[11px] font-bold px-4 py-2 rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0 whitespace-nowrap hidden md:flex items-center gap-2 border border-white/10 shadow-2xl">
           <div className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-          ¡Contáctanos!
+          {t('tooltip')}
           {/* Tooltip Arrow */}
           <span className="absolute top-1/2 -right-1.5 -mt-1.5 border-[6px] border-transparent border-l-foreground/90"></span>
         </span>

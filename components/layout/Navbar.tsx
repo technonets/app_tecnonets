@@ -1,20 +1,23 @@
 'use client';
 import { useState } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { Menu, X, ShoppingBag, Code, Grid, Monitor, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { ThemeToggle } from './ThemeToggle';
+import { LocaleSwitcher } from '@/components/ui/LocaleSwitcher';
+import { useTranslations } from 'next-intl';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const t = useTranslations('Navbar');
+
   const navLinks = [
-    { name: 'Automatización', href: '/servicios/automatizacion', icon: Grid },
-    { name: 'Desarrollo Web', href: '/servicios/desarrollo-web', icon: Monitor },
-    { name: 'Tienda', href: '/tienda', icon: ShoppingBag },
-    { name: 'Blog', href: '/blog', icon: Code },
-    { name: 'Guías', href: '/guias', icon: BookOpen },
+    { name: t('services'), href: '/servicios/automatizacion', icon: Grid },
+    { name: t('store'), href: '/tienda', icon: ShoppingBag },
+    { name: t('blog'), href: '/blog', icon: Code },
+    { name: t('guides'), href: '/guias', icon: BookOpen },
   ];
 
   return (
@@ -52,10 +55,11 @@ export function Navbar() {
           </div>
           
           <div className="hidden md:flex items-center gap-4">
+            <LocaleSwitcher />
             <ThemeToggle />
             <Link href="/contacto">
                 <Button variant="primary" size="sm" className="font-bold uppercase tracking-widest text-xs">
-                Contactar
+                {t('contact')}
                 </Button>
             </Link>
           </div>
@@ -87,11 +91,17 @@ export function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <div className="pt-4 pb-2 flex items-center justify-between px-3">
-              <Link href="/contacto" onClick={() => setIsOpen(false)} className="flex-1 mr-4">
-                <Button className="w-full" variant="primary">Contactar</Button>
+            <div className="pt-4 pb-2 border-t border-border/50 space-y-4">
+              <div className="flex items-center justify-between px-3">
+                <span className="text-xs font-bold text-muted-foreground uppercase opacity-50">Configuración</span>
+                <div className="flex items-center gap-3">
+                  <LocaleSwitcher />
+                  <ThemeToggle />
+                </div>
+              </div>
+              <Link href="/contacto" onClick={() => setIsOpen(false)} className="block px-3">
+                <Button className="w-full" variant="primary">{t('contact')}</Button>
               </Link>
-              <ThemeToggle />
             </div>
           </div>
         </div>

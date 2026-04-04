@@ -1,10 +1,14 @@
 'use client';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { Youtube, Mail, Github, Twitter } from 'lucide-react';
 import { SiTiktok } from 'react-icons/si';
+import { useTranslations } from 'next-intl';
 
 export function Footer() {
+  const t = useTranslations('Footer');
+  const n = useTranslations('Navbar');
+
   return (
     <footer className="border-t border-border/50 bg-background pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,7 +28,9 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-muted-foreground max-w-sm font-medium">
-              Especialistas en <strong>diseño de páginas web</strong> y <strong>crear página web profesional</strong>. Automatización avanzada con Google Apps Script.
+              {t.rich('description', {
+                bold: (chunks) => <strong>{chunks}</strong>
+              })}
             </p>
             <div className="flex gap-4 mt-6">
               <a 
@@ -32,7 +38,7 @@ export function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-muted-foreground hover:text-red-500 transition-colors"
-                aria-label="Visitar nuestro canal de YouTube"
+                aria-label={t('youtube_aria')}
               >
                 <Youtube className="w-6 h-6" />
               </a>
@@ -41,7 +47,7 @@ export function Footer() {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Seguirnos en TikTok"
+                aria-label={t('tiktok_aria')}
               >
                 <SiTiktok className="w-6 h-6" />
               </a>
@@ -49,32 +55,20 @@ export function Footer() {
           </div>
           
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-4 text-foreground uppercase tracking-tight">Servicios</h3>
+            <h3 className="font-heading font-semibold text-lg mb-4 text-foreground uppercase tracking-tight">{t('services')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link 
                   href="/servicios/automatizacion" 
                   className="text-muted-foreground hover:text-primary transition-colors font-bold"
-                  onClick={(e) => {
-                    if (window.location.pathname === '/servicios/automatizacion') {
-                      e.preventDefault();
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                  }}
                 >
-                  Automatización (Google)
+                  {n('services')}
                 </Link>
               </li>
               <li>
                 <Link 
                   href="/servicios/desarrollo-web" 
                   className="text-muted-foreground hover:text-primary transition-colors font-bold"
-                  onClick={(e) => {
-                    if (window.location.pathname === '/servicios/desarrollo-web') {
-                      e.preventDefault();
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                  }}
                 >
                   Diseño de Páginas Web
                 </Link>
@@ -83,54 +77,36 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-4 text-foreground uppercase tracking-tight">Recursos</h3>
+            <h3 className="font-heading font-semibold text-lg mb-4 text-foreground uppercase tracking-tight">{t('resources')}</h3>
             <ul className="space-y-3">
               <li>
                 <Link 
                   href="/tienda" 
                   className="text-muted-foreground hover:text-primary transition-colors font-bold"
-                  onClick={(e) => {
-                    if (window.location.pathname === '/tienda') {
-                      e.preventDefault();
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                  }}
                 >
-                  Tienda de Código
+                  {n('store')}
                 </Link>
               </li>
               <li>
                 <Link 
                   href="/blog" 
                   className="text-muted-foreground hover:text-primary transition-colors font-bold"
-                  onClick={(e) => {
-                    if (window.location.pathname === '/blog') {
-                      e.preventDefault();
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                  }}
                 >
-                  Blog & Tutoriales
+                  {n('blog')}
                 </Link>
               </li>
               <li>
                 <Link 
                   href="/contacto" 
                   className="text-muted-foreground hover:text-primary transition-colors font-bold"
-                  onClick={(e) => {
-                    if (window.location.pathname === '/contacto') {
-                      e.preventDefault();
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                  }}
                 >
-                  Contacto
+                  {n('contact')}
                 </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-4 text-foreground uppercase tracking-tight">Aliados</h3>
+            <h3 className="font-heading font-semibold text-lg mb-4 text-foreground uppercase tracking-tight">{t('allies')}</h3>
             <ul className="space-y-3">
               <li>
                 <a 
@@ -148,11 +124,11 @@ export function Footer() {
         
         <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground font-bold" suppressHydrationWarning>
-            © {new Date().getFullYear()} Tecnonets. Todos los derechos reservados.
+            © {new Date().getFullYear()} Tecnonets. {t('rights')}
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground font-bold">
-            <Link href="/privacidad" className="hover:text-primary transition-colors">Privacidad</Link>
-            <Link href="/terminos" className="hover:text-primary transition-colors">Términos</Link>
+            <Link href="/privacidad" className="hover:text-primary transition-colors">{t('privacy')}</Link>
+            <Link href="/terminos" className="hover:text-primary transition-colors">{t('terms')}</Link>
           </div>
         </div>
       </div>
