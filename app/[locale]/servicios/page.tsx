@@ -1,5 +1,5 @@
 import { Link } from "@/i18n/routing";
-import { ArrowRight, Grid, Monitor, CheckCircle } from "lucide-react";
+import { ArrowRight, Grid, Monitor, CheckCircle, Video } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card, CardTitle, CardDescription } from "@/components/ui/Card";
 import { Section } from "@/components/ui/Section";
@@ -50,6 +50,15 @@ export default async function ServicesPage() {
       color: "text-violet-400",
       bg: "bg-violet-500/20",
       features: t.raw("web_features")
+    },
+    {
+      title: t("video_title"),
+      description: t("video_desc"),
+      icon: Video,
+      href: "/servicios/edicion-video",
+      color: "text-rose-400",
+      bg: "bg-rose-500/20",
+      features: t.raw("video_features")
     }
   ];
 
@@ -89,7 +98,7 @@ export default async function ServicesPage() {
              <AdBanner slot="services_main_top" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {servicesList.map((service) => (
               <Link key={service.title} href={service.href} className="group">
                 <Card className="h-full hover:border-primary/50 transition-all duration-300">

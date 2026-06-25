@@ -73,6 +73,14 @@ export function Footer() {
                   {t('web_design')}
                 </Link>
               </li>
+              <li>
+                <Link 
+                  href="/servicios/edicion-video" 
+                  className="text-muted-foreground hover:text-primary transition-colors font-bold"
+                >
+                  {t('video_editing')}
+                </Link>
+              </li>
             </ul>
           </div>
 
