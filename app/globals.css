@@ -243,3 +243,12 @@ body {
   background: rgba(255, 255, 255, 0.1);
   transform: translateY(-1px);
 }
+
+/* Utilidades para ocultar barras de scroll horizontales molestas */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

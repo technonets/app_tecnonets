@@ -11,7 +11,8 @@
     "guides": "Guides",
     "blog": "Blog",
     "contact": "Contact",
-    "settings": "Settings"
+    "settings": "Settings",
+    "account": "Login / Portal"
   },
   "Hero": {
     "badge_primary": "Digital Solutions",
@@ -113,6 +114,7 @@
     "benefit_2": "Specialized technical support",
     "benefit_3": "Guaranteed updates",
     "recommended": "Recommended",
+    "sponsored": "Sponsored",
     "plans": {
       "landing": {
         "setup_features": [

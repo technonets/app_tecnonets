@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
-import { Menu, X, ShoppingBag, Code, Grid, Monitor, BookOpen } from 'lucide-react';
+import { Menu, X, ShoppingBag, Code, Grid, Monitor, BookOpen, User } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { ThemeToggle } from './ThemeToggle';
 import { LocaleSwitcher } from '@/components/ui/LocaleSwitcher';
@@ -54,9 +54,16 @@ export function Navbar() {
             </div>
           </div>
           
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
             <LocaleSwitcher />
             <ThemeToggle />
+            <Link 
+              href="/login"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg border border-border text-foreground hover:bg-foreground/5 hover:text-primary transition-all"
+            >
+              <User className="w-3.5 h-3.5" />
+              <span>{t('account')}</span>
+            </Link>
             <Link href="/contacto">
                 <Button variant="primary" size="sm" className="font-bold uppercase tracking-widest text-xs">
                 {t('contact')}
@@ -91,6 +98,16 @@ export function Navbar() {
                 {link.name}
               </Link>
             ))}
+
+            <Link
+              href="/login"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center gap-3 px-3 py-4 rounded-md text-base font-bold text-primary hover:bg-foreground/5 transition-all"
+            >
+              <User className="h-5 w-5 text-primary" />
+              <span>{t('account')}</span>
+            </Link>
+
             <div className="pt-4 pb-2 border-t border-border/50 space-y-4">
               <div className="flex items-center justify-between px-3">
                 <span className="text-xs font-bold text-muted-foreground uppercase opacity-50">{t('settings')}</span>

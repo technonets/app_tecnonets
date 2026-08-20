@@ -10,7 +10,7 @@ import { Product } from '@/types/product';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 
-export function StoreGrid({ initialProducts }: { initialProducts: Product[] }) {
+export function StoreGrid({ initialProducts = [] }: { initialProducts: Product[] }) {
   const t = useTranslations('Store');
   const locale = useLocale();
   const [activeCategory, setActiveCategory] = useState("Todos");
@@ -26,20 +26,24 @@ export function StoreGrid({ initialProducts }: { initialProducts: Product[] }) {
     { id: "Automatización", label: t('cat_automation') }
   ];
 
-  const filteredProducts = initialProducts.filter(product => {
+  const safeProducts = Array.isArray(initialProducts) ? initialProducts : [];
+
+  const filteredProducts = safeProducts.filter(product => {
+    if (!product) return false;
     let matchesCategory = activeCategory === "Todos" || product.category === activeCategory;
     
     if (activeCategory === "Gratis") {
-      matchesCategory = product.price === 0;
+      matchesCategory = Number(product.price) === 0;
     }
 
-    const title = locale === 'en' && product.title_en ? product.title_en : product.title;
-    const description = locale === 'en' && product.description_en ? product.description_en : product.description;
+    const title = (locale === 'en' && product.title_en ? product.title_en : product.title) || '';
+    const description = (locale === 'en' && product.description_en ? product.description_en : product.description) || '';
 
     const searchLower = searchQuery.toLowerCase();
-    const matchesSearch = title.toLowerCase().includes(searchLower) || 
+    const matchesSearch = !searchQuery || 
+                          title.toLowerCase().includes(searchLower) || 
                           description.toLowerCase().includes(searchLower) ||
-                          product.tags.some(tag => tag.toLowerCase().includes(searchLower));
+                          (Array.isArray(product.tags) && product.tags.some(tag => tag && String(tag).toLowerCase().includes(searchLower)));
     
     return matchesCategory && matchesSearch;
   });
@@ -83,14 +87,14 @@ export function StoreGrid({ initialProducts }: { initialProducts: Product[] }) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[400px]">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => {
-            const displayTitle = locale === 'en' && product.title_en ? product.title_en : product.title;
-            const displayDesc = locale === 'en' && product.description_en ? product.description_en : product.description;
+            const displayTitle = (locale === 'en' && product.title_en ? product.title_en : product.title) || '';
+            const displayDesc = (locale === 'en' && product.description_en ? product.description_en : product.description) || '';
 
             return (
               <Link key={product.id} href={`/tienda/${product.id}`}>
                 <Card className="h-full group hover:border-primary/50 transition-all">
                   <div className="aspect-video rounded-lg mb-4 flex items-center justify-center text-white/20 group-hover:scale-105 transition-transform duration-500 overflow-hidden relative">
-                      {product.images && product.images.length > 0 && (product.images[0].startsWith('/') || product.images[0].startsWith('http')) ? (
+                      {Array.isArray(product.images) && product.images.length > 0 && typeof product.images[0] === 'string' && (product.images[0].startsWith('/') || product.images[0].startsWith('http')) ? (
                          <Image 
                             src={product.images[0]} 
                             alt={displayTitle} 
@@ -105,9 +109,18 @@ export function StoreGrid({ initialProducts }: { initialProducts: Product[] }) {
                       )}
                   </div>
                   
-                  <div className="flex justify-between items-start mb-2">
-                    <Badge variant={(product.category === 'Páginas Web' || product.category === 'Landing Pages') ? 'primary' : 'secondary'}>{product.category}</Badge>
-                    <div className="flex items-center gap-1 text-yellow-400 text-xs">
+                  <div className="flex justify-between items-start mb-2 gap-2">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <Badge variant={(product.category === 'Páginas Web' || product.category === 'Landing Pages') ? 'primary' : 'secondary'}>
+                        {product.category}
+                      </Badge>
+                      {product.promotionBadge && (
+                        <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-2xs animate-pulse">
+                          {product.promotionBadge}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-1 text-yellow-400 text-xs shrink-0">
                       <Star className="w-3 h-3 fill-current" /> 5.0
                     </div>
                   </div>
@@ -118,11 +131,23 @@ export function StoreGrid({ initialProducts }: { initialProducts: Product[] }) {
                   </CardDescription>
 
                   <div className="flex items-center justify-between mt-auto pt-4 border-t border-card-border">
-                    <span className="text-2xl font-bold text-foreground">
-                      {product.price === 0 ? t('free') : `$${product.price ? product.price.toLocaleString() : '0'}`}
-                    </span>
+                    <div className="flex flex-col">
+                      {product.originalPrice && product.originalPrice > Number(product.price) && (
+                        <span className="text-xs text-muted-foreground line-through font-bold">
+                          ${product.originalPrice}
+                        </span>
+                      )}
+                      <span className="text-2xl font-bold text-foreground">
+                        {Number(product.price) === 0 ? (
+                          <span className="text-emerald-500 dark:text-emerald-400 font-extrabold">{t('free')}</span>
+                        ) : (
+                          `$${Number(product.price).toLocaleString('en-US', { minimumFractionDigits: Number(product.price) % 1 !== 0 ? 2 : 0 })}`
+                        )}
+                      </span>
+                    </div>
+
                     <Button size="sm" className="gap-2 font-bold uppercase tracking-tight">
-                      {t('details')}
+                      {Number(product.price) === 0 ? t('get_now') || 'Obtener' : t('details')}
                     </Button>
                   </div>
                 </Card>

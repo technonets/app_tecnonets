@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import { ProductGallery } from "@/components/store/ProductGallery";
 import { AdBanner } from "@/components/ui/AdBanner";
 import { ServicePlanCard } from "@/components/pricing/ServicePlanCard";
+import { ProductPromoBox } from "@/components/store/ProductPromoBox";
 import { Metadata } from "next";
 import { getTranslations, getLocale } from 'next-intl/server';
 
@@ -129,25 +130,22 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                      {description}
                   </p>
 
-                  {/* Pricing / Action Section */}
-                  <div className="bg-card border border-white/10 rounded-2xl p-8">
+                  {/* Pricing / Action Section with Live Coupon & Countdown Timer */}
+                  <div className="bg-card border border-white/10 rounded-2xl p-6 sm:p-8">
                      {(product.price === 0 || !product.monthlyPrice) ? (
                         <>
-                           <div className="flex flex-col sm:flex-row justify-between items-center gap-8 mb-8 pb-8 border-b border-white/5">
-                              <div className="text-center sm:text-left">
-                                 <span className="block text-sm text-gray-400 mb-1 uppercase tracking-widest font-bold">{t('price_label')}</span>
-                                 <span className="text-5xl font-bold text-white">
-                                    {product.price === 0 ? t('free') : `$${product.price}`}
-                                 </span>
-                              </div>
-                              <Link href={product.checkoutUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                                 <Button size="lg" className="h-16 px-10 text-lg w-full sm:w-auto shadow-[0_0_30px_rgba(139,92,246,0.2)] gap-2">
-                                    {product.price === 0 ? <><Download className="w-5 h-5" /> {t('get_now')}</> : t('buy_source')}
-                                 </Button>
-                              </Link>
-                           </div>
+                           <ProductPromoBox
+                              productId={product.id}
+                              price={product.price}
+                              originalPrice={product.originalPrice}
+                              offerEndDate={product.offerEndDate}
+                              freeUntilDate={product.freeUntilDate}
+                              promotionBadge={product.promotionBadge}
+                              checkoutUrl={product.checkoutUrl || product.templateUrl || product.demoUrl || '#'}
+                              freeLabel={t('free')}
+                           />
 
-                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/5">
                               <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                                  <h4 className="font-bold text-white mb-2 flex items-center gap-2">
                                     <Check className="w-4 h-4 text-primary" /> {t('immediate_delivery')}
@@ -190,21 +188,18 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                           </div>
                      ) : (
                         <>
-                           <div className="flex flex-col sm:flex-row justify-between items-center gap-8 mb-8 pb-8 border-b border-white/5">
-                              <div className="text-center sm:text-left">
-                                 <span className="block text-sm text-gray-400 mb-1 uppercase tracking-widest font-bold">{t('price_label')}</span>
-                                 <span className="text-5xl font-bold text-white">
-                                    {product.price === 0 ? t('free') : `$${product.price}`}
-                                 </span>
-                              </div>
-                              <Link href={product.checkoutUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                                 <Button size="lg" className="h-16 px-10 text-lg w-full sm:w-auto shadow-[0_0_30px_rgba(139,92,246,0.2)] gap-2">
-                                    {product.price === 0 ? <><Download className="w-5 h-5" /> {t('get_now')}</> : t('buy_source')}
-                                 </Button>
-                              </Link>
-                           </div>
+                           <ProductPromoBox
+                              productId={product.id}
+                              price={product.price}
+                              originalPrice={product.originalPrice}
+                              offerEndDate={product.offerEndDate}
+                              freeUntilDate={product.freeUntilDate}
+                              promotionBadge={product.promotionBadge}
+                              checkoutUrl={product.checkoutUrl || product.templateUrl || product.demoUrl || '#'}
+                              freeLabel={t('free')}
+                           />
 
-                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 pt-6 border-t border-white/5">
                               <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                                  <h4 className="font-bold text-white mb-2 flex items-center gap-2">
                                     <Check className="w-4 h-4 text-primary" /> {t('immediate_delivery')}

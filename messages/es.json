@@ -11,7 +11,8 @@
     "guides": "Guías",
     "blog": "Blog",
     "contact": "Contacto",
-    "settings": "Configuración"
+    "settings": "Configuración",
+    "account": "Acceder"
   },
   "Hero": {
     "badge_primary": "Soluciones Digitales",
@@ -113,6 +114,7 @@
     "benefit_2": "Soporte técnico especializado",
     "benefit_3": "Actualizaciones garantizadas",
     "recommended": "Recomendado",
+    "sponsored": "Publicidad",
     "plans": {
       "landing": {
         "setup_features": [

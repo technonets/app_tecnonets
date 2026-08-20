@@ -1,49 +1,53 @@
-import { NextResponse } from "next/server";
-import fs from "fs/promises";
-import path from "path";
+import { NextResponse } from 'next/server';
+import fs from 'fs/promises';
+import path from 'path';
+import { getCurrentUser } from '@/lib/auth';
+import { SECURITY_HEADERS } from '@/lib/api-security';
 
-// ⚠️ THIS ONLY WORKS IN LOCAL NODE.JS ENVIRONMENTS OR VPS
-// IT WILL NOT PERSIST IN SERVERLESS (VERCEL) PRODUCTION AFTER REDEPLOY
 export async function POST(req: Request) {
   try {
+    const user = await getCurrentUser();
+    if (!user || (user.role !== 'admin' && user.role !== 'staff')) {
+      return NextResponse.json(
+        { error: 'Acceso denegado. Se requiere rol de administrador.' },
+        { status: 401, headers: SECURITY_HEADERS }
+      );
+    }
+
     const formData = await req.formData();
-    const productStr = formData.get("product") as string;
-    const imageFile = formData.get("image") as File;
-    
+    const productStr = formData.get('product') as string;
+    const imageFile = formData.get('image') as File;
+
     if (!productStr || !imageFile) {
-        return NextResponse.json({ error: "Missing data" }, { status: 400 });
+      return NextResponse.json({ error: 'Faltan datos requeridos' }, { status: 400, headers: SECURITY_HEADERS });
     }
 
     const newProduct = JSON.parse(productStr);
 
-    // 1. Save Image
+    // 1. Guardar Imagen
     const buffer = Buffer.from(await imageFile.arrayBuffer());
-    const imageName = `${newProduct.id}-${Date.now()}.jpg`; // Unique name
-    const imagePath = path.join(process.cwd(), "public", "images", "products", imageName);
-    
-    // Ensure dir exists
+    const imageName = `${newProduct.id}-${Date.now()}.jpg`;
+    const imagePath = path.join(process.cwd(), 'public', 'images', 'products', imageName);
+
+    // Asegurar directorio
     await fs.mkdir(path.dirname(imagePath), { recursive: true });
     await fs.writeFile(imagePath, buffer);
 
-    // 2. Update JSON Data
-    const jsonPath = path.join(process.cwd(), "data", "products.json");
-    const fileData = await fs.readFile(jsonPath, "utf8");
+    // 2. Actualizar Datos Locales
+    const jsonPath = path.join(process.cwd(), 'data', 'products.json');
+    const fileData = await fs.readFile(jsonPath, 'utf8');
     const products = JSON.parse(fileData);
 
-    // Add image path to product object
     newProduct.image = `/images/products/${imageName}`;
-    newProduct.price = Number(newProduct.price); // Ensure number
+    newProduct.price = Number(newProduct.price);
 
-    // Append to beginning or end
     products.unshift(newProduct);
 
-    // Write back
     await fs.writeFile(jsonPath, JSON.stringify(products, null, 2));
 
-    return NextResponse.json({ success: true, product: newProduct });
-
+    return NextResponse.json({ success: true, product: newProduct }, { headers: SECURITY_HEADERS });
   } catch (error) {
-    console.error("Upload error:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    console.error('Upload error:', error);
+    return NextResponse.json({ error: 'Error interno del servidor' }, { status: 500, headers: SECURITY_HEADERS });
   }
 }
